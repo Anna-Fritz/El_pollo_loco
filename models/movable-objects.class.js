@@ -1,4 +1,4 @@
-class MovableObjects {
+class MovableObjects extends DrawableObjects {
     img;
     imageCache = {};
     currentImage = 0;
