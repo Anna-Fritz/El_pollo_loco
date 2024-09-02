@@ -65,7 +65,6 @@ class Character extends MovableObjects {
     ];
     world;
     walking_sound = new Audio('../audio/walking.mp3');
-    chicken_sound = new Audio('../audio/chicken-chatter.mp3');
     hurt_sound = new Audio('../audio/hurt_sound.mp3');
 
 
@@ -102,21 +101,22 @@ class Character extends MovableObjects {
         }, 1000 / 60);
 
         setInterval(() => {
-            if (this.isAboveGround()) {
+            if(this.isDead()) {
+                this.playAnimation(this.IMAGES_DEAD);
+
+            } else if (this.isHurt()) {
+                this.playAnimation(this.IMAGES_HURT);
+                // this.hurt_sound.play();
+        
+              } else if (this.isAboveGround()) {
                 this.playAnimation(this.IMAGES_JUMPING);
-            } else {
+
+                } else {
                 if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
                     this.playAnimation(this.IMAGES_WALKING);
                 }
             }
         }, 50);
-    }
-
-    isColliding(mo) {
-        return this.x + this.width > mo.x &&
-            this.y + this.height > mo.y &&
-            this.x < mo.x &&
-            this.y < mo.y + mo.height
     }
     
 }

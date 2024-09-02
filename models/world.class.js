@@ -23,15 +23,8 @@ class World {
         setInterval(() => {
             this.level.enemies.forEach((enemy) => {
                 if (this.character.isColliding(enemy)) {
-                    this.character.energy -= 5;
-                    this.character.playAnimation(this.character.IMAGES_HURT);
-                    this.character.hurt_sound.play();
-                    console.log("Collision with Character", this.character.energy);
-                } else if (this.character.energy == 0) {
-                    this.character.is_dead = true;
-                    this.character.playAnimation(this.character.IMAGES_DEAD);
+                    this.character.hit();
                 }
-
             })
         }, 1000);
     }
