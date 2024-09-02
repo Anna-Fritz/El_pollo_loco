@@ -27,7 +27,11 @@ class World {
                     this.character.playAnimation(this.character.IMAGES_HURT);
                     this.character.hurt_sound.play();
                     console.log("Collision with Character", this.character.energy);
-                };
+                } else if (this.character.energy == 0) {
+                    this.character.is_dead = true;
+                    this.character.playAnimation(this.character.IMAGES_DEAD);
+                }
+
             })
         }, 1000);
     }

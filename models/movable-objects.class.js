@@ -8,6 +8,7 @@ class MovableObjects {
     acceleration = 2.5;
     y = 45;
     energy = 100;
+    is_dead = false;
 
 
     applyGravity() {
@@ -67,5 +68,8 @@ class MovableObjects {
 
     jump() {
         this.speedY = 25;
+    }
+
+    isDead() {
     }
 }
