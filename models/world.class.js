@@ -47,7 +47,15 @@ class World {
         if (mo.otherDirection) {
             this.flipImage(mo);
         }
-        this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height);
+
+        mo.draw(this.ctx);
+
+        // for (let i = 0; i < this.level.enemies.length; i++) {
+        //     if (mo == this.level.enemies[i] || mo == this.character) {
+                mo.drawFrame(this.ctx);
+        //     }
+        // }
+
         if (mo.otherDirection) {
             this.flipImageBack(mo);
         }
