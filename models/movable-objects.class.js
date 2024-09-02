@@ -7,6 +7,7 @@ class MovableObjects {
     speedY = 0;
     acceleration = 2.5;
     y = 45;
+    energy = 100;
 
 
     applyGravity() {

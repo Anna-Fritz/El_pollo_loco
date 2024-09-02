@@ -25,15 +25,22 @@ class Character extends MovableObjects {
         '../img/2_character_pepe/3_jump/J-38.png',
         '../img/2_character_pepe/3_jump/J-39.png',
     ];
+    IMAGES_HURT = [
+        '../img/2_character_pepe/4_hurt/H-41.png',
+        '../img/2_character_pepe/4_hurt/H-42.png',
+        '../img/2_character_pepe/4_hurt/H-43.png'
+    ]
     world;
     walking_sound = new Audio('../audio/walking.mp3');
     chicken_sound = new Audio('../audio/chicken-chatter.mp3');
+    hurt_sound = new Audio('../audio/hurt_sound.mp3');
 
 
     constructor(){
         super().loadImage('../img/2_character_pepe/2_walk/W-21.png');
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_JUMPING);
+        this.loadImages(this.IMAGES_HURT);
         this.applyGravity();
         this.animate();
     }
@@ -70,4 +77,12 @@ class Character extends MovableObjects {
             }
         }, 50);
     }
+
+    isColliding(mo) {
+        return this.x + this.width > mo.x &&
+            this.y + this.height > mo.y &&
+            this.x < mo.x &&
+            this.y < mo.y + mo.height
+    }
+    
 }
