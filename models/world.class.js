@@ -1,5 +1,6 @@
 class World {
     character = new Character();
+    statusBar = new StatusBar();
     level = level1;
     canvas;
     ctx;
@@ -24,6 +25,7 @@ class World {
             this.level.enemies.forEach((enemy) => {
                 if (this.character.isColliding(enemy)) {
                     this.character.hit();
+                    this.statusBar.setPercentage(this.character.energy)
                 }
             })
         }, 1000);
@@ -40,6 +42,10 @@ class World {
         this.addToMap(this.character);
 
         this.ctx.translate(-this.camera_x, 0);
+
+        // Fixed objects drawn here (after camera setting)
+        this.addToMap(this.statusBar);
+
 
         // draw() loaded again and again
         let self = this;

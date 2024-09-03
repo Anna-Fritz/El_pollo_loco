@@ -1,11 +1,13 @@
 class StatusBar extends DrawableObjects {
-    x = 50;
-    y = 50;
+    x = 20;
+    y = 10;
     width = 50*3.77;
     height = 50;
-    statusbar_coin;
-    statusbar_health;
-    statusbar_bottle;
+    // statusbar_coin;
+    // statusbar_health;
+    // statusbar_bottle;
+    percentage = 100;
+
 
     IMAGES_HEALTH = [
         '../img/7_statusbars/1_statusbar/2_statusbar_health/blue/0.png',
@@ -33,12 +35,13 @@ class StatusBar extends DrawableObjects {
         '../img/7_statusbars/1_statusbar/3_statusbar_bottle/blue/100.png',
     ];
 
-    percentage = 100;
 
     constructor() {
+        super();
         this.loadImages(this.IMAGES_HEALTH);
         this.loadImages(this.IMAGES_COIN);
         this.loadImages(this.IMAGES_BOTTLE);
+        this.setPercentage(100);
     }
 
     // setPercentage(50)
@@ -48,7 +51,7 @@ class StatusBar extends DrawableObjects {
         this.img = this.imageCache[path]
     }
 
-    resolveImageIndex(percentage) {
+    resolveImageIndex() {
         if (this.percentage == 100) {
             return 5;
         } else if (this.percentage > 80) {
