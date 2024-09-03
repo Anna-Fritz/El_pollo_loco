@@ -9,7 +9,7 @@ class World {
     ctx;
     keyboard;
     camera_x = 0;
-    throwableObjects = [new Bottle()];
+    throwableObjects = [];
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -26,13 +26,25 @@ class World {
 
     run() {
         setInterval(() => {
-            this.level.enemies.forEach((enemy) => {
-                if (this.character.isColliding(enemy)) {
-                    this.character.hit();
-                    this.statusBarHealth.setPercentage(this.character.energy)
-                }
-            })
+            this.checkCollisions();
+            this.checkThrowObjects();
         }, 1000);
+    }
+
+    checkCollisions() {
+        this.level.enemies.forEach((enemy) => {
+            if (this.character.isColliding(enemy)) {
+                this.character.hit();
+                this.statusBarHealth.setPercentage(this.character.energy)
+            }
+        })
+    }
+
+    checkThrowObjects() {
+        if(this.keyboard.KEY_D) {
+            let bottle = new Bottle(this.character.x + 50, this.character.y + 100);
+            this.throwableObjects.push(bottle);
+        }
     }
 
     draw() {

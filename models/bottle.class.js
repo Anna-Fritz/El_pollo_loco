@@ -1,6 +1,4 @@
 class Bottle extends ThrowableObject {
-    x = 200;
-    y = 200;
     width = 90;
     height = 90;
 
@@ -19,13 +17,15 @@ class Bottle extends ThrowableObject {
         '../img/6_salsa_bottle/bottle_rotation/bottle_splash/6_bottle_splash.png',
     ]
 
-    constructor() {
+    constructor(x, y) {
         super().loadImage('../img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png');
         // this.loadImages(this.IMAGES_BOTTLE_ROTATION);
         // this.loadImages(this.IMAGES_BOTTLE_SPLASH);
         // this.applyGravity();
         // this.animate();
-        this.throw(200, 150);
+        // this.x = x;
+        // this.y = y;
+        this.throw(x, y);
     }
 
     animate() {
