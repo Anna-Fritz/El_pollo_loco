@@ -1,8 +1,54 @@
+@font-face {
+    font-family: 'JiChimichanga';
+    src: url('../fonts/JiChimichanga-BGGV.ttf');
+}
+@font-face {
+    font-family: 'Krenzy';
+    src: url('../fonts/KrenzyCrispyRegular-DOxEE.ttf');
+}
+@font-face {
+    font-family: 'Mexina';
+    src: url('../fonts/Mexina-xRndO.otf');
+}
+@font-face {
+    font-family: 'Fajita';
+    src: url('../fonts/JI Fajita.ttf');
+}
+@font-face {
+    font-family: 'Gringo';
+    src: url('../fonts/GringoNights.ttf');
+}
+@font-face {
+    font-family: 'Tequila';
+    src: url('../fonts/La Tequila.ttf');
+}
+
+
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    background-image: url('../img/background-canvas/desert5.png');
+    
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+h1 {
+    font-family: 'Tequila';
+    font-size: 28px;
+    color: #1d1d1d;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
 canvas {
     background-color: black;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+
 }
