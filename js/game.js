@@ -7,8 +7,7 @@ function init() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
 
-    console.log('My character is', world.character);
-    
+    console.log('My character is', world.character);  
 }
 
 window.addEventListener("keydown", (e) => {
@@ -54,3 +53,7 @@ window.addEventListener("keyup", (e) => {
         keyboard.KEY_D = false;
     }
 })
+
+function setFullscreen() {
+    canvas.requestFullscreen();
+}
