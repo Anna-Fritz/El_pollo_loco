@@ -1,6 +1,9 @@
 class World {
     character = new Character();
-    statusBar = new StatusBar();
+    statusBarHealth = new StatusBarHealth();
+    statusBarCoin = new StatusBarCoin();
+    statusBarBottle = new StatusBarBottle();
+    statusBarEndboss = new StatusBarEndboss();
     level = level1;
     canvas;
     ctx;
@@ -25,7 +28,7 @@ class World {
             this.level.enemies.forEach((enemy) => {
                 if (this.character.isColliding(enemy)) {
                     this.character.hit();
-                    this.statusBar.setPercentage(this.character.energy)
+                    this.statusBarHealth.setPercentage(this.character.energy)
                 }
             })
         }, 1000);
@@ -44,7 +47,11 @@ class World {
         this.ctx.translate(-this.camera_x, 0);
 
         // Fixed objects drawn here (after camera setting)
-        this.addToMap(this.statusBar);
+        this.addToMap(this.statusBarHealth);
+        this.addToMap(this.statusBarCoin);
+        this.addToMap(this.statusBarBottle);
+        this.addToMap(this.statusBarEndboss);
+
 
 
         // draw() loaded again and again
