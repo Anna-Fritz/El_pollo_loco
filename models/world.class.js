@@ -60,12 +60,7 @@ class World {
         }
 
         mo.draw(this.ctx);
-
-        // for (let i = 0; i < this.level.enemies.length; i++) {
-        //     if (mo == this.level.enemies[i] || mo == this.character) {
-                mo.drawFrame(this.ctx);
-        //     }
-        // }
+        mo.drawFrame(this.ctx);
 
         if (mo.otherDirection) {
             this.flipImageBack(mo);

@@ -1,4 +1,8 @@
 class DrawableObjects {
+    img;
+    imageCache = {};
+    currentImage = 0;
+    y = 45;
 
     
     loadImage(path){
