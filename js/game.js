@@ -54,6 +54,51 @@ window.addEventListener("keyup", (e) => {
     }
 })
 
-function setFullscreen() {
+function fullscreen() {
+    // let fullscreen = document.getElementById('content');
+    // openFullscreen(fullscreen);
+    // document.getElementById('fullscreen-icon').classList.add('d-none');
+    // document.getElementById('fullscreen-exit').classList.remove('d-none');   
     canvas.requestFullscreen();
 }
+
+function exitFullscreen() {
+    // document.getElementById('fullscreen-icon').classList.remove('d-none');
+    // document.getElementById('fullscreen-exit').classList.add('d-none');   
+    canvas.exitFullscreen();
+}
+
+// function openFullscreen(elem) {
+//     if (elem.requestFullscreen) {
+//       elem.requestFullscreen();
+//     } else if (elem.webkitRequestFullscreen) { /* Safari */
+//       elem.webkitRequestFullscreen();
+//     } else if (elem.msRequestFullscreen) { /* IE11 */
+//       elem.msRequestFullscreen();
+//     }
+//   }
+
+//   function closeFullscreen() {
+//     if (document.exitFullscreen) {
+//       document.exitFullscreen();
+//     } else if (document.webkitExitFullscreen) { /* Safari */
+//       document.webkitExitFullscreen();
+//     } else if (document.msExitFullscreen) { /* IE11 */
+//       document.msExitFullscreen();
+//     }
+//   }
+
+// window.addEventListener("resize", () => {
+//     // Resize canvas element
+//     canvas.width = window.innerWidth;
+//     canvas.height = window.innerHeight;
+  
+//     // Update scaling
+//     // . . .
+  
+//     // Adjust size dependent properties
+//     // . . .
+  
+//     // Redraw canvas
+//     draw();
+//   });

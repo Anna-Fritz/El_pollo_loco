@@ -28,10 +28,11 @@
 </head>
 <body onload="init()">
 
-    <div class="content">
+    <div id="content" class="content">
         <h1>El Pollo Loco</h1>
         <canvas id="canvas" width="720" height="480"></canvas>
-        <img onclick="setFullscreen()" src="../img/icons/fullscreen.svg" alt="fullscreen" title="Fullscreen">
+        <img id="fullscreen-icon" onclick="fullscreen()" src="../img/icons/fullscreen.svg" alt="fullscreen" title="Fullscreen">
+        <img id="fullscreen-exit" onclick="exitFullscreen()" class="d-none" src="../img/icons/fullscreen-exit.svg" alt="fullscreen exit" title="Fullscreen exit">
     </div>
     
 </body>

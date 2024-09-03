@@ -66,6 +66,10 @@ canvas {
     display: block;
 }
 
+.d-none {
+    display: none;
+}
+
 /* Smartphones */
 @media only screen and (max-width: 720px) {
     canvas {
