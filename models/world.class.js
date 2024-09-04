@@ -1,5 +1,6 @@
 class World {
     character = new Character();
+    chicken = new Chicken();
     statusBarHealth = new StatusBarHealth();
     statusBarCoin = new StatusBarCoin();
     statusBarBottle = new StatusBarBottle();
@@ -28,15 +29,35 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkThrowObjects();
-        }, 1000);
+        }, 100);
+
+        setInterval(() => {
+            this.removeEnemy();
+        }, 2500);
     }
 
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
-            if (this.character.isColliding(enemy)) {
+            if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
+                console.log("character jumped on chicken");
+                enemy.energy = 0;
+                console.log(enemy);
+            }; 
+            if (this.character.isColliding(enemy) && enemy.energy == 100) {
                 this.character.hit();
                 this.statusBarHealth.setPercentage(this.character.energy)
-            }
+            };  
+        })
+    }
+
+    removeEnemy() {
+        this.level.enemies.forEach((enemy) => {
+            if (enemy.energy == 0) {
+                let index = this.level.enemies.indexOf(enemy);
+                if (index > -1) {
+                   this.level.enemies.splice(index, 1);
+                }
+            }   
         })
     }
 
