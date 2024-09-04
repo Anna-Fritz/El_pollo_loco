@@ -2,6 +2,10 @@ class Bottle extends ThrowableObject {
     width = 90;
     height = 90;
 
+    IMAGE_BOTTLE = [
+        '../img/6_salsa_bottle/1_salsa_bottle_on_ground.png',
+    ];
+
     IMAGES_BOTTLE_ROTATION = [
         '../img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png',
         '../img/6_salsa_bottle/bottle_rotation/2_bottle_rotation.png',

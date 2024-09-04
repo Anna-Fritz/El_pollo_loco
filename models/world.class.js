@@ -85,8 +85,8 @@ class World {
 
     checkThrowObjects() {
         if(this.keyboard.KEY_D) {
-            let bottle = new Bottle(this.character.x + 50, this.character.y + 100);
-            this.throwableObjects.push(bottle);
+            let newBottle = new Bottle(this.character.x + 50, this.character.y + 100);
+            this.throwableObjects.push(newBottle);
         }
     }
 
@@ -98,6 +98,7 @@ class World {
         this.addObjectsToMap(this.level.backgroundObjects);
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.level.coins);
         this.addToMap(this.character);
         this.addObjectsToMap(this.throwableObjects);
 
