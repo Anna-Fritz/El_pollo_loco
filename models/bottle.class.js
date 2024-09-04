@@ -2,10 +2,6 @@ class Bottle extends ThrowableObject {
     width = 90;
     height = 90;
 
-    IMAGE_BOTTLE = [
-        '../img/6_salsa_bottle/1_salsa_bottle_on_ground.png',
-    ];
-
     IMAGES_BOTTLE_ROTATION = [
         '../img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png',
         '../img/6_salsa_bottle/bottle_rotation/2_bottle_rotation.png',
@@ -23,13 +19,10 @@ class Bottle extends ThrowableObject {
     hitEnemy = false;
 
     constructor(x, y) {
-        super().loadImage('../img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png');
+        super().loadImage('../img/6_salsa_bottle/1_salsa_bottle_on_ground.png');
         this.loadImages(this.IMAGES_BOTTLE_ROTATION);
         this.loadImages(this.IMAGES_BOTTLE_SPLASH);
-        // this.applyGravity();
         this.animate();
-        // this.x = x;
-        // this.y = y;
         this.throw(x, y);
     }
 
