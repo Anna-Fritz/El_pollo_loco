@@ -15,14 +15,15 @@ class Bottle extends ThrowableObject {
         '../img/6_salsa_bottle/bottle_rotation/bottle_splash/4_bottle_splash.png',
         '../img/6_salsa_bottle/bottle_rotation/bottle_splash/5_bottle_splash.png',
         '../img/6_salsa_bottle/bottle_rotation/bottle_splash/6_bottle_splash.png',
-    ]
+    ];
+    hitEnemy = false;
 
     constructor(x, y) {
         super().loadImage('../img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png');
-        // this.loadImages(this.IMAGES_BOTTLE_ROTATION);
-        // this.loadImages(this.IMAGES_BOTTLE_SPLASH);
+        this.loadImages(this.IMAGES_BOTTLE_ROTATION);
+        this.loadImages(this.IMAGES_BOTTLE_SPLASH);
         // this.applyGravity();
-        // this.animate();
+        this.animate();
         // this.x = x;
         // this.y = y;
         this.throw(x, y);
@@ -30,10 +31,8 @@ class Bottle extends ThrowableObject {
 
     animate() {
         setInterval(() => {
-            // if (this.world.keyboard.KEY_D) {
-            //     this.throw();
-            // }
-        }, 1000 / 60);
+            this.playAnimation(this.IMAGES_BOTTLE_ROTATION);
+        }, 100);
 
     }
 }

@@ -1,6 +1,8 @@
 class World {
     character = new Character();
     chicken = new Chicken();
+    bottle = new Bottle();
+    endboss = new Endboss();
     statusBarHealth = new StatusBarHealth();
     statusBarCoin = new StatusBarCoin();
     statusBarBottle = new StatusBarBottle();
@@ -28,8 +30,11 @@ class World {
     run() {
         setInterval(() => {
             this.checkCollisions();
-            this.checkThrowObjects();
         }, 100);
+
+        setInterval(() => {
+            this.checkThrowObjects();
+        }, 350);
 
         setInterval(() => {
             this.removeEnemy();
@@ -43,11 +48,28 @@ class World {
                 enemy.energy = 0;
                 console.log(enemy);
             }; 
-            if (this.character.isColliding(enemy) && enemy.energy == 100) {
+            if (this.character.isColliding(enemy) && enemy.energy > 0) {
                 this.character.hit();
                 this.statusBarHealth.setPercentage(this.character.energy)
-            };  
-        })
+            };
+            if (this.bottle.isColliding(enemy)) {
+                console.log("Help!");
+                
+                this.endboss.hit();
+                this.statusBarEndboss.setPercentage(this.endboss.energy);
+                console.log("endboss is hit"); 
+            }     
+        });
+        // if (this.bottle.isColliding(this.endboss)) {
+        //     console.log("Help!");
+            
+        //     this.endboss.hit();
+        //     this.statusBarEndboss.setPercentage(this.endboss.energy);
+        //     console.log("endboss is hit");
+            
+        // } 
+
+
     }
 
     removeEnemy() {
