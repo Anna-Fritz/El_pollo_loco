@@ -41,6 +41,10 @@ class MovableObjects extends DrawableObjects {
         }
     }
 
+    endbossHit() {
+        this.energy -= 0.1;
+    }
+
     isDead() {
         return this.energy == 0;
     }

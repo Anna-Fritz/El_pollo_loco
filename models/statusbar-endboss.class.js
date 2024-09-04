@@ -12,7 +12,6 @@ class StatusBarEndboss extends DrawableObjects {
         '../img/7_statusbars/2_statusbar_endboss/blue/blue60.png',
         '../img/7_statusbars/2_statusbar_endboss/blue/blue80.png',
         '../img/7_statusbars/2_statusbar_endboss/blue/blue100.png',
-
     ];
 
     constructor() {
@@ -29,7 +28,7 @@ class StatusBarEndboss extends DrawableObjects {
     }
 
     resolveImageIndex() {
-        if (this.percentage == 100) {
+        if (this.percentage <= 100) {
             return 5;
         } else if (this.percentage > 80) {
             return 4;

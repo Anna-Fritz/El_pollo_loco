@@ -29,6 +29,10 @@ class World {
 
     run() {
         setInterval(() => {
+            this.checkBossHit();
+        }, 25);
+
+        setInterval(() => {
             this.checkCollisions();
             this.checkCollection();
         }, 100);
@@ -52,10 +56,6 @@ class World {
                 this.character.hit();
                 this.statusBarHealth.setPercentage(this.character.energy)
             };
-            if (this.bottle.isColliding(enemy)) {
-                this.endboss.hit();
-                this.statusBarEndboss.setPercentage(this.endboss.energy);
-            }     
         });
         // if (this.bottle.isColliding(this.endboss)) {
         //     console.log("Help!");
@@ -65,6 +65,18 @@ class World {
         //     console.log("endboss is hit");
             
         // } 
+    }
+
+    checkBossHit() {
+        this.throwableObjects.forEach((bottle) => {
+            if (this.endboss.isColliding(bottle)) {
+                console.log("chicken is hit");
+                
+                this.endboss.endbossHit();
+                this.statusBarEndboss.setPercentage(this.endboss.energy);
+                this.statusBarEndboss.isHurt = true;
+            }
+        });
     }
 
     checkCollection() {
