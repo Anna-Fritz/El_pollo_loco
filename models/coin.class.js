@@ -1,5 +1,5 @@
 class Coin extends CollactableObject {
-    x = 100 + Math.random() * 2000;
+    x = 300 + Math.random() * 2000;
     height = 120;
     width = 120;
     y = 100 + Math.random() * 150;
