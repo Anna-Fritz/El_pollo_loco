@@ -66,6 +66,7 @@ class Character extends MovableObjects {
     world;
     walking_sound = new Audio('../audio/walking.mp3');
     hurt_sound = new Audio('../audio/hurt_sound.mp3');
+    audioPlayed = false;
 
 
     constructor(){
@@ -97,6 +98,12 @@ class Character extends MovableObjects {
                 this.jump();
                 
             }
+
+            if (!this.audioPlayed && this.x == 2000) {
+                endboss_alert.loop = true;
+                endboss_alert.play();
+                this.audioPlayed = true;
+            }    
 
             this.world.camera_x = -this.x + 100;
         }, 1000 / 60);

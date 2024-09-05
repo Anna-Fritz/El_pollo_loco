@@ -43,7 +43,6 @@ class Endboss extends MovableObjects {
         '../img/4_enemie_boss_chicken/5_dead/G25.png',
         '../img/4_enemie_boss_chicken/5_dead/G26.png',
     ];
-    endboss_alert = new Audio('../audio/chicken-alert.mp3');
     endboss_dies = new Audio('../audio/endboss-dead.mp3');
     audioPlayed = false;
 
@@ -116,6 +115,7 @@ class Endboss extends MovableObjects {
         if (!this.audioPlayed) {
             this.endboss_dies.play();
             this.audioPlayed = true;
+            endboss_alert.pause();
         }
     }
 

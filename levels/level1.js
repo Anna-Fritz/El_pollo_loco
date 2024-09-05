@@ -1,4 +1,5 @@
 let level1;
+endboss_alert = new Audio('../audio/chicken-alert.mp3');
 
 // function initLevel() {
     level1 = new Level(
