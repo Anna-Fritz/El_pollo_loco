@@ -28,9 +28,9 @@ class World {
     }
 
     run() {
-        setInterval(() => {
-            this.checkBossHit();
-        }, 25);
+        // setInterval(() => {
+        //     this.checkBossHit();
+        // }, 300);
 
         setInterval(() => {
             this.checkCollisions();
@@ -39,6 +39,7 @@ class World {
 
         setInterval(() => {
             this.checkThrowObjects();
+            this.checkBossHit();
         }, 350);
 
         setInterval(() => {
@@ -57,79 +58,78 @@ class World {
                 this.statusBarHealth.setPercentage(this.character.energy)
             };
         });
-        // if (this.bottle.isColliding(this.endboss)) {
-        //     console.log("Help!");
-            
-        //     this.endboss.hit();
-        //     this.statusBarEndboss.setPercentage(this.endboss.energy);
-        //     console.log("endboss is hit");
-            
-        // } 
     }
 
     checkBossHit() {
         this.throwableObjects.forEach((bottle) => {
             if (this.endboss.isColliding(bottle)) {
+                this.statusBarEndboss.isHit = true;
                 console.log("chicken is hit");
-                
                 this.endboss.endbossHit();
-                this.statusBarEndboss.setPercentage(this.endboss.energy);
-                this.statusBarEndboss.isHurt = true;
+                this.statusBarEndboss.setPercentage(this.endboss.bossEnergy);
             }
         });
     }
 
     checkCollection() {
-        this.level.coins.forEach((coin) => {
+        this.level.coins.forEach((coin, index) => {
             if (this.character.isColliding(coin)) {
                 let cashing = new Audio('audio/coin-received.mp3');
                 cashing.volume = 0.2;
                 cashing.play();
-                this.removeCoins();
                 this.statusBarCoin.isCollected();
                 this.statusBarCoin.collectCoins(this.statusBarCoin.wallet); 
+                this.removeCoins(index);
             }
         })
-        this.level.bottles.forEach((bottle) => {
+        this.level.bottles.forEach((bottle, index) => {
             if (this.character.isColliding(bottle)) {
                 let pop = new Audio('audio/bottle-pop.mp3');
                 pop.volume = 0.5;
                 pop.play();
-                this.removeBottles();
                 this.statusBarBottle.isCollected();
                 this.statusBarBottle.collectBottles(this.statusBarBottle.bottleBag);
+                this.removeBottles(index); 
             }
         })
     }
 
-    removeCoins() {
-        this.level.coins.forEach((coin) => {
-            let index = this.level.coins.indexOf(coin);
+    removeCoins(index) {
+        // this.level.coins.forEach((coin) => {
+        //     let index = this.level.coins.indexOf(coin);
             if (index > -1) {
                 this.level.coins.splice(index, 1);
             }
-        })
+        // })
     }
 
-    removeBottles() {
-        this.level.bottles.forEach((bottle) => {
-            let index = this.level.bottles.indexOf(bottle);
+    removeBottles(index) {
+        // this.level.bottles.forEach((bottle) => {
+        //     let index = this.level.bottles.indexOf(bottle);
             if (index > -1) {
                 this.level.bottles.splice(index, 1);
             }
-        })
+        // })
     }
 
 
     removeEnemy() {
-        this.level.enemies.forEach((enemy) => {
+        this.level.enemies.forEach((enemy, index) => {
             if (enemy.energy == 0) {
-                let index = this.level.enemies.indexOf(enemy);
                 if (index > -1) {
                    this.level.enemies.splice(index, 1);
                 }
             }   
         })
+
+        // this.level.enemies.forEach((enemy) => {
+        //     if (enemy.energy == 0) {
+        //         let index = this.level.enemies.indexOf(enemy);
+        //         if (index > -1) {
+        //            this.level.enemies.splice(index, 1);
+        //         }
+        //     }   
+        // })
     }
 
     checkThrowObjects() {

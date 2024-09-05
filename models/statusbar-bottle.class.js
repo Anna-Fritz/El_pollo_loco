@@ -28,18 +28,18 @@ class StatusBarBottle extends DrawableObjects {
     }
 
     resolveImageIndex() {
-        if (this.bottleBag < 20) {
-            return 0;
-        } else if (this.bottleBag >= 20) {
-            return 1;
-        } else if (this.bottleBag >= 40) {
-            return 2;
-        } else if (this.bottleBag >= 60) {
-            return 3;
+        if (this.bottleBag >= 100) {
+            return 5;
         } else if (this.bottleBag >= 80) {
             return 4;
+        } else if (this.bottleBag >= 60) {
+            return 3;
+        } else if (this.bottleBag >= 40) {
+            return 2;
+        } else if (this.bottleBag >= 20) {
+            return 1;
         } else {
-            return 5;
+            return 0;
         }
     }
 

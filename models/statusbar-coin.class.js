@@ -29,18 +29,18 @@ class StatusBarCoin extends DrawableObjects {
     }
 
     resolveImageIndex() {
-        if (this.wallet < 20) {
-            return 0;
-        } else if (this.wallet >= 20) {
-            return 1;
-        } else if (this.wallet >= 40) {
-            return 2;
-        } else if (this.wallet >= 60) {
-            return 3;
+        if (this.wallet >= 100) {
+            return 5;
         } else if (this.wallet >= 80) {
             return 4;
+        } else if (this.wallet >= 60) {
+            return 3;
+        } else if (this.wallet >= 40) {
+            return 2;
+        } else if (this.wallet >= 20) {
+            return 1;
         } else {
-            return 5;
+            return 0;
         }
     }
 

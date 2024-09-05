@@ -5,6 +5,7 @@ class MovableObjects extends DrawableObjects {
     acceleration = 2.5;
     // y = 45;
     energy = 100;
+    bossEnergy = 100;
     is_dead = false;
     lastHit = 0;
 
@@ -42,10 +43,19 @@ class MovableObjects extends DrawableObjects {
     }
 
     endbossHit() {
-        this.energy -= 0.1;
+        this.bossEnergy -= 10;
+        if (this.bossEnergy < 0) {
+            this.bossEnergy = 0;
+        } else {
+            this.lastHit = new Date().getTime();
+        }
     }
 
     isDead() {
+        return this.energy == 0;
+    }
+
+    bossIsDead() {
         return this.energy == 0;
     }
 
