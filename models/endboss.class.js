@@ -38,11 +38,12 @@ class Endboss extends MovableObjects {
         '../img/4_enemie_boss_chicken/5_dead/G24.png',
         '../img/4_enemie_boss_chicken/5_dead/G25.png',
         '../img/4_enemie_boss_chicken/5_dead/G26.png',
-    ]
+    ];
     isHit = false;
 
     constructor(){
-        super().loadImage('../img/4_enemie_boss_chicken/1_walk/G1.png');
+        super();
+        this.loadImage('../img/4_enemie_boss_chicken/1_walk/G1.png');
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_ALERT);
         this.loadImages(this.IMAGES_ATTACK);
@@ -54,9 +55,9 @@ class Endboss extends MovableObjects {
 
     animate() {
         setInterval(() => {
-            if (this.x >= 2200) {
-                // this.moveLeft();
-            } else if (this.x < 2000) {
+            if (this.x > 2200) {
+                this.moveLeft();
+            } else if (this.x < 1600) {
                 this.moveRight();
                 console.log("chicken move right");
                 
@@ -64,22 +65,48 @@ class Endboss extends MovableObjects {
         }, 1000 / 60);
 
         setInterval(() => {
-            if (this.isHit) {
-                this.playAnimation(this.IMAGES_HURT);
-                // this.isHurt = false;
-            } else if (this.bossEnergy < 100) {
-                this.playAnimation(this.IMAGES_ALERT);
-                } else if (this.bossEnergy < 80) {
-                    this.playAnimation(this.IMAGES_ATTACK)
-                    } else if (this.bossEnergy < 60) {
-                        this.playAnimation(this.IMAGES_ALERT)
-                        } else if (this.bossEnergy < 40 && this.energy > 0) {
-                            this.playAnimation(this.IMAGES_ATTACK)
-                            } else if (this.bossIsDead()) {
-                                this.playAnimation(this.IMAGES_DEAD)
-                                } else {
-                                    this.playAnimation(this.IMAGES_WALKING);
-                                    }
+            if (this.bossIsDead()) {
+                this.playAnimation(this.IMAGES_DEAD);
+                console.log("boss is dead");
+                setTimeout (this.deadBossGone(),2000);
+            
+                } else if (this.isHit) {
+                    this.playAnimation(this.IMAGES_HURT);
+                    this.isHit = false;
+                    console.log("boss is hurt");
+                
+                    } else if (this.bossEnergy < 100) {
+                        this.playAnimation(this.IMAGES_ALERT);
+                        console.log("boss energy", this.bossEnergy);
+                        
+                        } else if (this.bossEnergy < 80) {
+                            this.playAnimation(this.IMAGES_ATTACK);
+                            console.log("boss energy", this.bossEnergy);
+
+
+                            } else if (this.bossEnergy < 60) {
+                                this.playAnimation(this.IMAGES_ALERT);
+                                console.log("boss energy", this.bossEnergy);
+
+
+                                } else if (this.bossEnergy < 40 && this.bossEnergy > 0) {
+                                    this.playAnimation(this.IMAGES_ATTACK);
+                                    console.log("boss energy", this.bossEnergy);
+
+
+                                    } else  {
+                                        this.playAnimation(this.IMAGES_WALKING);
+                                        console.log("chicks just walks");
+                                    }   
         }, 200);
+    }
+
+    deadBossGone() {
+        this.speedY = 15;
+        setInterval(() => {
+            this.y -= this.speedY;
+            this.speedY -= this.acceleration; 
+        }, 1000 / 25);
+
     }
 }

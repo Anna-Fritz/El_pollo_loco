@@ -34,7 +34,7 @@ class MovableObjects extends DrawableObjects {
     }
 
     hit() {
-        this.energy -= 10;
+        this.energy -= 5;
         if (this.energy < 0) {
             this.energy = 0;
         } else {
@@ -56,10 +56,17 @@ class MovableObjects extends DrawableObjects {
     }
 
     bossIsDead() {
-        return this.energy == 0;
+        return this.bossEnergy <= 0;
     }
 
     isHurt() {
+        let timepassed = new Date().getTime() - this.lastHit; // Difference in ms
+        timepassed = timepassed / 1000; // Difference in s
+        
+        return timepassed < 0.8;
+    }
+
+    bossIsHurt() {
         let timepassed = new Date().getTime() - this.lastHit; // Difference in ms
         timepassed = timepassed / 1000; // Difference in s
         

@@ -16,7 +16,7 @@ let level1;
         // new Chick(),
         // new Chick(),
 
-        new Endboss()
+        // new Endboss()
     ],
     [
         new Cloud('../img/5_background/layers/4_clouds/1.png', 0),

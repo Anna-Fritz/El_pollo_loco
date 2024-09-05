@@ -58,15 +58,20 @@ class World {
                 this.statusBarHealth.setPercentage(this.character.energy)
             };
         });
+        if (this.character.isColliding(this.endboss)) {
+            this.character.hit();
+            this.statusBarHealth.setPercentage(this.character.energy)
+        };
     }
 
     checkBossHit() {
         this.throwableObjects.forEach((bottle) => {
-            if (this.endboss.isColliding(bottle)) {
-                this.statusBarEndboss.isHit = true;
-                console.log("chicken is hit");
+            if (this.endboss.isColliding(bottle) && this.endboss.bossEnergy > 0) {
+                console.log("boss is hit");
                 this.endboss.endbossHit();
                 this.statusBarEndboss.setPercentage(this.endboss.bossEnergy);
+                this.endboss.isHit = true;
+                this.bottle.isHit = true;
             }
         });
     }
@@ -121,15 +126,6 @@ class World {
                 }
             }   
         })
-
-        // this.level.enemies.forEach((enemy) => {
-        //     if (enemy.energy == 0) {
-        //         let index = this.level.enemies.indexOf(enemy);
-        //         if (index > -1) {
-        //            this.level.enemies.splice(index, 1);
-        //         }
-        //     }   
-        // })
     }
 
     checkThrowObjects() {
@@ -152,6 +148,7 @@ class World {
         this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.bottles);
         this.addToMap(this.character);
+        this.addToMap(this.endboss);
         this.addObjectsToMap(this.throwableObjects);
 
         this.ctx.translate(-this.camera_x, 0);
