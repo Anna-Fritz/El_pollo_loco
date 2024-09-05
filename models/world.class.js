@@ -13,6 +13,10 @@ class World {
     keyboard;
     camera_x = 0;
     throwableObjects = [];
+    salsa_splat = new Audio('../audio/salsa-splat.mp3');
+    endboss_ishurt = new Audio('../audio/endboss-hurt.mp3');
+
+
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -67,10 +71,12 @@ class World {
     checkBossHit() {
         this.throwableObjects.forEach((bottle) => {
             if (this.endboss.isColliding(bottle) && this.endboss.energy > 0) {
-                console.log("boss is hit");
                 this.endboss.endbossHit();
                 this.statusBarEndboss.setPercentage(this.endboss.energy);
                 bottle.bottleIntact -= 20;
+                this.endboss_ishurt.play();
+                this.salsa_splat.play();
+
             }
         });
     }

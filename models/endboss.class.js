@@ -10,6 +10,10 @@ class Endboss extends MovableObjects {
         '../img/4_enemie_boss_chicken/1_walk/G4.png',
     ];
     IMAGES_ALERT = [
+        '../img/4_enemie_boss_chicken/1_walk/G1.png',
+        '../img/4_enemie_boss_chicken/1_walk/G2.png',
+        '../img/4_enemie_boss_chicken/1_walk/G3.png',
+        '../img/4_enemie_boss_chicken/1_walk/G4.png',
         '../img/4_enemie_boss_chicken/2_alert/G5.png',
         '../img/4_enemie_boss_chicken/2_alert/G6.png',
         '../img/4_enemie_boss_chicken/2_alert/G7.png',
@@ -39,6 +43,9 @@ class Endboss extends MovableObjects {
         '../img/4_enemie_boss_chicken/5_dead/G25.png',
         '../img/4_enemie_boss_chicken/5_dead/G26.png',
     ];
+    endboss_alert = new Audio('../audio/chicken-alert.mp3');
+    endboss_dies = new Audio('../audio/endboss-dead.mp3');
+    audioPlayed = false;
 
     constructor(){
         super();
@@ -53,48 +60,48 @@ class Endboss extends MovableObjects {
     }
 
     animate() {
+        let movingRight = true;
+
         setInterval(() => {
-            if (this.x > 2200) {
-                this.moveLeft();
-            } else if (this.x < 1600) {
-                this.moveRight();
-                console.log("chicken move right");
-                
-            }
+            if (movingRight) {
+            this.speed = Math.random() * 5;
+            this.moveRight();
+
+                if (this.x >= 2600) {
+                movingRight = false;
+                }
+            } 
+                else {
+                    this.speed = Math.random() * 10;
+                    this.moveLeft();
+                    if (this.x <= 2200) {
+                    movingRight = true;
+                    }
+                }
         }, 1000 / 60);
 
         setInterval(() => {
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
-                console.log("boss is dead");
                 setTimeout (this.deadBossGone(),2000);
-            
+
                 } else if (this.isHurt()) {
                     this.playAnimation(this.IMAGES_HURT);
-                    console.log("boss is hurt");
                 
                     } else if (this.energy < 100) {
-                        this.playAnimation(this.IMAGES_ALERT);
-                        console.log("boss energy", this.energy);
+                        this.playAnimation(this.IMAGES_ATTACK);
                         
                         } else if (this.energy < 80) {
-                            this.playAnimation(this.IMAGES_ATTACK);
-                            console.log("boss energy", this.energy);
-
+                            this.playAnimation(this.IMAGES_ALERT);
 
                             } else if (this.energy < 60) {
                                 this.playAnimation(this.IMAGES_ALERT);
-                                console.log("boss energy", this.energy);
-
 
                                 } else if (this.energy < 40 && this.energy > 0) {
                                     this.playAnimation(this.IMAGES_ATTACK);
-                                    console.log("boss energy", this.energy);
-
 
                                     } else  {
-                                        this.playAnimation(this.IMAGES_WALKING);
-                                        // console.log("chicks just walks");
+                                        this.playAnimation(this.IMAGES_ALERT);
                                     }   
         }, 300);
     }
@@ -106,6 +113,10 @@ class Endboss extends MovableObjects {
             this.speedY -= this.acceleration; 
         }, 1000 / 25);
 
+        if (!this.audioPlayed) {
+            this.endboss_dies.play();
+            this.audioPlayed = true;
+        }
     }
 
 }
