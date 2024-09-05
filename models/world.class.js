@@ -66,12 +66,11 @@ class World {
 
     checkBossHit() {
         this.throwableObjects.forEach((bottle) => {
-            if (this.endboss.isColliding(bottle) && this.endboss.bossEnergy > 0) {
+            if (this.endboss.isColliding(bottle) && this.endboss.energy > 0) {
                 console.log("boss is hit");
                 this.endboss.endbossHit();
-                this.statusBarEndboss.setPercentage(this.endboss.bossEnergy);
-                this.endboss.isHit = true;
-                this.bottle.isHit = true;
+                this.statusBarEndboss.setPercentage(this.endboss.energy);
+                bottle.bottleIntact -= 20;
             }
         });
     }

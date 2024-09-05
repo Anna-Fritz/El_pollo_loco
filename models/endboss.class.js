@@ -39,7 +39,6 @@ class Endboss extends MovableObjects {
         '../img/4_enemie_boss_chicken/5_dead/G25.png',
         '../img/4_enemie_boss_chicken/5_dead/G26.png',
     ];
-    isHit = false;
 
     constructor(){
         super();
@@ -65,40 +64,39 @@ class Endboss extends MovableObjects {
         }, 1000 / 60);
 
         setInterval(() => {
-            if (this.bossIsDead()) {
+            if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
                 console.log("boss is dead");
                 setTimeout (this.deadBossGone(),2000);
             
-                } else if (this.isHit) {
+                } else if (this.isHurt()) {
                     this.playAnimation(this.IMAGES_HURT);
-                    this.isHit = false;
                     console.log("boss is hurt");
                 
-                    } else if (this.bossEnergy < 100) {
+                    } else if (this.energy < 100) {
                         this.playAnimation(this.IMAGES_ALERT);
-                        console.log("boss energy", this.bossEnergy);
+                        console.log("boss energy", this.energy);
                         
-                        } else if (this.bossEnergy < 80) {
+                        } else if (this.energy < 80) {
                             this.playAnimation(this.IMAGES_ATTACK);
-                            console.log("boss energy", this.bossEnergy);
+                            console.log("boss energy", this.energy);
 
 
-                            } else if (this.bossEnergy < 60) {
+                            } else if (this.energy < 60) {
                                 this.playAnimation(this.IMAGES_ALERT);
-                                console.log("boss energy", this.bossEnergy);
+                                console.log("boss energy", this.energy);
 
 
-                                } else if (this.bossEnergy < 40 && this.bossEnergy > 0) {
+                                } else if (this.energy < 40 && this.energy > 0) {
                                     this.playAnimation(this.IMAGES_ATTACK);
-                                    console.log("boss energy", this.bossEnergy);
+                                    console.log("boss energy", this.energy);
 
 
                                     } else  {
                                         this.playAnimation(this.IMAGES_WALKING);
-                                        console.log("chicks just walks");
+                                        // console.log("chicks just walks");
                                     }   
-        }, 200);
+        }, 300);
     }
 
     deadBossGone() {
@@ -109,4 +107,5 @@ class Endboss extends MovableObjects {
         }, 1000 / 25);
 
     }
+
 }

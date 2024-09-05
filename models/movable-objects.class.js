@@ -3,9 +3,7 @@ class MovableObjects extends DrawableObjects {
     otherDirection = false;
     speedY = 0;
     acceleration = 2.5;
-    // y = 45;
     energy = 100;
-    bossEnergy = 100;
     is_dead = false;
     lastHit = 0;
 
@@ -43,9 +41,9 @@ class MovableObjects extends DrawableObjects {
     }
 
     endbossHit() {
-        this.bossEnergy -= 10;
-        if (this.bossEnergy < 0) {
-            this.bossEnergy = 0;
+        this.energy -= 10;
+        if (this.energy < 0) {
+            this.energy = 0;
         } else {
             this.lastHit = new Date().getTime();
         }
@@ -55,18 +53,7 @@ class MovableObjects extends DrawableObjects {
         return this.energy == 0;
     }
 
-    bossIsDead() {
-        return this.bossEnergy <= 0;
-    }
-
     isHurt() {
-        let timepassed = new Date().getTime() - this.lastHit; // Difference in ms
-        timepassed = timepassed / 1000; // Difference in s
-        
-        return timepassed < 0.8;
-    }
-
-    bossIsHurt() {
         let timepassed = new Date().getTime() - this.lastHit; // Difference in ms
         timepassed = timepassed / 1000; // Difference in s
         
