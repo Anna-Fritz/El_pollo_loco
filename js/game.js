@@ -3,12 +3,16 @@ let world;
 let keyboard = new Keyboard();
 
 
-function init() {
+function startGame() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
 
-    console.log('My character is', world.character);  
+    document.getElementById('start-screen-overlay').classList.add('d-none');
+    chicken_sound.loop = true;
+    chicken_sound.volume = 0.5;
+    chicken_sound.play();
 }
+
 
 window.addEventListener("keydown", (e) => {
     // console.log(e);

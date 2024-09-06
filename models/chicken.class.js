@@ -12,7 +12,6 @@ class Chicken extends MovableObjects {
         '../img/3_enemies_chicken/chicken_normal/2_dead/dead.png',
     ];
     levelchicken = level1;
-    chicken_sound = new Audio('../audio/chicken-chatter.mp3');
 
     constructor(){
         super().loadImage('../img/3_enemies_chicken/chicken_normal/1_walk/1_w.png');
@@ -41,9 +40,6 @@ class Chicken extends MovableObjects {
     }
 
     chickenTalk() {
-        this.chicken_sound.loop = true;
-        this.chicken_sound.volume = 0.5;
-        // this.chicken_sound.play();
     }
 
     

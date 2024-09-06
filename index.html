@@ -29,11 +29,16 @@
     <script src="levels/level1.js"></script>
     <script src="js/game.js"></script>
 </head>
-<body onload="init()">
+<body>
 
     <div id="start-screen-overlay" class="start-screen-overlay">
         <div class="img-cont">
             <img src="../img/9_intro_outro_screens/start/startscreen_1.png" alt="start screen el pollo loco">
+            <div class="play-button-container">
+                <div onclick="startGame()" class="button-play"></div>
+                <!-- svg.circle(viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg")
+                circle(cx="60" cy="60" r="56" stroke-width="8" stroke="#fff" fill="transparent") -->
+            </div>
         </div>
     </div>
 
