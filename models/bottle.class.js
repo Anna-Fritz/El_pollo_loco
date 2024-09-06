@@ -30,13 +30,17 @@ class Bottle extends ThrowableObject {
     }
 
     animate() {
-        setInterval(() => {  
+        // setInterval(() => {  
             if (this.bottleIntact < 100) {
-                this.playAnimation(this.IMAGES_BOTTLE_SPLASH)
+                setInterval(() => {
+                    this.playAnimation(this.IMAGES_BOTTLE_SPLASH)
+                }, 500)
             } else {
-                this.playAnimation(this.IMAGES_BOTTLE_ROTATION);
+                setInterval(() => {
+                    this.playAnimation(this.IMAGES_BOTTLE_ROTATION);
+                }, 100)
             }
                     
-        }, 100);
+        // }, 500);
     }
 }

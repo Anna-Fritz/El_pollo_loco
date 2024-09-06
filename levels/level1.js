@@ -4,10 +4,10 @@ endboss_alert = new Audio('../audio/chicken-alert.mp3');
 // function initLevel() {
     level1 = new Level(
     [
-        // new Chicken(),
-        // new Chicken(),
-        // new Chicken(),
-        // new Chicken(),
+        new Chicken(),
+        new Chicken(),
+        new Chicken(),
+        new Chicken(),
         // new Chicken(),
         // new Chicken(),
         // new Chicken(),

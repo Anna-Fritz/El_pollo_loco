@@ -39,6 +39,7 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkCollection();
+            this.checkHitByBottle();
         }, 100);
 
         setInterval(() => {
@@ -48,14 +49,13 @@ class World {
 
         setInterval(() => {
             this.removeEnemy();
-        }, 2500);
+        }, 2000);
     }
 
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
                 enemy.energy = 0;
-                console.log(enemy);
             }; 
             if (this.character.isColliding(enemy) && enemy.energy > 0) {
                 this.character.hit();
@@ -68,6 +68,17 @@ class World {
         };
     }
 
+    checkHitByBottle() {
+        this.throwableObjects.forEach((bottle) => {
+            this.level.enemies.forEach((enemy) => {
+                if (enemy.isColliding(bottle)) {
+                    enemy.energy = 0;
+                    bottle.bottleIntact -= 20;
+                }
+            })
+        })
+    }
+
     checkBossHit() {
         this.throwableObjects.forEach((bottle) => {
             if (this.endboss.isColliding(bottle) && this.endboss.energy > 0) {
@@ -76,7 +87,6 @@ class World {
                 bottle.bottleIntact -= 20;
                 this.endboss_ishurt.play();
                 this.salsa_splat.play();
-
             }
         });
     }
