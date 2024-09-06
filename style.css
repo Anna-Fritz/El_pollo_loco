@@ -32,8 +32,39 @@ body {
     min-height: 100vh;
     margin: 0;
     background-image: url('../img/background-canvas/desert4.png');
-    /* background-size: 100%; */
-    
+    background-position: center;   
+}
+.start-screen-container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.start-screen-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: url('../img/background-canvas/desert4.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img-cont {
+    margin-left: 10%;
+    margin-right: 10%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    overflow: auto;
+    display: flex;
+    align-items: center;
+}
+.img-cont img {
+    height: auto;
+    width: 100%;
 }
 .content {
     position: relative;
@@ -70,6 +101,12 @@ canvas {
     display: none;
 }
 
+/* styling of play button */
+
+
+
+
+
 /* Smartphones */
 @media only screen and (max-width: 720px) {
     canvas {
@@ -88,4 +125,12 @@ canvas {
     .content img {
         display: none;
     }
+}
+
+@media(max-width: 1068px) {
+    .start-screen {
+        width: 100%;
+        height: auto;
+    }
+
 }
