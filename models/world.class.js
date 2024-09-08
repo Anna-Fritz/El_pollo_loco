@@ -13,6 +13,8 @@ class World {
     keyboard;
     camera_x = 0;
     throwableObjects = [];
+    gameEndImages = [];
+    gameRunning = true;
     salsa_splat = new Audio('../audio/salsa-splat.mp3');
     endboss_ishurt = new Audio('../audio/endboss-hurt.mp3');
 
@@ -32,10 +34,6 @@ class World {
     }
 
     run() {
-        // setInterval(() => {
-        //     this.checkBossHit();
-        // }, 300);
-
         setInterval(() => {
             this.checkCollisions();
             this.checkCollection();
@@ -49,6 +47,9 @@ class World {
 
         setInterval(() => {
             this.removeEnemy();
+            if (this.gameRunning) {
+                this.checkGameEnd();
+            }
         }, 2000);
     }
 
@@ -114,6 +115,56 @@ class World {
         })
     }
 
+    checkGameEnd() {
+        if (this.endboss.energy == 0) {
+            let gameWin = new GameEnd(120, 80, 500, 285, '../img/9_intro_outro_screens/win/win_2.png');
+            gameWin.won = true;
+            this.gameEndImages.push(gameWin);
+            gameWin.animate();
+            console.log("you won, world");
+
+            this.gameRunning = false;
+            // chicken_sound.pause();
+            // endboss_alert.pause();
+            // this.stopGame();   
+            setTimeout(() => {
+                // window.location.reload();
+                // document.getElementById('start-screen-overlay').classList.remove('d-none');
+            }, 3000);     
+
+        } else if (this.character.energy == 0) {
+
+            let gameLost = new GameEnd(0, 0, 720, 480,'../img/9_intro_outro_screens/game_over/game_over.png');
+            gameLost.lost = true;
+            this.gameEndImages.push(gameLost);
+            gameLost.animate();
+            this.gameRunning = false;
+            console.log("you lost, world");
+            // this.clearAllIntervals();
+            // chicken_sound.pause();
+            // endboss_alert.pause();
+            // this.stopGame();
+            setTimeout(() => {
+                // window.location.reload();
+                // document.getElementById('start-screen-overlay').classList.remove('d-none');
+            }, 3000);     
+        } 
+        
+    }
+    
+    stopGame() {
+
+        // setTimeout(() => {
+        //     document.getElementById('start-screen-overlay').classList.remove('d-none');
+        // }, 2000); 
+        
+        this.clearAllIntervals();
+        this.gameRunning = false;
+        chicken_sound.pause();
+        endboss_alert.pause();    
+
+    }
+
     removeCoins(index) {
         // this.level.coins.forEach((coin) => {
         //     let index = this.level.coins.indexOf(coin);
@@ -173,6 +224,7 @@ class World {
         this.addToMap(this.statusBarCoin);
         this.addToMap(this.statusBarBottle);
         this.addToMap(this.statusBarEndboss);
+        this.addObjectsToMap(this.gameEndImages);
 
 
 
@@ -193,7 +245,7 @@ class World {
         if (mo.otherDirection) {
             this.flipImage(mo);
         }
-
+        
         mo.draw(this.ctx);
         mo.drawFrame(this.ctx);
 

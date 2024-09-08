@@ -16,6 +16,7 @@ class DrawableObjects {
             img.src = path;
             this.imageCache[path] = img;
         });
+        
     }
 
     draw(ctx) {

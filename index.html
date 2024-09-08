@@ -25,28 +25,48 @@
     <script src="./models/chick.class.js"></script>
     <script src="./models/endboss.class.js"></script>
     <script src="./models/level.class.js"></script>
+    <script src="./models/game-end.class.js"></script>
     <script src="./models/world.class.js"></script>
     <script src="levels/level1.js"></script>
     <script src="js/game.js"></script>
 </head>
-<body>
+<body onload="startIntroMusic()">
 
     <div id="start-screen-overlay" class="start-screen-overlay">
         <div class="img-cont">
             <img src="../img/9_intro_outro_screens/start/startscreen_1.png" alt="start screen el pollo loco">
-            <div class="play-button-container">
-                <div onclick="startGame()" class="button-play"></div>
-                <!-- svg.circle(viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg")
-                circle(cx="60" cy="60" r="56" stroke-width="8" stroke="#fff" fill="transparent") -->
+            <div class="play-btn-container">
+                <div onclick="startGame()" class="btn-play"></div>
             </div>
+            <!-- <div id="replay-btn" class="replay-btn-container d-none">
+                <div onclick="replayGame()" class="btn-replay">
+                    <img src="../img/icons/replay-icon.svg" alt="replay">
+                </div>
+            </div> -->
+
         </div>
     </div>
 
+    <!-- <div id="replay-btn" class="replay-btn-container d-none">
+        <div onclick="replayGame()" class="btn-replay">
+            <img src="../img/icons/replay-icon.svg" alt="replay">
+        </div> -->
+        <!-- <div class="space"></div> -->
+    <!-- </div> -->
+
+    
     <div id="content" class="content">
         <h1>El Pollo Loco</h1>
         <canvas id="canvas" width="720" height="480"></canvas>
-        <img id="fullscreen-icon" onclick="fullscreen()" src="../img/icons/fullscreen.svg" alt="fullscreen" title="Fullscreen">
-        <img id="fullscreen-exit" onclick="exitFullscreen()" class="d-none" src="../img/icons/fullscreen-exit.svg" alt="fullscreen exit" title="Fullscreen exit">
+        <img class="fullscreen-icons" id="fullscreen-icon" onclick="fullscreen()" src="../img/icons/fullscreen.svg" alt="fullscreen" title="Fullscreen">
+        <img class="fullscreen-icons d-none" id="fullscreen-exit" onclick="exitFullscreen()" src="../img/icons/fullscreen-exit.svg" alt="fullscreen exit" title="Fullscreen exit">
+        <div id="replay-btn" class="replay-btn-container d-none">
+            <div onclick="replayGame()" class="btn-replay">
+                <img src="../img/icons/replay-icon.svg" alt="replay">
+            </div>
+            <!-- <div class="space"></div> -->
+        </div>
+    
     </div>
     
 </body>

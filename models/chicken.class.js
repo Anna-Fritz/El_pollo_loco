@@ -20,7 +20,6 @@ class Chicken extends MovableObjects {
         this.speed = 0.15 + Math.random() * 0.5;
 
         this.animate();
-        this.chickenTalk();
     }
 
     animate() {
@@ -38,9 +37,5 @@ class Chicken extends MovableObjects {
             }
         }, 200);        
     }
-
-    chickenTalk() {
-    }
-
-    
+  
 }

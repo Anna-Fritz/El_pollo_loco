@@ -1,6 +1,7 @@
 let level1;
-endboss_alert = new Audio('../audio/chicken-alert.mp3');
-chicken_sound = new Audio('../audio/chicken-chatter.mp3');
+let endboss_alert = new Audio('../audio/chicken-alert.mp3');
+let chicken_sound = new Audio('../audio/chicken-chatter.mp3');
+let intro_music = new Audio('../audio/intro-music.mp3');
 
 
 // function initLevel() {

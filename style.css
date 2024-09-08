@@ -70,15 +70,15 @@ body {
 
 /* styling of play button */
 
-.play-button-container{
+.play-btn-container{
     position: absolute;
     z-index: 4;
     display:flex;
     justify-content:center;
     align-items:center;
     width:100%;
-  }
-  
+}
+
 .circle{
     display:block;
     position: absolute;
@@ -93,7 +93,7 @@ body {
     
   }
   
-.button-play{
+.btn-play{
     display:block;
     position:relative;
     border:8px solid white;
@@ -155,6 +155,93 @@ body {
       100% { transform:translate(-13px, 60%) scale(1.4,0.7);}
   }
 
+.replay-btn-container {
+    position: absolute;
+    top: 200px;
+    left: 10px;
+    z-index: 4;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction: column;
+    width:100%;
+}
+.space {
+    height: 130px;
+    width: 10px;
+}
+  
+.btn-replay {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    position:relative;
+    border:6px solid white;
+    box-shadow:0 4px 6px -3px rgba(black, .3), inset 0 3px 4px -2px rgba(black, .25);
+    position:relative;
+    width:80px;
+    height:80px;
+    background:#A0220A;
+    background-image: linear-gradient(120deg, rgba(lighten(#e03f1f, 15%), .3) 50%, #ee4a29 51%);
+    border-radius:50%; 
+    transition: all .2s cubic-bezier(0.68, -0.55, 0.465, 1.55) .2s, border-width .4s cubic-bezier(0.68, -0.55, 0.465, 1.55);
+    cursor: pointer;
+
+    
+    &:before{
+      display:block;
+      position:absolute;
+      content:"";
+      bottom:50%;
+      left:50%;
+      width:0;
+      height:0;
+      border:30px solid transparent;
+      /* border-width:25px 0px 25px 40px; */
+      border-radius:0;
+      /* border-left-color:white; */
+      transform:translate(-13px, 50%);
+      
+    }
+    
+    &:hover, &.active{    
+      border: 4px solid white;
+      .circle{
+        stroke-dasharray:-1000px;
+        stroke-dashoffset:-500px;
+        opacity:0;
+        transition: all 2s linear .3s, opacity .1s linear 2s;
+      }
+      
+      &:before{
+        animation:playJump .5s linear infinite;
+      }
+    }
+  }
+  
+  @keyframes playJump{
+    
+    0%   { transform:translate(-13px, 60%) scale(1.1,0.7) ; }
+    10%   { transform:translate(-13px, 30%) scale(0.9,1.2); }
+      20%  { transform:translate(-13px, 15%); }
+      40%  { transform:translate(-13px, 10%); }
+      /* // 45%  { top: 160px; height: 40px; width: 60px; margin-left: -30px; } */
+      50%  {transform:translate(-13px, 10%); }
+      55%  { transform:translate(-13px, 18%); }
+      60%  { transform:translate(-13px, 20%); }
+      65%  { transform:translate(-13px, 25%); }
+      70%  { transform:translate(-13px, 30%);}
+      90%  { transform:translate(-13px, 60%) scale(1.2,0.7); }
+      100% { transform:translate(-13px, 60%) scale(1.4,0.7);}
+
+}
+.btn-replay img {
+    height: 64px;
+    transition: transform 1.5s ease;
+}
+.btn-replay img:hover {
+    transform: rotate(180deg);
+}
 
 .content {
     position: relative;
@@ -163,7 +250,7 @@ body {
     align-items: center;
     gap: 20px;
 }
-.content img {
+.fullscreen-icons {
     position: absolute;
     bottom: 20px;
     right: 20px;
@@ -171,7 +258,7 @@ body {
     width: 28px;
     cursor: pointer;
 }
-.content img:hover {
+.fullscreen-icons:hover {
     transform: scale(1.1);
 }
 h1 {
@@ -179,6 +266,7 @@ h1 {
     font-size: 28px;
     color: #A0220A;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    text-align: center;
 }
 canvas {
     background-color: black;
@@ -190,7 +278,6 @@ canvas {
 .d-none {
     display: none;
 }
-
 
 
 
@@ -215,7 +302,7 @@ canvas {
 }
 
 @media(max-width: 1000px) {
-    .button-play {
+    .btn-play {
         width: 60px;
         height: 60px;
         border: 4px solid white;
@@ -226,4 +313,31 @@ canvas {
             border-width: 13px 0px 13px 20px;
         }
     }
+    .btn-replay {
+        width: 60px;
+        height: 60px;
+        border: 4px solid white;
+    }
+    .btn-replay img {
+        height: 44px;
+    }
+}
+@media(max-width: 580px) {
+    .replay-btn-container {
+        top: 40%;
+    }
+}
+@media(max-width: 391px) {
+    .replay-btn-container {
+        top: 50%;
+    }
+    .btn-replay {
+        width: 40px;
+        height: 40px;
+        border: 4px solid white;
+    }
+    .btn-replay img {
+        height: 32px;
+    }
+
 }

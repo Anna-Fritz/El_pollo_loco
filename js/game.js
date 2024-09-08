@@ -3,16 +3,31 @@ let world;
 let keyboard = new Keyboard();
 
 
+function startIntroMusic() {
+    intro_music.loop = true;
+    intro_music.volume = 0.5;
+    // intro_music.play();
+
+}
+
 function startGame() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
 
     document.getElementById('start-screen-overlay').classList.add('d-none');
+    intro_music.pause();
     chicken_sound.loop = true;
     chicken_sound.volume = 0.5;
     chicken_sound.play();
 }
 
+function replayGame() {
+    window.location.reload();
+}
+
+function clearAllIntervals() {
+    for (let i = 1; i < 9999; i++) window.clearInterval(i);
+  }
 
 window.addEventListener("keydown", (e) => {
     // console.log(e);
