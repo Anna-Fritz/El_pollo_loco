@@ -26,11 +26,12 @@ class GameEnd extends MovableObjects{
 
     animate() {
             if (this.won) {
-                setInterval(() =>{
-                    this.playAnimation(this.IMAGES_WIN);
-                }, 200);
-                document.getElementById('replay-btn').classList.remove('d-none');
-                clearAllIntervals(); 
+                this.sparkleWin();
+                setTimeout(() => {
+                    document.getElementById('replay-btn').classList.remove('d-none');
+                    clearAllIntervals();
+                    this.sparkleWin(); 
+                }, 2000);
                 
             } else if (this.lost) {
                 this.playAnimation(this.IMAGE_YOU_LOST)
@@ -43,4 +44,10 @@ class GameEnd extends MovableObjects{
             chicken_sound.pause();
             endboss_alert.pause();    
     }
-}
+
+    sparkleWin() {
+        setInterval(() =>{
+            this.playAnimation(this.IMAGES_WIN);
+        }, 200);    
+    }
+} 
