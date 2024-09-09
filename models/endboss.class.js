@@ -43,7 +43,6 @@ class Endboss extends MovableObjects {
         '../img/4_enemie_boss_chicken/5_dead/G25.png',
         '../img/4_enemie_boss_chicken/5_dead/G26.png',
     ];
-    endboss_dies = new Audio('../audio/endboss-dead.mp3');
     audioPlayed = false;
 
     constructor(){
@@ -113,9 +112,9 @@ class Endboss extends MovableObjects {
         }, 1000 / 25);
 
         if (!this.audioPlayed) {
-            this.endboss_dies.play();
+            endboss_dies.play();
             this.audioPlayed = true;
-            endboss_alert.pause();
+            // endboss_alert.pause();
         }
     }
 

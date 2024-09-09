@@ -11,7 +11,6 @@ class Chicken extends MovableObjects {
     IMAGES_DEAD = [
         '../img/3_enemies_chicken/chicken_normal/2_dead/dead.png',
     ];
-    levelchicken = level1;
 
     constructor(){
         super().loadImage('../img/3_enemies_chicken/chicken_normal/1_walk/1_w.png');

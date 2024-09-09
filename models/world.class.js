@@ -15,10 +15,6 @@ class World {
     throwableObjects = [];
     gameEndImages = [];
     gameRunning = true;
-    salsa_splat = new Audio('../audio/salsa-splat.mp3');
-    endboss_ishurt = new Audio('../audio/endboss-hurt.mp3');
-
-
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -85,8 +81,8 @@ class World {
             if (this.endboss.isColliding(bottle) && this.endboss.energy > 0) {
                 this.endboss.endbossHit();
                 this.statusBarEndboss.setPercentage(this.endboss.energy);
-                this.endboss_ishurt.play();
-                this.salsa_splat.play();
+                endboss_ishurt.play();
+                salsa_splat.play();
                 bottle.bottleIntact -= 20;
             }
         });
@@ -95,7 +91,6 @@ class World {
     checkCollection() {
         this.level.coins.forEach((coin, index) => {
             if (this.character.isColliding(coin)) {
-                let cashing = new Audio('audio/coin-received.mp3');
                 cashing.volume = 0.2;
                 cashing.play();
                 this.statusBarCoin.isCollected();
@@ -105,7 +100,6 @@ class World {
         })
         this.level.bottles.forEach((bottle, index) => {
             if (this.character.isColliding(bottle)) {
-                let pop = new Audio('audio/bottle-pop.mp3');
                 pop.volume = 0.5;
                 pop.play();
                 this.statusBarBottle.isCollected();
