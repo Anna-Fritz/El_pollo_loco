@@ -74,17 +74,58 @@ window.addEventListener("keyup", (e) => {
     }
 })
 
-function fullscreen() {
-    // let fullscreen = document.getElementById('content');
-    // openFullscreen(fullscreen);
-    // document.getElementById('fullscreen-icon').classList.add('d-none');
-    // document.getElementById('fullscreen-exit').classList.remove('d-none');   
+function goFullscreen() {
+    document.getElementById('fullscreen-icon').classList.add('d-none');
+    document.getElementById('fullscreen-exit').classList.remove('d-none');  
+    let screen = document.getElementById('canvas-container');
+    if (screen.requestFullscreen) {
+        screen.requestFullscreen();
+    } else if (screen.mozRequestFullScreen) { // Firefox
+        screen.mozRequestFullScreen();
+    } else if (screen.webkitRequestFullscreen) { // Chrome, Safari, Opera
+        screen.webkitRequestFullscreen();
+    } else if (screen.msRequestFullscreen) { // IE/Edge
+        screen.msRequestFullscreen();
+    }
+    resizeCanvas();
+}
+
+function resizeCanvas() {
     canvas.requestFullscreen();
 }
 
-function fullscreenStart() {
-    let startScreen = document.getElementById('start-screen');
-    startScreen.requestFullscreen();
+// Wenn die Größe des Fensters geändert wird, wird das Canvas neu dimensioniert
+// window.addEventListener('resize', resizeCanvas);
+
+function goFullscreenStart() {
+    document.getElementById('fullscreen-start').classList.add('d-none');
+    document.getElementById('fullscreen-exit-start').classList.remove('d-none');   
+    let startScreen = document.getElementById("start-screen");
+    if (startScreen.requestFullscreen) {
+        startScreen.requestFullscreen();
+    } else if (startScreen.mozRequestFullScreen) { // Firefox
+        startScreen.mozRequestFullScreen();
+    } else if (startScreen.webkitRequestFullscreen) { // Chrome, Safari, Opera
+        startScreen.webkitRequestFullscreen();
+    } else if (startScreen.msRequestFullscreen) { // IE/Edge
+        startScreen.msRequestFullscreen();
+    }
+}
+
+function exitFullscreenStart() {
+    document.getElementById('fullscreen-start').classList.remove('d-none');
+    document.getElementById('fullscreen-exit-start').classList.add('d-none');   
+    document.getElementById('fullscreen-icon').classList.remove('d-none');
+    document.getElementById('fullscreen-exit').classList.add('d-none');   
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) { // Firefox
+        document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) { // Chrome, Safari, Opera
+        document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) { // IE/Edge
+        document.msExitFullscreen();
+    }
 }
 
 function exitFullscreen() {
@@ -92,41 +133,6 @@ function exitFullscreen() {
     // document.getElementById('fullscreen-exit').classList.add('d-none');   
     canvas.exitFullscreen();
 }
-
-// function openFullscreen(elem) {
-//     if (elem.requestFullscreen) {
-//       elem.requestFullscreen();
-//     } else if (elem.webkitRequestFullscreen) { /* Safari */
-//       elem.webkitRequestFullscreen();
-//     } else if (elem.msRequestFullscreen) { /* IE11 */
-//       elem.msRequestFullscreen();
-//     }
-//   }
-
-//   function closeFullscreen() {
-//     if (document.exitFullscreen) {
-//       document.exitFullscreen();
-//     } else if (document.webkitExitFullscreen) { /* Safari */
-//       document.webkitExitFullscreen();
-//     } else if (document.msExitFullscreen) { /* IE11 */
-//       document.msExitFullscreen();
-//     }
-//   }
-
-// window.addEventListener("resize", () => {
-//     // Resize canvas element
-//     canvas.width = window.innerWidth;
-//     canvas.height = window.innerHeight;
-  
-//     // Update scaling
-//     // . . .
-  
-//     // Adjust size dependent properties
-//     // . . .
-  
-//     // Redraw canvas
-//     draw();
-//   });
 
 function toggleSound() {
     let soundIcon = document.getElementById('sound-switch');
@@ -148,6 +154,7 @@ function muteAllSounds() {
     walking_sound.muted = true;
     hurt_sound.muted = true;
     endboss_dies.muted = true;
+    endboss_alert.muted = true;
     salsa_splat.muted = true;
     endboss_ishurt.muted = true;
     cashing.muted = true;
@@ -159,25 +166,27 @@ function unmuteAllSounds() {
     walking_sound.muted = false;
     hurt_sound.muted = false;
     endboss_dies.muted = false;
+    endboss_alert.muted = false;
     salsa_splat.muted = false;
     endboss_ishurt.muted = false;
     cashing.muted = false;
     pop.muted = false;
 }
 
-function toggleSoundIconStartscreen() {
+function toggleSoundStartscreen() {
     document.getElementById('user-hint').classList.add('d-none');
     let soundIcon = document.getElementById('start-sound-switch');
     let on = 'http://127.0.0.1:5500/img/icons/sound-on.svg';
     let off = 'http://127.0.0.1:5500/img/icons/sound-off.svg';
     if (isOnStart) {
-        intro_music.muted = true;
+        // intro_music.muted = true;
         soundIcon.src = off;
         isOnStart = false;       
     } else {
-        intro_music.muted = false;
+        // intro_music.muted = false;
         soundIcon.src = on;
         isOnStart = true;
     }
+    return intro_music.paused ? intro_music.play() : intro_music.pause();
 }
 

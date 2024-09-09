@@ -39,7 +39,8 @@
                 <div onclick="startGame()" class="btn-play"></div>
             </div>
             <img onclick="toggleSoundStartscreen()" src="../img/icons/sound-off.svg" class="start-sound-icon" alt="sound" id="start-sound-switch">
-            <img class="start-fullscreen-icons" id="fullscreen-icon" onclick="fullscreenStart()" src="../img/icons/fullscreen.svg" alt="fullscreen" title="Fullscreen">
+            <img class="start-fullscreen-icons" id="fullscreen-start" onclick="goFullscreenStart()" src="../img/icons/fullscreen.svg" alt="fullscreen" title="Fullscreen">
+            <img class="fullscreen-icons d-none" id="fullscreen-exit-start" onclick="exitFullscreenStart()" src="../img/icons/fullscreen-exit.svg" alt="fullscreen exit" title="Fullscreen exit">
             <div id="user-hint" class="user-hint">
                 <span>Please start the sound for full experience</span>
                 <img src="../img/icons/arrow-right-startscreen.svg" alt="arrow up" class="start-arrow">
@@ -48,17 +49,18 @@
     </div>
 
     <div id="content" class="content">
-        <h1>El Pollo Loco</h1>
-        <canvas id="canvas" width="720" height="480"></canvas>
-        <img onclick="toggleSound()" src="../img/icons/sound-on.svg" class="sound-icon" alt="sound" id="sound-switch">
-        <img class="fullscreen-icons" id="fullscreen-icon" onclick="fullscreen()" src="../img/icons/fullscreen.svg" alt="fullscreen" title="Fullscreen">
-        <img class="fullscreen-icons d-none" id="fullscreen-exit" onclick="exitFullscreen()" src="../img/icons/fullscreen-exit.svg" alt="fullscreen exit" title="Fullscreen exit">
-        <div id="replay-btn" class="replay-btn-container d-none">
-            <div onclick="replayGame()" class="btn-replay">
-                <img src="../img/icons/replay-icon.svg" alt="replay">
+        <h1 id="headline">El Pollo Loco</h1>
+            <div id="canvas-container" class="canvas-container">
+                <canvas id="canvas" width="720" height="480"></canvas>
+                <img onclick="toggleSound()" src="../img/icons/sound-on.svg" class="sound-icon" alt="sound" id="sound-switch">
+                <img class="fullscreen-icons" id="fullscreen-icon" onclick="goFullscreen()" src="../img/icons/fullscreen.svg" alt="fullscreen" title="Fullscreen">
+                <img class="fullscreen-icons d-none" id="fullscreen-exit" onclick="exitFullscreenStart()" src="../img/icons/fullscreen-exit.svg" alt="fullscreen exit" title="Fullscreen exit">
+                <div id="replay-btn" class="replay-btn-container d-none">
+                    <div onclick="replayGame()" class="btn-replay">
+                        <img src="../img/icons/replay-icon.svg" alt="replay">
+                    </div>
+                </div>
             </div>
-        </div>
-    
     </div>
     
 </body>
