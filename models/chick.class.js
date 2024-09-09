@@ -12,7 +12,6 @@ class Chick extends MovableObjects {
         '../img/3_enemies_chicken/chicken_small/2_dead/dead.png',
     ];
 
-    // chicken_sound = new Audio('../audio/chicken-chatter.mp3');
 
     constructor(){
         super().loadImage('../img/3_enemies_chicken/chicken_normal/1_walk/1_w.png');
@@ -21,7 +20,6 @@ class Chick extends MovableObjects {
         this.speed = 0.15 + Math.random() * 0.5;
 
         this.animate();
-        // this.chickenTalk();
     }
 
     animate() {
@@ -39,10 +37,4 @@ class Chick extends MovableObjects {
             }
         }, 200);        
     }
-
-    // chickenTalk() {
-    //     this.chicken_sound.loop = true;
-    //     this.chicken_sound.volume = 0.5;
-    //     this.chicken_sound.play();
-    // }
 }

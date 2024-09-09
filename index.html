@@ -33,28 +33,20 @@
 <body onload="startIntroMusic()">
 
     <div id="start-screen-overlay" class="start-screen-overlay">
-        <div class="img-cont">
-            <img src="../img/9_intro_outro_screens/start/startscreen_1.png" alt="start screen el pollo loco">
+        <div id="start-screen" class="img-cont">
+            <img class="start-screen-img" src="../img/9_intro_outro_screens/start/startscreen_1.png" alt="start screen el pollo loco">
             <div class="play-btn-container">
                 <div onclick="startGame()" class="btn-play"></div>
             </div>
-            <!-- <div id="replay-btn" class="replay-btn-container d-none">
-                <div onclick="replayGame()" class="btn-replay">
-                    <img src="../img/icons/replay-icon.svg" alt="replay">
-                </div>
-            </div> -->
-
+            <img onclick="toggleSoundStartscreen()" src="../img/icons/sound-off.svg" class="start-sound-icon" alt="sound" id="start-sound-switch">
+            <img class="start-fullscreen-icons" id="fullscreen-icon" onclick="fullscreenStart()" src="../img/icons/fullscreen.svg" alt="fullscreen" title="Fullscreen">
+            <div id="user-hint" class="user-hint">
+                <span>Please start the sound for full experience</span>
+                <img src="../img/icons/arrow-right-startscreen.svg" alt="arrow up" class="start-arrow">
+            </div>    
         </div>
     </div>
 
-    <!-- <div id="replay-btn" class="replay-btn-container d-none">
-        <div onclick="replayGame()" class="btn-replay">
-            <img src="../img/icons/replay-icon.svg" alt="replay">
-        </div> -->
-        <!-- <div class="space"></div> -->
-    <!-- </div> -->
-
-    
     <div id="content" class="content">
         <h1>El Pollo Loco</h1>
         <canvas id="canvas" width="720" height="480"></canvas>
@@ -65,7 +57,6 @@
             <div onclick="replayGame()" class="btn-replay">
                 <img src="../img/icons/replay-icon.svg" alt="replay">
             </div>
-            <!-- <div class="space"></div> -->
         </div>
     
     </div>

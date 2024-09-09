@@ -34,6 +34,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 .img-cont {
     position: relative;
@@ -46,9 +47,31 @@ body {
     display: flex;
     align-items: center;
 }
-.img-cont img {
+.start-screen-img {
     height: auto;
     width: 100%;
+}
+.start-sound-icon {
+    position: absolute;
+    height: 36px;
+    width: 36px;
+    bottom: 3.5%;
+    right: 9%;
+    cursor: pointer;
+}
+.start-sound-icon {
+    transform: scale(1.1);  
+}
+.start-fullscreen-icons {
+    position: absolute;
+    bottom: 3.5%;
+    right: 3.5%;
+    height: 36px;
+    width: 36px;
+    cursor: pointer;
+}
+.start-fullscreen-icons:hover {
+    transform: scale(1.1);
 }
 
 /* styling of play button */
@@ -138,6 +161,9 @@ body {
       100% { transform:translate(-13px, 60%) scale(1.4,0.7);}
   }
 
+
+/* styling replay button */
+
 .replay-btn-container {
     position: absolute;
     top: 200px;
@@ -226,6 +252,29 @@ body {
     transform: rotate(180deg);
 }
 
+/* styling user-hint to activate sound */
+
+.user-hint {
+    position: absolute;
+    background-color: #A0220A;
+    bottom: 1.5%;
+    right: 15%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    border-radius: 10px;
+}
+.user-hint span {
+    font-family: 'LasLocuras';
+    font-size: 20px;
+    color: white;
+}
+.start-arrow {
+    height: 28px;
+    width: 28px;
+}
+
 .content {
     position: relative;
     display: flex;
@@ -251,8 +300,11 @@ body {
     bottom: 3.5%;
     right: 9%;
     cursor: pointer;
-
 }
+.sound-icon:hover {
+    transform: scale(1.1);  
+}
+
 h1 {
     font-family: 'Tequila';
     font-size: 32px;

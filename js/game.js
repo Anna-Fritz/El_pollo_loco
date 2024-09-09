@@ -2,11 +2,12 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 let isOn = true;
+let isOnStart = false;
 
 function startIntroMusic() {
     intro_music.loop = true;
-    intro_music.volume = 0.5;
-    // intro_music.play();
+    intro_music.volume = 0.3;
+    intro_music.pause();
 
 }
 
@@ -14,12 +15,11 @@ function startGame() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
 
-
     document.getElementById('start-screen-overlay').classList.add('d-none');
     intro_music.pause();
     chicken_sound.loop = true;
     chicken_sound.volume = 0.5;
-    // chicken_sound.play();
+    chicken_sound.play();
 }
 
 function replayGame() {
@@ -82,6 +82,11 @@ function fullscreen() {
     canvas.requestFullscreen();
 }
 
+function fullscreenStart() {
+    let startScreen = document.getElementById('start-screen');
+    startScreen.requestFullscreen();
+}
+
 function exitFullscreen() {
     // document.getElementById('fullscreen-icon').classList.remove('d-none');
     // document.getElementById('fullscreen-exit').classList.add('d-none');   
@@ -128,29 +133,51 @@ function toggleSound() {
     let on = 'http://127.0.0.1:5500/img/icons/sound-on.svg';
     let off = 'http://127.0.0.1:5500/img/icons/sound-off.svg';
     if (isOn) {
+        muteAllSounds();
         soundIcon.src = off;
-        isOn = false;
-        pauseAllSounds();
-        
+        isOn = false;       
     } else {
+        unmuteAllSounds();
         soundIcon.src = on;
         isOn = true;
-        // resumeAllSounds();
     }
 }
 
-function pauseAllSounds() {
-    document.addEventListener('play', function(e){
-        var audios = document.getElementsByTagName('audio');
-        for(var i = 0, len = audios.length; i < len;i++){
-            if(audios[i] != e.target){
-                audios[i].pause();
-            }
-        }
-    }, true);
-    // audioContext.suspend();  
+function muteAllSounds() {
+    chicken_sound.muted = true;
+    walking_sound.muted = true;
+    hurt_sound.muted = true;
+    endboss_dies.muted = true;
+    salsa_splat.muted = true;
+    endboss_ishurt.muted = true;
+    cashing.muted = true;
+    pop.muted = true;
 }
 
-function resumeAllSounds() {
-    audioContext.resume();   // Setzt den Audio-Kontext fort
+function unmuteAllSounds() {
+    chicken_sound.muted = false;
+    walking_sound.muted = false;
+    hurt_sound.muted = false;
+    endboss_dies.muted = false;
+    salsa_splat.muted = false;
+    endboss_ishurt.muted = false;
+    cashing.muted = false;
+    pop.muted = false;
 }
+
+function toggleSoundIconStartscreen() {
+    document.getElementById('user-hint').classList.add('d-none');
+    let soundIcon = document.getElementById('start-sound-switch');
+    let on = 'http://127.0.0.1:5500/img/icons/sound-on.svg';
+    let off = 'http://127.0.0.1:5500/img/icons/sound-off.svg';
+    if (isOnStart) {
+        intro_music.muted = true;
+        soundIcon.src = off;
+        isOnStart = false;       
+    } else {
+        intro_music.muted = false;
+        soundIcon.src = on;
+        isOnStart = true;
+    }
+}
+
