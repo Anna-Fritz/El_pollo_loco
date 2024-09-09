@@ -1,28 +1,11 @@
 @font-face {
-    font-family: 'JiChimichanga';
-    src: url('../fonts/JiChimichanga-BGGV.ttf');
-}
-@font-face {
-    font-family: 'Krenzy';
-    src: url('../fonts/KrenzyCrispyRegular-DOxEE.ttf');
-}
-@font-face {
-    font-family: 'Mexina';
-    src: url('../fonts/Mexina-xRndO.otf');
-}
-@font-face {
-    font-family: 'Fajita';
-    src: url('../fonts/JI Fajita.ttf');
-}
-@font-face {
-    font-family: 'Gringo';
-    src: url('../fonts/GringoNights.ttf');
-}
-@font-face {
     font-family: 'Tequila';
     src: url('../fonts/La Tequila.ttf');
 }
-
+@font-face {
+    font-family: 'LasLocuras';
+    src: url('../fonts/Las locuras del emperador.TTF');
+}
 
 body {
     display: flex;
@@ -31,7 +14,7 @@ body {
     justify-content: center;
     min-height: 100vh;
     margin: 0;
-    background-image: url('../img/background-canvas/desert4.png');
+    background-image: url('../img/background-canvas/desert7.png');
     background-position: center;   
 }
 .start-screen-container {
@@ -44,7 +27,7 @@ body {
 .start-screen-overlay {
     position: absolute;
     inset: 0;
-    background-image: url('../img/background-canvas/desert4.png');
+    background-image: url('../img/background-canvas/desert7.png');
     background-position: center;
     background-repeat: no-repeat;
     z-index: 2;
@@ -99,8 +82,8 @@ body {
     border:8px solid white;
     box-shadow:0 4px 6px -3px rgba(black, .3), inset 0 3px 4px -2px rgba(black, .25);
     position:relative;
-    width:112px;
-    height:112px;
+    width:88px;
+    height:88px;
     background:#A0220A;
     background-image: linear-gradient(120deg, rgba(lighten(#e03f1f, 15%), .3) 50%, #ee4a29 51%);
     border-radius:50%; 
@@ -252,8 +235,8 @@ body {
 }
 .fullscreen-icons {
     position: absolute;
-    bottom: 20px;
-    right: 20px;
+    bottom: 3.5%;
+    right: 3.5%;
     height: 28px;
     width: 28px;
     cursor: pointer;
@@ -261,9 +244,18 @@ body {
 .fullscreen-icons:hover {
     transform: scale(1.1);
 }
+.sound-icon {
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    bottom: 3.5%;
+    right: 9%;
+    cursor: pointer;
+
+}
 h1 {
     font-family: 'Tequila';
-    font-size: 28px;
+    font-size: 32px;
     color: #A0220A;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
     text-align: center;
@@ -322,14 +314,19 @@ canvas {
         height: 44px;
     }
 }
+@media(max-width: 650px) {
+    .sound-icon {
+        right: 11%;
+    }
+}
 @media(max-width: 580px) {
     .replay-btn-container {
         top: 40%;
     }
 }
-@media(max-width: 391px) {
+@media(max-width: 444px) {
     .replay-btn-container {
-        top: 50%;
+        top: 55%;
     }
     .btn-replay {
         width: 40px;
@@ -338,6 +335,15 @@ canvas {
     }
     .btn-replay img {
         height: 32px;
+    }
+    .sound-icon {
+        right: 13%;
+        bottom: 2.5%;
+        height: 24px;
+    }
+    .fullscreen-icons {
+        bottom: 2.5%;
+        height: 24px;
     }
 
 }

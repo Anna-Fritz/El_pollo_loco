@@ -11,13 +11,13 @@ let intro_music = new Audio('../audio/intro-music.mp3');
         new Chicken(),
         new Chicken(),
         new Chicken(),
+        new Chicken(),
+        new Chicken(),
         // new Chicken(),
         // new Chicken(),
         // new Chicken(),
-        // new Chicken(),
-        // new Chicken(),
-        // new Chick(),
-        // new Chick(),
+        new Chick(),
+        new Chick(),
         // new Chick(),
 
         // new Endboss()
@@ -55,6 +55,9 @@ let intro_music = new Audio('../audio/intro-music.mp3');
         new BackgroundObject('../img/5_background/layers/1_first_layer/2.png', 719*3)
     ],
     [
+        new Coin(),
+        new Coin(),
+        new Coin(),
         new Coin(),
         new Coin(),
         new Coin(),

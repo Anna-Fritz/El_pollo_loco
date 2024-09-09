@@ -31,6 +31,8 @@ class Bottle extends ThrowableObject {
 
     animate() {
         // setInterval(() => {  
+            console.log("bottleIntact in animate()", this.bottleIntact);
+            
             if (this.bottleIntact < 100) {
                 setInterval(() => {
                     this.playAnimation(this.IMAGES_BOTTLE_SPLASH)

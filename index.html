@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>El Pollo Loco</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="./img/3_enemies_chicken/chicken_normal/1_walk/1_w.png" />
     <script src="./models/keyboard.class.js"></script>
@@ -58,6 +58,7 @@
     <div id="content" class="content">
         <h1>El Pollo Loco</h1>
         <canvas id="canvas" width="720" height="480"></canvas>
+        <img onclick="toggleSound()" src="../img/icons/sound-on.svg" class="sound-icon" alt="sound" id="sound-switch">
         <img class="fullscreen-icons" id="fullscreen-icon" onclick="fullscreen()" src="../img/icons/fullscreen.svg" alt="fullscreen" title="Fullscreen">
         <img class="fullscreen-icons d-none" id="fullscreen-exit" onclick="exitFullscreen()" src="../img/icons/fullscreen-exit.svg" alt="fullscreen exit" title="Fullscreen exit">
         <div id="replay-btn" class="replay-btn-container d-none">

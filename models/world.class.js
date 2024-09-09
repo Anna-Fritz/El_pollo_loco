@@ -85,9 +85,9 @@ class World {
             if (this.endboss.isColliding(bottle) && this.endboss.energy > 0) {
                 this.endboss.endbossHit();
                 this.statusBarEndboss.setPercentage(this.endboss.energy);
-                bottle.bottleIntact -= 20;
                 this.endboss_ishurt.play();
                 this.salsa_splat.play();
+                bottle.bottleIntact -= 20;
             }
         });
     }

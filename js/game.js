@@ -1,7 +1,7 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
-
+let isOn = true;
 
 function startIntroMusic() {
     intro_music.loop = true;
@@ -14,11 +14,12 @@ function startGame() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
 
+
     document.getElementById('start-screen-overlay').classList.add('d-none');
     intro_music.pause();
     chicken_sound.loop = true;
     chicken_sound.volume = 0.5;
-    chicken_sound.play();
+    // chicken_sound.play();
 }
 
 function replayGame() {
@@ -121,3 +122,35 @@ function exitFullscreen() {
 //     // Redraw canvas
 //     draw();
 //   });
+
+function toggleSound() {
+    let soundIcon = document.getElementById('sound-switch');
+    let on = 'http://127.0.0.1:5500/img/icons/sound-on.svg';
+    let off = 'http://127.0.0.1:5500/img/icons/sound-off.svg';
+    if (isOn) {
+        soundIcon.src = off;
+        isOn = false;
+        pauseAllSounds();
+        
+    } else {
+        soundIcon.src = on;
+        isOn = true;
+        // resumeAllSounds();
+    }
+}
+
+function pauseAllSounds() {
+    document.addEventListener('play', function(e){
+        var audios = document.getElementsByTagName('audio');
+        for(var i = 0, len = audios.length; i < len;i++){
+            if(audios[i] != e.target){
+                audios[i].pause();
+            }
+        }
+    }, true);
+    // audioContext.suspend();  
+}
+
+function resumeAllSounds() {
+    audioContext.resume();   // Setzt den Audio-Kontext fort
+}
