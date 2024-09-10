@@ -44,6 +44,7 @@ class Endboss extends MovableObjects {
         '../img/4_enemie_boss_chicken/5_dead/G26.png',
     ];
     audioPlayed = false;
+    attack = false;
 
     constructor(){
         super();
@@ -64,6 +65,7 @@ class Endboss extends MovableObjects {
             if (movingRight) {
             this.speed = Math.random() * 5;
             this.moveRight();
+            this.otherDirection = true;
 
                 if (this.x >= 2600) {
                 movingRight = false;
@@ -72,6 +74,8 @@ class Endboss extends MovableObjects {
                 else {
                     this.speed = Math.random() * 10;
                     this.moveLeft();
+                    this.otherDirection = false;
+                    this.attack = true;
                     if (this.x <= 2200) {
                     movingRight = true;
                     }
@@ -86,7 +90,7 @@ class Endboss extends MovableObjects {
                 } else if (this.isHurt()) {
                     this.playAnimation(this.IMAGES_HURT);
                 
-                    } else if (this.energy < 100) {
+                    } else if (this.energy < 100 || this.attack) {
                         this.playAnimation(this.IMAGES_ATTACK);
                         
                         } else if (this.energy < 80) {
@@ -95,7 +99,7 @@ class Endboss extends MovableObjects {
                             } else if (this.energy < 60) {
                                 this.playAnimation(this.IMAGES_ALERT);
 
-                                } else if (this.energy < 40 && this.energy > 0) {
+                                } else if (this.energy < 40 && this.energy > 0 || this.attack) {
                                     this.playAnimation(this.IMAGES_ATTACK);
 
                                     } else  {
@@ -114,7 +118,7 @@ class Endboss extends MovableObjects {
         if (!this.audioPlayed) {
             endboss_dies.play();
             this.audioPlayed = true;
-            // endboss_alert.pause();
+            endboss_alert.pause();
         }
     }
 

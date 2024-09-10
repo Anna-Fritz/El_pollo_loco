@@ -195,6 +195,13 @@ class World {
             this.statusBarBottle.isThrown();
             this.statusBarBottle.collectBottles(this.statusBarBottle.bottleBag);
         }
+        if(this.keyboard.KEY_D && !this.statusBarBottle.bottleBag == 0 && this.character.otherDirection) {
+            let newBottle = new Bottle(this.character.x + 50, this.character.y + 100);
+            newBottle.throwLeft();
+            this.throwableObjects.push(newBottle);
+            this.statusBarBottle.isThrown();
+            this.statusBarBottle.collectBottles(this.statusBarBottle.bottleBag);
+        }
     }
 
     draw() {

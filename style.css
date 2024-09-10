@@ -324,6 +324,8 @@ h1 {
     
 }
 canvas {
+    width: 100%;
+    height: 100%;
     background-color: black;
     border-radius: 10px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
@@ -333,7 +335,6 @@ canvas {
 .d-none {
     display: none;
 }
-
 
 
 /* Smartphones */
@@ -351,9 +352,9 @@ canvas {
     .content h1 {
         display: none;
     }
-    .content img {
+    /* .content img {
         display: none;
-    }
+    } */
 }
 
 @media(max-width: 1000px) {

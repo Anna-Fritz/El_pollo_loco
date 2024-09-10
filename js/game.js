@@ -87,15 +87,7 @@ function goFullscreen() {
     } else if (screen.msRequestFullscreen) { // IE/Edge
         screen.msRequestFullscreen();
     }
-    resizeCanvas();
 }
-
-function resizeCanvas() {
-    canvas.requestFullscreen();
-}
-
-// Wenn die Größe des Fensters geändert wird, wird das Canvas neu dimensioniert
-// window.addEventListener('resize', resizeCanvas);
 
 function goFullscreenStart() {
     document.getElementById('fullscreen-start').classList.add('d-none');
@@ -112,7 +104,7 @@ function goFullscreenStart() {
     }
 }
 
-function exitFullscreenStart() {
+function exitFullscreen() {
     document.getElementById('fullscreen-start').classList.remove('d-none');
     document.getElementById('fullscreen-exit-start').classList.add('d-none');   
     document.getElementById('fullscreen-icon').classList.remove('d-none');
@@ -126,12 +118,6 @@ function exitFullscreenStart() {
     } else if (document.msExitFullscreen) { // IE/Edge
         document.msExitFullscreen();
     }
-}
-
-function exitFullscreen() {
-    // document.getElementById('fullscreen-icon').classList.remove('d-none');
-    // document.getElementById('fullscreen-exit').classList.add('d-none');   
-    canvas.exitFullscreen();
 }
 
 function toggleSound() {
@@ -179,11 +165,9 @@ function toggleSoundStartscreen() {
     let on = 'http://127.0.0.1:5500/img/icons/sound-on.svg';
     let off = 'http://127.0.0.1:5500/img/icons/sound-off.svg';
     if (isOnStart) {
-        // intro_music.muted = true;
         soundIcon.src = off;
         isOnStart = false;       
     } else {
-        // intro_music.muted = false;
         soundIcon.src = on;
         isOnStart = true;
     }
