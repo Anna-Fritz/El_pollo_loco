@@ -51,10 +51,22 @@ body {
     height: auto;
     width: 100%;
 }
-.icon-cont-sound-start {
+
+/* styling sound - fullscreen - icons */
+
+.sound-fullscreen-cont-start {
     position: absolute;
     bottom: 3.5%;
-    right: 11%;
+    right: 3.5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+.icon-cont-sound-start {
+    /* position: absolute;
+    bottom: 3.5%;
+    right: 10.5%; */
     height: 32px;
     width: 32px;
     padding: 10px;
@@ -74,9 +86,9 @@ body {
     width: 32px;
 }
 .icon-cont-fullscreen-start {
-    position: absolute;
+    /* position: absolute;
     bottom: 3.5%;
-    right: 3.5%;
+    right: 3.5%; */
     height: 32px;
     width: 32px;
     padding: 10px;
@@ -189,7 +201,7 @@ body {
 
 .replay-btn-container {
     position: absolute;
-    top: 200px;
+    top: 300px;
     left: 10px;
     z-index: 4;
     display:flex;
@@ -282,12 +294,12 @@ body {
     height: 48px;
     width: 48px;
     color: #A0220A;
-    bottom: 2.5%;
-    right: 17%;
+    bottom: 4%;
+    right: 20%;
     transition: right 0.5s ;
 }
 .move-right {
-    right: 12%;
+    right: 15%;
 }
 
 .content {
@@ -301,10 +313,18 @@ body {
     gap: 20px;
 }
 
-.icon-cont-fullscreen {
+.sound-fullscreen-cont {
     position: absolute;
     bottom: 3.5%;
     right: 3.5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.icon-cont-fullscreen {
+    /* position: absolute;
+    bottom: 3.5%;
+    right: 3.5%; */
     height: 20px;
     width: 20px;
     padding: 10px;
@@ -326,9 +346,9 @@ body {
     z-index:1;
 }
 .icon-cont-sound {
-    position: absolute;
+    /* position: absolute;
     bottom: 3.5%;
-    right: 11%;
+    right: 11%; */
     height: 20px;
     width: 20px;
     padding: 10px;
