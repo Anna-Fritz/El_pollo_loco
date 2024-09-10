@@ -4,6 +4,13 @@ class BottleOnGround extends CollactableObject {
     width = 90;
     height = 90;
 
+    offset = {
+        top: 15,
+        left: 25,
+        right: 20,
+        bottom: 10
+    };
+
     constructor(path) {
         super().loadImage(path);
     }
