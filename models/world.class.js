@@ -38,8 +38,12 @@ class World {
 
         setInterval(() => {
             this.checkThrowObjects();
-            this.checkBossHit();
         }, 350);
+
+        setInterval(() => {
+            this.checkBossHit();
+        }, 50);
+
 
         setInterval(() => {
             this.removeEnemy();
@@ -189,19 +193,35 @@ class World {
     }
 
     checkThrowObjects() {
-        if(this.keyboard.KEY_D && !this.statusBarBottle.bottleBag == 0) {
-            let newBottle = new Bottle(this.character.x + 50, this.character.y + 100);
-            this.throwableObjects.push(newBottle);
-            this.statusBarBottle.isThrown();
-            this.statusBarBottle.collectBottles(this.statusBarBottle.bottleBag);
-        }
         if(this.keyboard.KEY_D && !this.statusBarBottle.bottleBag == 0 && this.character.otherDirection) {
             let newBottle = new Bottle(this.character.x + 50, this.character.y + 100);
-            newBottle.throwLeft();
+            newBottle.throwLeft(this.character.x + 50, this.character.y + 100);
+            this.throwableObjects.push(newBottle);
+            this.statusBarBottle.isThrown();
+            this.statusBarBottle.collectBottles(this.statusBarBottle.bottleBag);
+        } else if(this.keyboard.KEY_D && !this.statusBarBottle.bottleBag == 0) {
+            let newBottle = new Bottle(this.character.x + 50, this.character.y + 100);
+            newBottle.throw(this.character.x + 50, this.character.y + 100);
             this.throwableObjects.push(newBottle);
             this.statusBarBottle.isThrown();
             this.statusBarBottle.collectBottles(this.statusBarBottle.bottleBag);
         }
+
+
+        // if(this.keyboard.KEY_D && !this.statusBarBottle.bottleBag == 0) {
+        //     let newBottle = new Bottle(this.character.x + 50, this.character.y + 100);
+        //     newBottle.throw(this.character.x + 50, this.character.y + 100);
+        //     this.throwableObjects.push(newBottle);
+        //     this.statusBarBottle.isThrown();
+        //     this.statusBarBottle.collectBottles(this.statusBarBottle.bottleBag);
+        // }
+        // if(this.keyboard.KEY_D && !this.statusBarBottle.bottleBag == 0 && this.character.otherDirection) {
+        //     let newBottle = new Bottle(this.character.x + 50, this.character.y + 100);
+        //     newBottle.throwLeft(this.character.x + 50, this.character.y + 100);
+        //     this.throwableObjects.push(newBottle);
+        //     this.statusBarBottle.isThrown();
+        //     this.statusBarBottle.collectBottles(this.statusBarBottle.bottleBag);
+        // }
     }
 
     draw() {

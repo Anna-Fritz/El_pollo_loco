@@ -26,11 +26,9 @@ class Bottle extends ThrowableObject {
         this.loadImages(this.IMAGES_BOTTLE_ROTATION);
         this.loadImages(this.IMAGES_BOTTLE_SPLASH);
         this.animate();
-        this.throw(x, y);
     }
 
     animate() {
-        // setInterval(() => {  
             console.log("bottleIntact in animate()", this.bottleIntact);
             
             if (this.bottleIntact < 100) {
@@ -41,8 +39,6 @@ class Bottle extends ThrowableObject {
                 setInterval(() => {
                     this.playAnimation(this.IMAGES_BOTTLE_ROTATION);
                 }, 100)
-            }
-                    
-        // }, 500);
+            }        
     }
 }
