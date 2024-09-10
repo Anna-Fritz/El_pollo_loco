@@ -51,28 +51,51 @@ body {
     height: auto;
     width: 100%;
 }
-.start-sound-icon {
+.icon-cont-sound-start {
     position: absolute;
-    height: 36px;
-    width: 36px;
     bottom: 3.5%;
-    right: 9%;
+    right: 11%;
+    height: 32px;
+    width: 32px;
+    padding: 10px;
+    background-color: #A0220A;
+    border-radius: 40px;
+    border: solid 2px white;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon-cont-sound-start:hover {
+    transform: scale(1.1);    
 }
 .start-sound-icon {
-    transform: scale(1.1);  
+    height: 32px;
+    width: 32px;
 }
-.start-fullscreen-icons {
+.icon-cont-fullscreen-start {
     position: absolute;
     bottom: 3.5%;
     right: 3.5%;
-    height: 36px;
-    width: 36px;
+    height: 32px;
+    width: 32px;
+    padding: 10px;
+    background-color: #A0220A;
+    border-radius: 40px;
+    border: solid 2px white;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.start-fullscreen-icons:hover {
+.icon-cont-fullscreen-start:hover {
     transform: scale(1.1);
 }
+.start-fullscreen-icons {
+    height: 32px;
+    width: 32px;
+}
+
 
 /* styling of play button */
 
@@ -272,33 +295,57 @@ body {
     background-image: url('../img/background-canvas/desert7.png');
     background-position: center;
     background-repeat: no-repeat;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
 }
-.fullscreen-icons {
+
+.icon-cont-fullscreen {
     position: absolute;
     bottom: 3.5%;
     right: 3.5%;
-    height: 28px;
-    width: 28px;
+    height: 20px;
+    width: 20px;
+    padding: 10px;
+    background-color: #A0220A;
+    border-radius: 20px;
+    border: solid 2px white;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.fullscreen-icons:hover {
+
+.icon-cont-fullscreen:hover {
+    transform: scale(1.1);
+}
+.fullscreen-icons {
+    height: 24px;
+    width: 24px;
+    z-index:1;
+}
+.icon-cont-sound {
+    position: absolute;
+    bottom: 3.5%;
+    right: 11%;
+    height: 20px;
+    width: 20px;
+    padding: 10px;
+    background-color: #A0220A;
+    border-radius: 25px;
+    border: solid 2px white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon-cont-sound:hover {
     transform: scale(1.1);
 }
 .sound-icon {
-    position: absolute;
     height: 28px;
     width: 28px;
-    bottom: 3.5%;
-    right: 9%;
-    cursor: pointer;
-}
-.sound-icon:hover {
-    transform: scale(1.1);  
 }
 
 h1 {

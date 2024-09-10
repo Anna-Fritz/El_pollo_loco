@@ -3,6 +3,9 @@ let world;
 let keyboard = new Keyboard();
 let isOn = true;
 let isOnStart = false;
+let isFullscreen = true;
+let arrowHint = setInterval(moveHintArrow, 700);
+
 
 function startIntroMusic() {
     intro_music.loop = true;
@@ -74,8 +77,8 @@ window.addEventListener("keyup", (e) => {
 })
 
 function goFullscreen() {
-    document.getElementById('fullscreen-icon').classList.add('d-none');
-    document.getElementById('fullscreen-exit').classList.remove('d-none');  
+    // document.getElementById('fullscreen-icon').classList.add('d-none');
+    // document.getElementById('fullscreen-exit').classList.remove('d-none');  
     let screen = document.getElementById('canvas-container');
     if (screen.requestFullscreen) {
         screen.requestFullscreen();
@@ -89,8 +92,8 @@ function goFullscreen() {
 }
 
 function goFullscreenStart() {
-    document.getElementById('fullscreen-start').classList.add('d-none');
-    document.getElementById('fullscreen-exit-start').classList.remove('d-none');   
+    // document.getElementById('fullscreen-start').classList.add('d-none');
+    // document.getElementById('fullscreen-exit-start').classList.remove('d-none');   
     let startScreen = document.getElementById("start-screen");
     if (startScreen.requestFullscreen) {
         startScreen.requestFullscreen();
@@ -104,10 +107,10 @@ function goFullscreenStart() {
 }
 
 function exitFullscreen() {
-    document.getElementById('fullscreen-start').classList.remove('d-none');
-    document.getElementById('fullscreen-exit-start').classList.add('d-none');   
-    document.getElementById('fullscreen-icon').classList.remove('d-none');
-    document.getElementById('fullscreen-exit').classList.add('d-none');   
+    // document.getElementById('fullscreen-start').classList.remove('d-none');
+    // document.getElementById('fullscreen-exit-start').classList.add('d-none');   
+    // document.getElementById('fullscreen-icon').classList.remove('d-none');
+    // document.getElementById('fullscreen-exit').classList.add('d-none');   
     if (document.exitFullscreen) {
         document.exitFullscreen();
     } else if (document.mozCancelFullScreen) { // Firefox
@@ -116,6 +119,37 @@ function exitFullscreen() {
         document.webkitExitFullscreen();
     } else if (document.msExitFullscreen) { // IE/Edge
         document.msExitFullscreen();
+    }
+}
+
+function toggleFullscreenStart() {
+    let icon = document.getElementById('fullscreen-start-img');
+    let on = 'http://127.0.0.1:5500/img/icons/fullscreen.svg';
+    let off = 'http://127.0.0.1:5500/img/icons/fullscreen-exit.svg';
+    if (isFullscreen) {
+        goFullscreenStart();
+        icon.src = off;
+        isFullscreen = false
+    } else {
+        exitFullscreen();
+        icon.src = on;
+        isFullscreen = true;
+    }
+}
+
+function toggleFullscreen() {
+    let icon = document.getElementById('fullscreen-img');
+    let on = 'http://127.0.0.1:5500/img/icons/fullscreen.svg';
+    let off = 'http://127.0.0.1:5500/img/icons/fullscreen-exit.svg';
+    if (isFullscreen) {
+        goFullscreen();
+        goFullscreenStart();
+        icon.src = off;
+        isFullscreen = false
+    } else {
+        exitFullscreen();
+        icon.src = on;
+        isFullscreen = true;
     }
 }
 
@@ -159,7 +193,7 @@ function unmuteAllSounds() {
 }
 
 function toggleSoundStartscreen() {
-    document.getElementById('start-arrow').classList.add('d-none');
+    stopHintArrow();
     let soundIcon = document.getElementById('start-sound-switch');
     let on = 'http://127.0.0.1:5500/img/icons/sound-on.svg';
     let off = 'http://127.0.0.1:5500/img/icons/sound-off.svg';
@@ -175,10 +209,13 @@ function toggleSoundStartscreen() {
 
 function moveHintArrow() {
     let arrow = document.getElementById('start-arrow');
-    setInterval(() => {
-        arrow.classList.add('move-right');
-        setTimeout(() =>{
-            arrow.classList.remove('move-right');
-        },250)
-    },700)
+    arrow.classList.add('move-right');
+    setTimeout(() =>{
+        arrow.classList.remove('move-right');
+    },250)
+}
+
+function stopHintArrow() {
+    document.getElementById('start-arrow').classList.add('d-none');
+    clearInterval(arrowHint);
 }

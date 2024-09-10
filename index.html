@@ -31,7 +31,7 @@
     <script src="levels/level1.js"></script>
     <script src="js/game.js"></script>
 </head>
-<body onload="startIntroMusic(), moveHintArrow()">
+<body onload="startIntroMusic()">
 
     <div id="start-screen-overlay" class="start-screen-overlay">
         <div id="start-screen" class="img-cont">
@@ -39,13 +39,16 @@
             <div class="play-btn-container">
                 <div onclick="startGame()" class="btn-play"></div>
             </div>
-            <img onclick="toggleSoundStartscreen()" src="../img/icons/sound-off.svg" class="start-sound-icon" alt="sound" id="start-sound-switch">
-            <img class="start-fullscreen-icons" id="fullscreen-start" onclick="goFullscreenStart()" src="../img/icons/fullscreen.svg" alt="fullscreen" title="Fullscreen">
-            <img class="fullscreen-icons d-none" id="fullscreen-exit-start" onclick="exitFullscreen()" src="../img/icons/fullscreen-exit.svg" alt="fullscreen exit" title="Fullscreen exit">
-            <!-- <div id="user-hint" class="user-hint"> -->
-                <!-- <span>Please start the sound for full experience</span> -->
-                <img id="start-arrow" src="../img/icons/arrow-right-startscreen.svg" alt="arrow up" class="start-arrow">
-            <!-- </div>     -->
+            <div onclick="toggleSoundStartscreen()" class="icon-cont-sound-start">
+                <img src="../img/icons/sound-off.svg" class="start-sound-icon" alt="sound" id="start-sound-switch">
+            </div>
+            <div id="fullscreen-start" onclick="toggleFullscreenStart()" class="icon-cont-fullscreen-start">
+                <img id="fullscreen-start-img" class="start-fullscreen-icons" src="../img/icons/fullscreen.svg" alt="fullscreen" title="Fullscreen">
+            </div>
+            <!-- <div id="fullscreen-exit-start" onclick="exitFullscreen()" class="icon-cont-fullscreen-start d-none">
+                <img class="fullscreen-icons" src="../img/icons/fullscreen-exit.svg" alt="fullscreen exit" title="Fullscreen exit">
+            </div> -->
+            <img id="start-arrow" src="../img/icons/arrow-right-startscreen.svg" alt="arrow up" class="start-arrow">
         </div>
     </div>
 
@@ -53,11 +56,17 @@
         <h1 id="headline">El Pollo Loco</h1>
             <div id="canvas-container" class="canvas-container">
                 <canvas id="canvas" width="720" height="480"></canvas>
-                <img onclick="toggleSound()" src="../img/icons/sound-on.svg" class="sound-icon" alt="sound" id="sound-switch">
-                <img class="fullscreen-icons" id="fullscreen-icon" onclick="goFullscreen()" src="../img/icons/fullscreen.svg" alt="fullscreen" title="Fullscreen">
-                <img class="fullscreen-icons d-none" id="fullscreen-exit" onclick="exitFullscreen()" src="../img/icons/fullscreen-exit.svg" alt="fullscreen exit" title="Fullscreen exit">
-                <div id="replay-btn" class="replay-btn-container d-none">
-                    <div onclick="replayGame()" class="btn-replay">
+                <div class="icon-cont-sound">
+                    <img onclick="toggleSound()" src="../img/icons/sound-on.svg" class="sound-icon" alt="sound" id="sound-switch">
+                </div>
+                <div id="fullscreen-icon" onclick="toggleFullscreen()" class="icon-cont-fullscreen">
+                    <img id="fullscreen-img" class="fullscreen-icons" src="../img/icons/fullscreen.svg" alt="fullscreen" title="Fullscreen">
+                </div>
+                <!-- <div onclick="exitFullscreen()" id="fullscreen-exit" class="icon-cont-fullscreen d-none">
+                    <img class="fullscreen-icons" src="../img/icons/fullscreen-exit.svg" alt="fullscreen exit" title="Fullscreen exit">
+                </div> -->
+                <div onclick="replayGame()" id="replay-btn" class="replay-btn-container d-none">
+                    <div class="btn-replay">
                         <img src="../img/icons/replay-icon.svg" alt="replay">
                     </div>
                 </div>
