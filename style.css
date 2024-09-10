@@ -64,9 +64,6 @@ body {
     gap: 12px;
 }
 .icon-cont-sound-start {
-    /* position: absolute;
-    bottom: 3.5%;
-    right: 10.5%; */
     height: 32px;
     width: 32px;
     padding: 10px;
@@ -86,9 +83,6 @@ body {
     width: 32px;
 }
 .icon-cont-fullscreen-start {
-    /* position: absolute;
-    bottom: 3.5%;
-    right: 3.5%; */
     height: 32px;
     width: 32px;
     padding: 10px;
@@ -313,7 +307,7 @@ body {
     gap: 20px;
 }
 
-.sound-fullscreen-cont {
+/* .sound-fullscreen-cont {
     position: absolute;
     bottom: 3.5%;
     right: 3.5%;
@@ -322,9 +316,6 @@ body {
     align-items: center;
 }
 .icon-cont-fullscreen {
-    /* position: absolute;
-    bottom: 3.5%;
-    right: 3.5%; */
     height: 20px;
     width: 20px;
     padding: 10px;
@@ -346,9 +337,6 @@ body {
     z-index:1;
 }
 .icon-cont-sound {
-    /* position: absolute;
-    bottom: 3.5%;
-    right: 11%; */
     height: 20px;
     width: 20px;
     padding: 10px;
@@ -366,7 +354,7 @@ body {
 .sound-icon {
     height: 28px;
     width: 28px;
-}
+} */
 
 h1 {
     font-family: 'Tequila';

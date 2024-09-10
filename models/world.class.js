@@ -111,7 +111,7 @@ class World {
 
     checkGameEnd() {
         if (this.endboss.energy == 0) {
-            let gameWin = new GameEnd(120, 80, 500, 285, '../img/9_intro_outro_screens/win/win_2.png');
+            let gameWin = new GameEnd(150, 0, 466, 480, '../img/9_intro_outro_screens/win/win_2.png');
             gameWin.won = true;
             this.gameEndImages.push(gameWin);
             gameWin.animate();
