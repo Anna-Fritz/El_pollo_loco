@@ -254,25 +254,17 @@ body {
 
 /* styling user-hint to activate sound */
 
-.user-hint {
-    position: absolute;
-    background-color: #A0220A;
-    bottom: 1.5%;
-    right: 15%;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 15px 20px;
-    border-radius: 10px;
-}
-.user-hint span {
-    font-family: 'LasLocuras';
-    font-size: 20px;
-    color: white;
-}
 .start-arrow {
-    height: 28px;
-    width: 28px;
+    position: absolute;
+    height: 48px;
+    width: 48px;
+    color: #A0220A;
+    bottom: 2.5%;
+    right: 17%;
+    transition: right 0.5s ;
+}
+.move-right {
+    right: 12%;
 }
 
 .content {

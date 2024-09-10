@@ -31,7 +31,7 @@
     <script src="levels/level1.js"></script>
     <script src="js/game.js"></script>
 </head>
-<body onload="startIntroMusic()">
+<body onload="startIntroMusic(), moveHintArrow()">
 
     <div id="start-screen-overlay" class="start-screen-overlay">
         <div id="start-screen" class="img-cont">
@@ -42,10 +42,10 @@
             <img onclick="toggleSoundStartscreen()" src="../img/icons/sound-off.svg" class="start-sound-icon" alt="sound" id="start-sound-switch">
             <img class="start-fullscreen-icons" id="fullscreen-start" onclick="goFullscreenStart()" src="../img/icons/fullscreen.svg" alt="fullscreen" title="Fullscreen">
             <img class="fullscreen-icons d-none" id="fullscreen-exit-start" onclick="exitFullscreen()" src="../img/icons/fullscreen-exit.svg" alt="fullscreen exit" title="Fullscreen exit">
-            <div id="user-hint" class="user-hint">
-                <span>Please start the sound for full experience</span>
-                <img src="../img/icons/arrow-right-startscreen.svg" alt="arrow up" class="start-arrow">
-            </div>    
+            <!-- <div id="user-hint" class="user-hint"> -->
+                <!-- <span>Please start the sound for full experience</span> -->
+                <img id="start-arrow" src="../img/icons/arrow-right-startscreen.svg" alt="arrow up" class="start-arrow">
+            <!-- </div>     -->
         </div>
     </div>
 

@@ -8,7 +8,6 @@ function startIntroMusic() {
     intro_music.loop = true;
     intro_music.volume = 0.3;
     intro_music.pause();
-
 }
 
 function startGame() {
@@ -160,7 +159,7 @@ function unmuteAllSounds() {
 }
 
 function toggleSoundStartscreen() {
-    document.getElementById('user-hint').classList.add('d-none');
+    document.getElementById('start-arrow').classList.add('d-none');
     let soundIcon = document.getElementById('start-sound-switch');
     let on = 'http://127.0.0.1:5500/img/icons/sound-on.svg';
     let off = 'http://127.0.0.1:5500/img/icons/sound-off.svg';
@@ -174,3 +173,12 @@ function toggleSoundStartscreen() {
     return intro_music.paused ? intro_music.play() : intro_music.pause();
 }
 
+function moveHintArrow() {
+    let arrow = document.getElementById('start-arrow');
+    setInterval(() => {
+        arrow.classList.add('move-right');
+        setTimeout(() =>{
+            arrow.classList.remove('move-right');
+        },250)
+    },700)
+}
