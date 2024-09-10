@@ -19,9 +19,9 @@ class Bottle extends ThrowableObject {
     IMAGE_SPLASH = [
         '../img/6_salsa_bottle/bottle_rotation/bottle_splash/1_bottle_splash.png'
     ];
-    bottleIntact = 100;
+    bottleIntact = true;
 
-    constructor(x, y) {
+    constructor() {
         super().loadImage('../img/6_salsa_bottle/1_salsa_bottle_on_ground.png');
         this.loadImages(this.IMAGES_BOTTLE_ROTATION);
         this.loadImages(this.IMAGES_BOTTLE_SPLASH);
@@ -31,14 +31,23 @@ class Bottle extends ThrowableObject {
     animate() {
             console.log("bottleIntact in animate()", this.bottleIntact);
             
-            if (this.bottleIntact < 100) {
+            if (!this.bottleIntact) {
                 setInterval(() => {
                     this.playAnimation(this.IMAGES_BOTTLE_SPLASH)
-                }, 500)
+                }, 100)
+                setTimeout(() => {
+                    this.throwableObjects.splice(index,1);
+                }, 300)
             } else {
                 setInterval(() => {
                     this.playAnimation(this.IMAGES_BOTTLE_ROTATION);
                 }, 100)
             }        
+    }
+
+    animateSplash() {
+        setInterval(() => {
+            this.playAnimation(this.IMAGES_BOTTLE_SPLASH)
+        }, 100)
     }
 }

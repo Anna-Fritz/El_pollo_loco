@@ -38,11 +38,11 @@ class World {
 
         setInterval(() => {
             this.checkThrowObjects();
-        }, 350);
+        }, 300);
 
         setInterval(() => {
             this.checkBossHit();
-        }, 50);
+        }, 350);
 
 
         setInterval(() => {
@@ -74,20 +74,25 @@ class World {
             this.level.enemies.forEach((enemy) => {
                 if (enemy.isColliding(bottle)) {
                     enemy.energy = 0;
-                    bottle.bottleIntact -= 20;
+                    bottle.bottleIntact = false;
+                    bottle.animateSplash();
+                    setTimeout(() => {
+                        this.throwableObjects.splice(index,1);
+                    }, 300)    
                 }
             })
         })
     }
 
     checkBossHit() {
-        this.throwableObjects.forEach((bottle) => {
+        this.throwableObjects.forEach((bottle, index) => {
             if (this.endboss.isColliding(bottle) && this.endboss.energy > 0) {
                 this.endboss.endbossHit();
                 this.statusBarEndboss.setPercentage(this.endboss.energy);
                 endboss_ishurt.play();
                 salsa_splat.play();
-                bottle.bottleIntact -= 20;
+                bottle.bottleIntact = false;
+                // bottle.animateSplash();
             }
         });
     }
