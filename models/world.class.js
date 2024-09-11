@@ -34,15 +34,18 @@ class World {
             this.checkCollisions();
             this.checkCollection();
             this.checkHitByBottle();
+            this.checkBottleHitsGround();
         }, 100);
+
+
+        setInterval(() => {
+            this.checkBossHit();
+        }, 400);
 
         setInterval(() => {
             this.checkThrowObjects();
         }, 300);
 
-        setInterval(() => {
-            this.checkBossHit();
-        }, 350);
 
 
         setInterval(() => {
@@ -70,18 +73,18 @@ class World {
     }
 
     checkHitByBottle() {
-        this.throwableObjects.forEach((bottle) => {
+        this.throwableObjects.forEach((bottle, index) => {
             this.level.enemies.forEach((enemy) => {
                 if (enemy.isColliding(bottle)) {
                     enemy.energy = 0;
-                    bottle.bottleIntact = false;
+                    salsa_splat.volume = 0.3;
+                    salsa_splat.play();
                     bottle.animateSplash();
-                    setTimeout(() => {
-                        this.throwableObjects.splice(index,1);
-                    }, 300)    
+                    return setTimeout(() => {this.throwableObjects.splice(index,1)}, 25)    
                 }
             })
         })
+        
     }
 
     checkBossHit() {
@@ -91,8 +94,10 @@ class World {
                 this.statusBarEndboss.setPercentage(this.endboss.energy);
                 endboss_ishurt.play();
                 salsa_splat.play();
-                bottle.bottleIntact = false;
-                // bottle.animateSplash();
+                bottle.animateSplash();
+                setTimeout(() => {
+                    this.throwableObjects.splice(index,1);
+                }, 300)        
             }
         });
     }
@@ -200,33 +205,35 @@ class World {
     checkThrowObjects() {
         if(this.keyboard.KEY_D && !this.statusBarBottle.bottleBag == 0 && this.character.otherDirection) {
             let newBottle = new Bottle(this.character.x + 50, this.character.y + 100);
+            newBottle.animate();
             newBottle.throwLeft(this.character.x + 50, this.character.y + 100);
             this.throwableObjects.push(newBottle);
             this.statusBarBottle.isThrown();
             this.statusBarBottle.collectBottles(this.statusBarBottle.bottleBag);
+
         } else if(this.keyboard.KEY_D && !this.statusBarBottle.bottleBag == 0) {
             let newBottle = new Bottle(this.character.x + 50, this.character.y + 100);
+            newBottle.animate();
             newBottle.throw(this.character.x + 50, this.character.y + 100);
             this.throwableObjects.push(newBottle);
             this.statusBarBottle.isThrown();
             this.statusBarBottle.collectBottles(this.statusBarBottle.bottleBag);
         }
+    }
 
-
-        // if(this.keyboard.KEY_D && !this.statusBarBottle.bottleBag == 0) {
-        //     let newBottle = new Bottle(this.character.x + 50, this.character.y + 100);
-        //     newBottle.throw(this.character.x + 50, this.character.y + 100);
-        //     this.throwableObjects.push(newBottle);
-        //     this.statusBarBottle.isThrown();
-        //     this.statusBarBottle.collectBottles(this.statusBarBottle.bottleBag);
-        // }
-        // if(this.keyboard.KEY_D && !this.statusBarBottle.bottleBag == 0 && this.character.otherDirection) {
-        //     let newBottle = new Bottle(this.character.x + 50, this.character.y + 100);
-        //     newBottle.throwLeft(this.character.x + 50, this.character.y + 100);
-        //     this.throwableObjects.push(newBottle);
-        //     this.statusBarBottle.isThrown();
-        //     this.statusBarBottle.collectBottles(this.statusBarBottle.bottleBag);
-        // }
+    checkBottleHitsGround() {
+        this.throwableObjects.forEach((bottle, index) => {
+            this.level.enemies.forEach((enemy) => {
+                if (bottle.y > 310 && !enemy.isColliding(bottle) && !this.endboss.isColliding(bottle)) {
+                    this.throwableObjects.splice(index,1);
+                    pop.play();
+                    let newBottle = new BottleOnGround('../img/6_salsa_bottle/1_salsa_bottle_on_ground.png');
+                    newBottle.x = bottle.x;
+                    newBottle.y = bottle.y + Math.random() * 10;
+                    this.level.bottles.push(newBottle);
+                }        
+            })
+        });  
     }
 
     draw() {

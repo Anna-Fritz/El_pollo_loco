@@ -14,5 +14,4 @@ class BottleOnGround extends CollactableObject {
     constructor(path) {
         super().loadImage(path);
     }
-
 }
