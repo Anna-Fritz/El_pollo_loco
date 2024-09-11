@@ -78,6 +78,7 @@ function generateControlLayoutHTML() {
         <div onclick="closePopUp()" class="close-icon">X</div>
     </div>
     <div class="control-layout-cont">
+        <div>
         <h2>Control Layout</h2>
         <div class="layout-btns">
             <div class="btn-cont">
@@ -105,6 +106,8 @@ function generateControlLayoutHTML() {
                 <h4>throw bottle</h4>
             </div>
         </div>
+        </div>
+        <div>
         <h2>Mobile</h2>
         <div class="layout-btns">
             <div class="btn-cont">
@@ -131,6 +134,7 @@ function generateControlLayoutHTML() {
                 </div>
                 <h4>throw bottle</h4>
             </div>
+        </div>
         </div>
     </div> 
     <!-- <div class="control-layout-cont">

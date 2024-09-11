@@ -41,23 +41,23 @@
                 <div onclick="startGame()" class="btn-play"></div>
             </div>
             <div class="panel">
-                <div onclick="openLegalNotice()" class="panel-icon-cont">
-                    <img class="panel-icon" src="../img/icons/legal.svg" title="Legal Notice" alt="Legal notice">
+                <div onclick="openLegalNotice()" class="red-btn-cont">
+                    <img class="icons" src="../img/icons/legal.svg" title="Legal Notice" alt="Legal notice">
                 </div>
-                <div onclick="openPepeStory()" class="panel-icon-cont">
-                    <img class="panel-icon" src="../img/icons/mexican-hat.svg" title="Character Info" alt="Character Info">
+                <div onclick="openPepeStory()" class="red-btn-cont">
+                    <img class="icons" src="../img/icons/mexican-hat.svg" title="Character Info" alt="Character Info">
                 </div>
-                <div onclick="openControlLayout()" class="panel-icon-cont">
-                    <img class="panel-icon" src="../img/icons/keyboard.svg" title="Control Layout" alt="Control layout">
+                <div onclick="openControlLayout()" class="red-btn-cont">
+                    <img class="icons" src="../img/icons/keyboard.svg" title="Control Layout" alt="Control layout">
                 </div>
 
             </div>
-            <div class="sound-fullscreen-cont-start">
-                <div onclick="toggleSoundStartscreen()" class="icon-cont-sound-start">
-                    <img src="../img/icons/sound-off.svg" class="start-sound-icon" alt="sound" id="start-sound-switch">
+            <div class="sound-fullscreen-cont">
+                <div onclick="toggleSoundStartscreen()" class="red-btn-cont">
+                    <img src="../img/icons/sound-off.svg" class="icons" alt="sound" id="start-sound-switch">
                 </div>
-                <div id="fullscreen-start" onclick="toggleFullscreenStart()" class="icon-cont-fullscreen-start">
-                    <img id="fullscreen-start-img" class="start-fullscreen-icons" src="../img/icons/fullscreen.svg" alt="fullscreen" title="Fullscreen">
+                <div id="fullscreen-start" onclick="toggleFullscreenStart()" class="red-btn-cont">
+                    <img id="fullscreen-start-img" class="fullscreen-icon" src="../img/icons/fullscreen.svg" alt="fullscreen" title="Fullscreen">
                 </div>
             </div>
             <img id="start-arrow" src="../img/icons/arrow-right-startscreen.svg" alt="arrow up" class="start-arrow">
@@ -68,14 +68,18 @@
         <h1 id="headline">El Pollo Loco</h1>
             <div id="canvas-container" class="canvas-container">
                 <canvas id="canvas" width="720" height="480"></canvas>
-                <div class="sound-fullscreen-cont-start">
-                    <div class="icon-cont-sound-start">
-                        <img onclick="toggleSound()" src="../img/icons/sound-on.svg" class="start-sound-icon" alt="sound" id="sound-switch">
+                <div class="sound-fullscreen-cont">
+                    <div class="red-btn-cont">
+                        <img onclick="toggleSound()" src="../img/icons/sound-on.svg" class="icons" alt="sound" id="sound-switch">
                     </div>
-                    <div id="fullscreen-icon" onclick="toggleFullscreen()" class="icon-cont-fullscreen-start">
-                        <img id="fullscreen-img" class="start-fullscreen-icons" src="../img/icons/fullscreen.svg" alt="fullscreen" title="Fullscreen">
+                    <div id="fullscreen-icon" onclick="toggleFullscreen()" class="red-btn-cont">
+                        <img id="fullscreen-img" class="fullscreen-icon" src="../img/icons/fullscreen.svg" alt="fullscreen" title="Fullscreen">
                     </div>
                 </div>
+                <div class="home-icon">
+                    <img onclick="replayGame()" src="../img/icons/mexican-hat.svg" class="icons" alt="home">
+                </div>
+
                 <div onclick="replayGame()" id="replay-btn" class="replay-btn-container d-none">
                     <div class="btn-replay">
                         <img src="../img/icons/replay-icon.svg" alt="replay">
