@@ -17,6 +17,10 @@ body {
     background-image: url('../img/background-canvas/desert7.png');
     background-position: center;   
 }
+
+.white {
+    color: white;
+}
 .start-screen-container {
     position: absolute;
     display: flex;
@@ -53,6 +57,65 @@ body {
 }
 
 /* styling sound - fullscreen - icons */
+
+.panel {
+    position: absolute;
+    width: 20%;
+    bottom: 3.5%;
+    left: 3.5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.panel-icon-cont {
+    height: 32px;
+    width: 32px;
+    padding: 10px;
+    background-color: #A0220A;
+    border-radius: 40px;
+    border: solid 2px white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.panel-icon-cont:hover {
+    transform: scale(1.1);    
+}
+.panel-icon {
+    height: 32px;
+    width: 32px;
+}
+
+/* styling info popup */
+
+.info-popup {
+    position: absolute;
+    height: 45%;
+    width: 50%;
+    margin-bottom: 5%;
+    background-color: #A0220A;
+    z-index: 10;
+    border-radius: 20px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    overflow: auto;
+    box-sizing: border-box;
+}
+.info-popup::-webkit-scrollbar {
+    display: none;
+}
+
+/* styling control layout */
+
+.layout-content {
+    height: 28vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 30px;
+}
 
 .sound-fullscreen-cont-start {
     position: absolute;
@@ -307,14 +370,12 @@ body {
     gap: 20px;
 }
 
-/* .sound-fullscreen-cont {
-    position: absolute;
-    bottom: 3.5%;
-    right: 3.5%;
+.sound-fullscreen-cont {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+/*
 .icon-cont-fullscreen {
     height: 20px;
     width: 20px;
@@ -381,4 +442,26 @@ canvas {
 
 .d-none {
     display: none;
+}
+
+.legal-notice-content {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    padding: 0 20px;
+    text-align: center;
+}
+h2 {
+    font-family: 'Tequila';
+}
+.pepe-story {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    padding: 0 20px;
+    text-align: center;
 }
