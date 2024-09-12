@@ -122,6 +122,53 @@ function bindBtnsPressEvents() {
 
 }
 
+function bindBtnsPressEventsFullscreen() {
+    document.getElementById('btnJumpFullscreen').addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        keyboard.SPACE = true;
+    });
+
+    document.getElementById('btnJumpFullscreen').addEventListener('touchend', (e) => {
+        e.preventDefault();
+        keyboard.SPACE = false;
+    });
+
+
+    document.getElementById('btnLeftFullscreen').addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        keyboard.LEFT = true;
+    });
+
+    document.getElementById('btnLeftFullscreen').addEventListener('touchend', (e) => {
+        e.preventDefault();
+        keyboard.LEFT = false;
+    });
+
+
+    document.getElementById('btnRightFullscreen').addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        keyboard.RIGHT = true;
+    });
+
+    document.getElementById('btnRightFullscreen').addEventListener('touchend', (e) => {
+        e.preventDefault();
+        keyboard.RIGHT = false;
+    });
+
+
+    document.getElementById('btnThrowFullscreen').addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        keyboard.KEY_D = true;
+    });
+
+    document.getElementById('btnThrowFullscreen').addEventListener('touchend', (e) => {
+        e.preventDefault();
+        keyboard.KEY_D = false;
+    });
+
+}
+
+
 function goFullscreen() {
     let screen = document.getElementById('canvas-container');
     if (screen.requestFullscreen) {
@@ -133,8 +180,10 @@ function goFullscreen() {
     } else if (screen.msRequestFullscreen) { // IE/Edge
         screen.msRequestFullscreen();
     }
-    document.getElementById('control-panel-left').style = `left: 1%, top: 10%`;
-    document.getElementById('control-panel-right').style = `right: 1%, top: 10%`;
+    if (window.matchMedia('(hover: none)')) {
+        document.getElementById('fullscreen-panel-left').classList.add('flex');
+        document.getElementById('fullscreen-panel-right').classList.add('flex');    
+    }
 }
 
 function goFullscreenStart() {
@@ -173,8 +222,10 @@ function exitFullscreen() {
     } else if (document.msExitFullscreen) { // IE/Edge
         document.msExitFullscreen();
     }
-    document.getElementById('control-panel-left').style = `left: -15%, top: 18%`;
-    document.getElementById('control-panel-right').style = `right: -15%, top: 18%`;
+    if (!window.matchMedia('(hover: none)')) {
+        document.getElementById('fullscreen-panel-left').classList.remove('flex');
+        document.getElementById('fullscreen-panel-right').classList.remove('flex');    
+    }
 }
 
 function toggleFullscreenStart() {

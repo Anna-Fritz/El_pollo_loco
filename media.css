@@ -34,6 +34,12 @@
     .control-panel-left {
         display: flex;
     }
+    /* .fullscreen-panel-right {
+        display: flex;
+    }
+    .fullscreen-panel-left {
+        display: flex;
+    } */
 }
 
 @media(max-width: 1100px) {
@@ -92,13 +98,22 @@
         height: 48px;
         width: 48px;
     }
+    .fullscreen-control-btns {
+        height: 48px;
+        width: 48px;
+    }
     .control-panel-right {
         padding: 35px 5px;
     }
     .control-panel-left {
         padding: 35px 5px;
     }
-
+    .fullscreen-panel-right {
+        padding: 35px 0;
+    }
+    .fullscreen-panel-left {
+        padding: 35px 0;
+    }
 }
 @media(max-width: 830px) {
     .icons {
@@ -138,6 +153,14 @@
         right: 19%;
     }
     .control-btns {
+        height: 30px;
+        width: 30px;
+    }
+    .control-icons {
+        height: 40px;
+        width: 40px;
+    }
+    .fullscreen-control-btns {
         height: 40px;
         width: 40px;
     }
@@ -180,6 +203,11 @@
         height: 32px;
         width: 32px;
     }
+    .fullscreen-control-btns {
+        height: 32px;
+        width: 32px;
+    }
+
 }
 @media(max-width: 580px) {
     .start-arrow {
@@ -189,6 +217,10 @@
         right: 19%;
     }
     .control-btns {
+        height: 24px;
+        width: 24px;
+    }
+    .fullscreen-control-btns {
         height: 24px;
         width: 24px;
     }
@@ -212,6 +244,11 @@
         height: 20px;
         width: 20px;
     }
+    .fullscreen-control-btns {
+        height: 20px;
+        width: 20px;
+    }
+
 }
 @media(max-width: 444px) {
     .btn-replay {

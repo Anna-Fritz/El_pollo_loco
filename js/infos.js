@@ -1,6 +1,7 @@
 let infoPopUp = document.getElementById("info-popup");
 
 bindBtnsPressEvents();
+bindBtnsPressEventsFullscreen();
 
 function openLegalNotice() {
   infoPopUp.classList.remove("d-none");

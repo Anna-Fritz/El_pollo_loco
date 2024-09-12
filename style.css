@@ -21,6 +21,9 @@ body {
 .white {
     color: white;
 }
+.flex {
+    display: flex;
+}
 
 .turn-device-overlay {
     position: absolute;
@@ -45,7 +48,6 @@ body {
 .control-panel-left {
     position: absolute;
     left: 1%;
-    /* top: 18%; */
     z-index: 99;
     display: none;
     flex-direction: column;
@@ -59,7 +61,6 @@ body {
 }
 .control-panel-right {
     position: absolute;
-    /* top: 18%; */
     right: 1%;
     z-index: 99;
     display: none;
@@ -644,3 +645,48 @@ h3 {
     height: 32px;
     width: 32px;
 }
+
+.fullscreen-panel-left {
+    position: absolute;
+    left: 1%;
+    top: 18%;
+    z-index: 99;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 45px 10px;
+    background-color: #FDCF5D;
+    border-radius: 40px 20px 40px 20px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+.fullscreen-panel-right {
+    position: absolute;
+    right: 1%;
+    top: 18%;
+    z-index: 99;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 45px 10px;
+    background-color: #FDCF5D;
+    border-radius: 40px 20px 40px 20px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+.fullscreen-control-btns {
+    height: 72px;
+    width: 72px;
+    padding: 10px;
+    background-color: #A0220A;
+    border-radius: 60px;
+    border: solid 2px white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
