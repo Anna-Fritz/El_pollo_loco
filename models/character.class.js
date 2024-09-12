@@ -70,6 +70,8 @@ class Character extends MovableObjects {
     ];
     world;
     audioPlayed = false;
+    isSleeping = true;
+    longIdle;
 
 
     constructor(){
@@ -115,27 +117,43 @@ class Character extends MovableObjects {
     animateImages() {
         setInterval(() => {
             if(this.isDead()) {
+                clearTimeout(this.longIdle);
                 this.playAnimation(this.IMAGES_DEAD);
+                return;
 
             } else if (this.isHurt()) {
+                clearTimeout(this.longIdle);
                 this.playAnimation(this.IMAGES_HURT);
                 hurt_sound.play();
+                this.isSleeping = true;
+
                 
               } else if (this.isAboveGround()) {
+                clearTimeout(this.longIdle);
                 this.playAnimation(this.IMAGES_JUMPING);
+                this.isSleeping = true;
+
 
 
                 } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+                    clearTimeout(this.longIdle);
                     this.playAnimation(this.IMAGES_WALKING);
                     walking_sound.play();
+                    this.isSleeping = true;
+
                     } 
                         else {
+                            clearTimeout(this.longIdle);
                             this.playAnimation(this.IMAGES_IDLE);
                             walking_sound.pause();
 
-                            // setTimeout(() => {
-                            //     this.playAnimation(this.IMAGES_LONG_IDLE)
-                            // }, 3000)
+                            if (this.isSleeping) {
+                                let longIdle = setTimeout(() => {
+                                    this.playAnimation(this.IMAGES_LONG_IDLE)
+                                }, 1000)
+                                this.longIdle = longIdle;
+                                this.isSleeping = false;
+                            }
                         }         
         }, 150);
     } 

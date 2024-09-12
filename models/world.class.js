@@ -231,8 +231,16 @@ class World {
                     newBottle.x = bottle.x;
                     newBottle.y = bottle.y + Math.random() * 10;
                     this.level.bottles.push(newBottle);
-                }        
-            })
+                } 
+            });
+            if (bottle.y > 310 && !this.endboss.isColliding(bottle) && this.level.enemies.length == 0) {
+                this.throwableObjects.splice(index,1);
+                pop.play();
+                let newBottle = new BottleOnGround('../img/6_salsa_bottle/1_salsa_bottle_on_ground.png');
+                newBottle.x = bottle.x;
+                newBottle.y = bottle.y + Math.random() * 10;
+                this.level.bottles.push(newBottle);
+            }       
         });  
     }
 
