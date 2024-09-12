@@ -21,6 +21,25 @@ body {
 .white {
     color: white;
 }
+
+.turn-device-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 199;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.turn-device {
+    padding: 30px 50px;
+    background-color: #A0220A;
+    color: white;
+    border-radius: 20px;
+    font-family: 'Tequila';
+    font-size: 14px;
+}
+
 .start-screen-container {
     position: absolute;
     display: flex;
