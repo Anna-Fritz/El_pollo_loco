@@ -35,6 +35,7 @@
     <div id="turn-device-overlay" class="turn-device-overlay">
         <div class="turn-device">Please turn your device</div>
     </div>
+
     <div id="start-screen-overlay" class="start-screen-overlay">
         <div id="info-popup" class="info-popup d-none"></div>
         <div id="start-screen" class="img-cont">
@@ -52,7 +53,6 @@
                 <div onclick="openControlLayout()" class="red-btn-cont">
                     <img class="icons" src="../img/icons/keyboard.svg" title="Control Layout" alt="Control layout">
                 </div>
-
             </div>
             <div class="sound-fullscreen-cont">
                 <div onclick="toggleSoundStartscreen()" class="red-btn-cont">
@@ -65,6 +65,24 @@
             <img id="start-arrow" src="../img/icons/arrow-right-startscreen.svg" alt="arrow up" class="start-arrow">
         </div>
     </div>
+
+    <div id="control-panel-left" class="control-panel-left">
+        <div onclick="controlBtnJump" class="control-btns">
+            <img class="control-icons" src="../img/icons/arrow-up.svg" title="Legal Notice" alt="Legal notice">
+        </div>
+        <div onclick="controlBtnLeft" class="control-btns">
+            <img class="control-icons" src="../img/icons/arrow-left.svg" title="Legal Notice" alt="Legal notice">
+        </div>
+    </div>
+    <div id="control-panel-right" class="control-panel-right">
+        <div onclick="controlBtnJump" class="control-btns">
+            <img class="control-icons" src="../img/icons/bottle.svg" title="Legal Notice" alt="Legal notice">
+        </div>
+        <div onclick="controlBtnLeft" class="control-btns">
+            <img class="control-icons" src="../img/icons/arrow-right.svg" title="Legal Notice" alt="Legal notice">
+        </div>
+    </div>        
+
 
     <div id="content" class="content">
         <h1 id="headline">El Pollo Loco</h1>
@@ -81,7 +99,6 @@
                 <div class="home-icon">
                     <img onclick="replayGame()" src="../img/icons/mexican-hat.svg" class="icons" alt="home">
                 </div>
-
                 <div onclick="replayGame()" id="replay-btn" class="replay-btn-container d-none">
                     <div class="btn-replay">
                         <img src="../img/icons/replay-icon.svg" alt="replay">

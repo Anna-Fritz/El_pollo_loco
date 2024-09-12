@@ -77,8 +77,6 @@ window.addEventListener("keyup", (e) => {
 })
 
 function goFullscreen() {
-    // document.getElementById('fullscreen-icon').classList.add('d-none');
-    // document.getElementById('fullscreen-exit').classList.remove('d-none');  
     let screen = document.getElementById('canvas-container');
     if (screen.requestFullscreen) {
         screen.requestFullscreen();
@@ -89,11 +87,11 @@ function goFullscreen() {
     } else if (screen.msRequestFullscreen) { // IE/Edge
         screen.msRequestFullscreen();
     }
+    document.getElementById('control-panel-left').style = `left: 1%, top: 10%`;
+    document.getElementById('control-panel-right').style = `right: 1%, top: 10%`;
 }
 
 function goFullscreenStart() {
-    // document.getElementById('fullscreen-start').classList.add('d-none');
-    // document.getElementById('fullscreen-exit-start').classList.remove('d-none');   
     let startScreen = document.getElementById("start-screen");
     if (startScreen.requestFullscreen) {
         startScreen.requestFullscreen();
@@ -106,11 +104,7 @@ function goFullscreenStart() {
     }
 }
 
-function exitFullscreen() {
-    // document.getElementById('fullscreen-start').classList.remove('d-none');
-    // document.getElementById('fullscreen-exit-start').classList.add('d-none');   
-    // document.getElementById('fullscreen-icon').classList.remove('d-none');
-    // document.getElementById('fullscreen-exit').classList.add('d-none');   
+function exitFullscreenStart() {
     if (document.exitFullscreen) {
         document.exitFullscreen();
     } else if (document.mozCancelFullScreen) { // Firefox
@@ -122,6 +116,21 @@ function exitFullscreen() {
     }
 }
 
+
+function exitFullscreen() {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) { // Firefox
+        document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) { // Chrome, Safari, Opera
+        document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) { // IE/Edge
+        document.msExitFullscreen();
+    }
+    document.getElementById('control-panel-left').style = `left: -15%, top: 18%`;
+    document.getElementById('control-panel-right').style = `right: -15%, top: 18%`;
+}
+
 function toggleFullscreenStart() {
     let icon = document.getElementById('fullscreen-start-img');
     let on = 'http://127.0.0.1:5500/img/icons/fullscreen.svg';
@@ -131,7 +140,7 @@ function toggleFullscreenStart() {
         icon.src = off;
         isFullscreen = false
     } else {
-        exitFullscreen();
+        exitFullscreenStart();
         icon.src = on;
         isFullscreen = true;
     }
@@ -143,7 +152,7 @@ function toggleFullscreen() {
     let off = 'http://127.0.0.1:5500/img/icons/fullscreen-exit.svg';
     if (isFullscreen) {
         goFullscreen();
-        goFullscreenStart();
+        // goFullscreenStart();
         icon.src = off;
         isFullscreen = false
     } else {

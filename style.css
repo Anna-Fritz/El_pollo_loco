@@ -40,6 +40,54 @@ body {
     font-size: 14px;
 }
 
+/* styling control button panels */
+
+.control-panel-left {
+    position: absolute;
+    left: 1%;
+    /* top: 18%; */
+    z-index: 99;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 45px 10px;
+    background-color: #FDCF5D;
+    border-radius: 40px 20px 40px 20px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+.control-panel-right {
+    position: absolute;
+    /* top: 18%; */
+    right: 1%;
+    z-index: 99;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 45px 10px;
+    background-color: #FDCF5D;
+    border-radius: 20px 40px 20px 40px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+.control-btns {
+    height: 72px;
+    width: 72px;
+    padding: 10px;
+    background-color: #A0220A;
+    border-radius: 60px;
+    border: solid 2px white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.control-icons {
+    height: 56px;
+    width: 56px;
+}
 .start-screen-container {
     position: absolute;
     display: flex;
@@ -53,7 +101,7 @@ body {
     background-image: url('../img/background-canvas/desert7.png');
     background-position: center;
     background-repeat: no-repeat;
-    z-index: 2;
+    z-index: 100;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -149,7 +197,7 @@ body {
     display: flex;
     /* flex-direction: column; */
     justify-content: space-between;
-    padding: 30px;
+    padding: 50px 30px 30px 30px;
     height: auto;
 }
 .key-d {

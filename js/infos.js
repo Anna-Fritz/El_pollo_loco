@@ -78,7 +78,7 @@ function generateControlLayoutHTML() {
         <div onclick="closePopUp()" class="close-icon">X</div>
     </div>
     <div class="control-layout-cont">
-        <div>
+        <div class="control-layout-keyboard">
         <h2>Control Layout</h2>
         <div class="layout-btns">
             <div class="btn-cont">
