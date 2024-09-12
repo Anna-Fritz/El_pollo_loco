@@ -33,7 +33,6 @@ function clearAllIntervals() {
   }
 
 window.addEventListener("keydown", (e) => {
-    console.log(e);
     
     if (e.keyCode == 39) {
         keyboard.RIGHT = true;
@@ -181,8 +180,8 @@ function goFullscreen() {
         screen.msRequestFullscreen();
     }
     if (window.matchMedia('(hover: none)')) {
-        document.getElementById('fullscreen-panel-left').classList.add('flex');
-        document.getElementById('fullscreen-panel-right').classList.add('flex');    
+        document.getElementById('fullscreen-panel-left').classList.add('d-none');
+        document.getElementById('fullscreen-panel-right').classList.add('d-none');    
     }
 }
 
@@ -223,8 +222,8 @@ function exitFullscreen() {
         document.msExitFullscreen();
     }
     if (!window.matchMedia('(hover: none)')) {
-        document.getElementById('fullscreen-panel-left').classList.remove('flex');
-        document.getElementById('fullscreen-panel-right').classList.remove('flex');    
+        document.getElementById('fullscreen-panel-left').classList.remove('d-none');
+        document.getElementById('fullscreen-panel-right').classList.remove('d-none');    
     }
 }
 

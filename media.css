@@ -34,12 +34,12 @@
     .control-panel-left {
         display: flex;
     }
-    /* .fullscreen-panel-right {
+    .fullscreen-panel-right {
         display: flex;
     }
     .fullscreen-panel-left {
         display: flex;
-    } */
+    }
 }
 
 @media(max-width: 1100px) {
@@ -47,6 +47,13 @@
         height: 64px;
         width: 64px;
     }
+    .fullscreen-panel-right {
+        display: none;
+    }
+    .fullscreen-panel-left {
+        display: none;
+    }
+
 }
 @media(max-width: 1000px) {
     .btn-play {
