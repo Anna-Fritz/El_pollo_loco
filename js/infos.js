@@ -1,5 +1,7 @@
 let infoPopUp = document.getElementById("info-popup");
 
+bindBtnsPressEvents();
+
 function openLegalNotice() {
   infoPopUp.classList.remove("d-none");
   infoPopUp.innerHTML = generateLegalNoticeHTML();
