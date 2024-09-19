@@ -9,7 +9,7 @@ let arrowHint = setInterval(moveHintArrow, 700);
 
 function startIntroMusic() {
     intro_music.loop = true;
-    intro_music.volume = 0.3;
+    intro_music.volume = 0.1;
     intro_music.pause();
 }
 

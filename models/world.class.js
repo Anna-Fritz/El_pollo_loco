@@ -23,6 +23,7 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
+        this.checkCollisions();
     }
 
     setWorld() {
@@ -30,8 +31,12 @@ class World {
     }
 
     run() {
+        // setInterval(() => {
+        //     this.checkCollisions();
+        // }, 50);
+
         setInterval(() => {
-            this.checkCollisions();
+            // this.checkCollisions();
             this.checkCollection();
             this.checkHitByBottle();
             this.checkBottleHitsGround();
@@ -58,18 +63,26 @@ class World {
 
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
+            this.checkHitEnemies(enemy);
+            this.checkHitCharacter(enemy)
+        });
+    }
+
+    checkHitEnemies(enemy) {
+        setInterval(() => {
             if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
                 enemy.energy = 0;
             }; 
-            if (this.character.isColliding(enemy) && enemy.energy > 0) {
+        }, 50);
+    }
+
+    checkHitCharacter(enemy) {
+        setInterval(() => {
+            if (this.character.isColliding(enemy) && enemy.energy > 0 || this.character.isColliding(this.endboss)) {
                 this.character.hit();
                 this.statusBarHealth.setPercentage(this.character.energy)
             };
-        });
-        if (this.character.isColliding(this.endboss)) {
-            this.character.hit();
-            this.statusBarHealth.setPercentage(this.character.energy)
-        };
+        },150);
     }
 
     checkHitByBottle() {
