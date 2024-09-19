@@ -244,8 +244,8 @@ function toggleFullscreenStart() {
 
 function toggleFullscreen() {
     let icon = document.getElementById('fullscreen-img');
-    let on = 'http://127.0.0.1:5500/img/icons/fullscreen.svg';
-    let off = 'http://127.0.0.1:5500/img/icons/fullscreen-exit.svg';
+    let on = '../img/icons/fullscreen.svg';
+    let off = '../img/icons/fullscreen-exit.svg';
     if (isFullscreen) {
         goFullscreen();
         // goFullscreenStart();
