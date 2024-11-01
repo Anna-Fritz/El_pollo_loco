@@ -304,10 +304,14 @@ function toggleSoundStartscreen() {
     let off = '../img/icons/sound-off.svg';
     if (isOnStart) {
         soundIcon.src = off;
-        isOnStart = false;       
+        isOnStart = false;  
+        isOn = true;
+        toggleSound();
     } else {
         soundIcon.src = on;
         isOnStart = true;
+        isOn = false;
+        toggleSound();
     }
     return intro_music.paused ? intro_music.play() : intro_music.pause();
 }
