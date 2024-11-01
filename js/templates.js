@@ -15,7 +15,7 @@ function generateLegalNoticeHTML() {
               Anna Fritz<br></p>
           <p><strong>Contact:</strong><br>
               Phone: +49 15785094457<br>
-              E-mail: <a class="email" href='mailto:anna_eida@gmx.de'>anna_eida@gmx.de</a></br></p>
+              E-mail: <a class="email" href='mailto:mail@annafritz.dev'>anna_eida@gmx.de</a></br></p>
           <p><strong>Disclaimer:</strong><br><br>
               <strong>Liability for content</strong><br><br>
               The content of our pages has been created with the utmost care. However, we cannot guarantee the accuracy, completeness, or timeliness of the content. As a service provider, we are responsible for our own content on these pages in accordance with Section 7(1) DDG under general law. According to Sections 8 to 10 DDG, we are not obligated as a service provider to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity. Obligations to remove or block the use of information under general laws remain unaffected. However, liability in this regard is only possible from the moment of knowledge of a specific infringement. Upon becoming aware of such violations, we will remove this content immediately.<br><br>

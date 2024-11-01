@@ -28,8 +28,8 @@
     <script src="./models/level.class.js"></script>
     <script src="./models/game-end.class.js"></script>
     <script src="./models/world.class.js"></script>
-    <script src="levels/level1.js"></script>
-    <script src="js/game.js"></script>
+    <script src="./levels/level1.js"></script>
+    <script src="./js/game.js"></script>
 </head>
 <body onload="startIntroMusic()">
     <div id="turn-device-overlay" class="turn-device-overlay">
@@ -39,47 +39,47 @@
     <div id="start-screen-overlay" class="start-screen-overlay">
         <div id="info-popup" class="info-popup d-none"></div>
         <div id="start-screen" class="img-cont">
-            <img class="start-screen-img" src="../img/9_intro_outro_screens/start/startscreen_1.png" alt="start screen el pollo loco">
+            <img class="start-screen-img" src="./img/9_intro_outro_screens/start/startscreen_1.png" alt="start screen el pollo loco">
             <div class="play-btn-container">
                 <div onclick="startGame()" class="btn-play"></div>
             </div>
             <div class="panel">
                 <div onclick="toggleLegalNotice()" class="red-btn-cont">
-                    <img class="icons" src="../img/icons/legal.svg" title="Legal Notice" alt="Legal notice">
+                    <img class="icons" src="./img/icons/legal.svg" title="Legal Notice" alt="Legal notice">
                 </div>
                 <div onclick="togglePepeStory()" class="red-btn-cont">
-                    <img class="icons" src="../img/icons/mexican-hat.svg" title="Character Info" alt="Character Info">
+                    <img class="icons" src="./img/icons/mexican-hat.svg" title="Character Info" alt="Character Info">
                 </div>
                 <div onclick="toggleControlLayout()" class="red-btn-cont">
-                    <img class="icons" src="../img/icons/keyboard.svg" title="Control Layout" alt="Control layout">
+                    <img class="icons" src="./img/icons/keyboard.svg" title="Control Layout" alt="Control layout">
                 </div>
             </div>
             <div class="sound-fullscreen-cont">
                 <div onclick="toggleSoundStartscreen()" class="red-btn-cont">
-                    <img src="../img/icons/sound-off.svg" class="icons" alt="sound" id="start-sound-switch">
+                    <img src="./img/icons/sound-off.svg" class="icons" alt="sound" id="start-sound-switch">
                 </div>
                 <div id="fullscreen-start" onclick="toggleFullscreenStart()" class="red-btn-cont">
-                    <img id="fullscreen-start-img" class="fullscreen-icon" src="../img/icons/fullscreen.svg" alt="fullscreen" title="Fullscreen">
+                    <img id="fullscreen-start-img" class="fullscreen-icon" src="./img/icons/fullscreen.svg" alt="fullscreen" title="Fullscreen">
                 </div>
             </div>
-            <img id="start-arrow" src="../img/icons/arrow-right-startscreen.svg" alt="arrow up" class="start-arrow">
+            <img id="start-arrow" src="./img/icons/arrow-right-startscreen.svg" alt="arrow up" class="start-arrow">
         </div>
     </div>
 
     <div class="control-panel-left">
         <div id="btnJump" class="control-btns">
-            <img class="control-icons" src="../img/icons/arrow-up.svg" title="Legal Notice" alt="Legal notice">
+            <img class="control-icons" src="./img/icons/arrow-up.svg" title="Legal Notice" alt="Legal notice">
         </div>
         <div id="btnLeft" class="control-btns">
-            <img class="control-icons" src="../img/icons/arrow-left.svg" title="Legal Notice" alt="Legal notice">
+            <img class="control-icons" src="./img/icons/arrow-left.svg" title="Legal Notice" alt="Legal notice">
         </div>
     </div>
     <div class="control-panel-right">
         <div id="btnThrow" class="control-btns">
-            <img class="control-icons" src="../img/icons/bottle.svg" title="Legal Notice" alt="Legal notice">
+            <img class="control-icons" src="./img/icons/bottle.svg" title="Legal Notice" alt="Legal notice">
         </div>
         <div id="btnRight" class="control-btns">
-            <img class="control-icons" src="../img/icons/arrow-right.svg" title="Legal Notice" alt="Legal notice">
+            <img class="control-icons" src="./img/icons/arrow-right.svg" title="Legal Notice" alt="Legal notice">
         </div>
     </div>        
 
@@ -90,42 +90,42 @@
 
                 <div id="fullscreen-panel-left" class="fullscreen-panel-left d-none">
                     <div id="btnJumpFullscreen" class="fullscreen-control-btns">
-                        <img class="control-icons" src="../img/icons/arrow-up.svg" title="Legal Notice" alt="Legal notice">
+                        <img class="control-icons" src="./img/icons/arrow-up.svg" title="Legal Notice" alt="Legal notice">
                     </div>
                     <div id="btnLeftFullscreen" class="fullscreen-control-btns">
-                        <img class="control-icons" src="../img/icons/arrow-left.svg" title="Legal Notice" alt="Legal notice">
+                        <img class="control-icons" src="./img/icons/arrow-left.svg" title="Legal Notice" alt="Legal notice">
                     </div>
                 </div>
                 <div id="fullscreen-panel-right" class="fullscreen-panel-right d-none">
                     <div id="btnThrowFullscreen" class="fullscreen-control-btns">
-                        <img class="control-icons" src="../img/icons/bottle.svg" title="Legal Notice" alt="Legal notice">
+                        <img class="control-icons" src="./img/icons/bottle.svg" title="Legal Notice" alt="Legal notice">
                     </div>
                     <div id="btnRightFullscreen" class="fullscreen-control-btns">
-                        <img class="control-icons" src="../img/icons/arrow-right.svg" title="Legal Notice" alt="Legal notice">
+                        <img class="control-icons" src="./img/icons/arrow-right.svg" title="Legal Notice" alt="Legal notice">
                     </div>
                 </div>        
             
                 <canvas id="canvas" width="720" height="480"></canvas>
                 <div class="sound-fullscreen-cont">
                     <div class="red-btn-cont">
-                        <img onclick="toggleSound()" src="../img/icons/sound-on.svg" class="icons" alt="sound" id="sound-switch">
+                        <img onclick="toggleSound()" src="./img/icons/sound-on.svg" class="icons" alt="sound" id="sound-switch">
                     </div>
                     <div id="fullscreen-icon" onclick="toggleFullscreen()" class="red-btn-cont">
-                        <img id="fullscreen-img" class="fullscreen-icon" src="../img/icons/fullscreen.svg" alt="fullscreen" title="Fullscreen">
+                        <img id="fullscreen-img" class="fullscreen-icon" src="./img/icons/fullscreen.svg" alt="fullscreen" title="Fullscreen">
                     </div>
                 </div>
                 <div class="home-icon">
-                    <img onclick="replayGame()" src="../img/icons/mexican-hat.svg" class="icons" alt="home">
+                    <img onclick="replayGame()" src="./img/icons/mexican-hat.svg" class="icons" alt="home">
                 </div>
                 <div onclick="replayGame()" id="replay-btn" class="replay-btn-container d-none">
                     <div class="btn-replay">
-                        <img src="../img/icons/replay-icon.svg" alt="replay">
+                        <img src="./img/icons/replay-icon.svg" alt="replay">
                     </div>
                 </div>
             </div>
     </div>
-    <script src="js/templates.js"></script>
-    <script src="js/info-btns.js"></script>
+    <script src="./js/templates.js"></script>
+    <script src="./js/info-btns.js"></script>
 
 </body>
 </html>

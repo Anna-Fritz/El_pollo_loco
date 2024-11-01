@@ -5,8 +5,8 @@ let intro_music = new Audio('../audio/intro-music.mp3');
 let walking_sound = new Audio('../audio/walking.mp3');
 let hurt_sound = new Audio('../audio/hurt_sound.mp3');
 let endboss_dies = new Audio('../audio/endboss-dead.mp3');
-let cashing = new Audio('audio/coin-received.mp3');
-let pop = new Audio('audio/bottle-pop.mp3');
+let cashing = new Audio('../audio/coin-received.mp3');
+let pop = new Audio('../audio/bottle-pop.mp3');
 let salsa_splat = new Audio('../audio/salsa-splat.mp3');
 let endboss_ishurt = new Audio('../audio/endboss-hurt.mp3');
 

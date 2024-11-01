@@ -229,8 +229,8 @@ function exitFullscreen() {
 
 function toggleFullscreenStart() {
     let icon = document.getElementById('fullscreen-start-img');
-    let on = 'http://127.0.0.1:5500/img/icons/fullscreen.svg';
-    let off = 'http://127.0.0.1:5500/img/icons/fullscreen-exit.svg';
+    let on = '../img/icons/fullscreen.svg';
+    let off = '../img/icons/fullscreen-exit.svg';
     if (isFullscreen) {
         goFullscreenStart();
         icon.src = off;
@@ -260,8 +260,8 @@ function toggleFullscreen() {
 
 function toggleSound() {
     let soundIcon = document.getElementById('sound-switch');
-    let on = 'http://127.0.0.1:5500/img/icons/sound-on.svg';
-    let off = 'http://127.0.0.1:5500/img/icons/sound-off.svg';
+    let on = '../img/icons/sound-on.svg';
+    let off = '../img/icons/sound-off.svg';
     if (isOn) {
         muteAllSounds();
         soundIcon.src = off;
@@ -300,8 +300,8 @@ function unmuteAllSounds() {
 function toggleSoundStartscreen() {
     stopHintArrow();
     let soundIcon = document.getElementById('start-sound-switch');
-    let on = 'http://127.0.0.1:5500/img/icons/sound-on.svg';
-    let off = 'http://127.0.0.1:5500/img/icons/sound-off.svg';
+    let on = '../img/icons/sound-on.svg';
+    let off = '../img/icons/sound-off.svg';
     if (isOnStart) {
         soundIcon.src = off;
         isOnStart = false;       

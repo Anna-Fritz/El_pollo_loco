@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'Tequila';
-    src: url('../fonts/La Tequila.ttf');
+    src: url('./fonts/La Tequila.ttf');
 }
 @font-face {
     font-family: 'LasLocuras';
-    src: url('../fonts/Las locuras del emperador.TTF');
+    src: url('./fonts/Las locuras del emperador.TTF');
 }
 
 body {
@@ -14,7 +14,7 @@ body {
     justify-content: center;
     min-height: 100vh;
     margin: 0;
-    background-image: url('../img/background-canvas/desert7.png');
+    background-image: url('./img/background-canvas/desert7.png');
     background-position: center;   
 }
 
@@ -99,7 +99,7 @@ body {
 .start-screen-overlay {
     position: absolute;
     inset: 0;
-    background-image: url('../img/background-canvas/desert7.png');
+    background-image: url('./img/background-canvas/desert7.png');
     background-position: center;
     background-repeat: no-repeat;
     z-index: 100;
@@ -437,7 +437,7 @@ body {
 
 .content {
     position: relative;
-    background-image: url('../img/background-canvas/desert7.png');
+    background-image: url('./img/background-canvas/desert7.png');
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
