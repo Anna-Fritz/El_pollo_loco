@@ -6,17 +6,21 @@ let isOnStart = false;
 let isFullscreen = true;
 let arrowHint = setInterval(moveHintArrow, 700);
 
-
+/**
+ * sets the intro music to loop continuously and pauses it initially
+ */
 function startIntroMusic() {
     intro_music.loop = true;
     intro_music.volume = 0.1;
     intro_music.pause();
 }
 
+/**
+ *  initializes the game, hides the start screen overlay, pauses the intro music, and starts playing a looping chicken sound
+ */
 function startGame() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
-
     document.getElementById('start-screen-overlay').classList.add('d-none');
     intro_music.pause();
     chicken_sound.loop = true;
@@ -24,14 +28,23 @@ function startGame() {
     chicken_sound.play();
 }
 
+/**
+ * reloads the current page to reset and restart the game.
+ */
 function replayGame() {
     window.location.reload();
 }
 
+/**
+ * stops all active intervals by clearing them in a loop up to ID 9999
+ */
 function clearAllIntervals() {
     for (let i = 1; i < 9999; i++) window.clearInterval(i);
   }
 
+/**
+* listens for specific keydown events and updates the keyboard object to mark the right, left, up, down, space, and "D" keys as pressed
+*/
 window.addEventListener("keydown", (e) => {
     
     if (e.keyCode == 39) {
@@ -54,6 +67,9 @@ window.addEventListener("keydown", (e) => {
     }
 })
 
+/**
+ * detects when specific keys are released and updates the keyboard object to mark the right, left, up, down, space, and "D" keys as not pressed
+ */
 window.addEventListener("keyup", (e) => {
     if (e.keyCode == 39) {
         keyboard.RIGHT = false;
@@ -75,7 +91,20 @@ window.addEventListener("keyup", (e) => {
     }
 })
 
+/**
+ * initializes touch control functionality by enabling touch event handlers for jump, left, right, and throw buttons
+ */
 function bindBtnsPressEvents() {
+    enableJumpButtonTouchControls();
+    enableLeftButtonTouchControls();
+    enableRightButtonTouchControls();
+    enableThrowButtonTouchControls();
+}
+
+/**
+ * adds touch event listeners to the jump button
+ */
+function enableJumpButtonTouchControls() {
     document.getElementById('btnJump').addEventListener('touchstart', (e) => {
         e.preventDefault();
         keyboard.SPACE = true;
@@ -85,8 +114,12 @@ function bindBtnsPressEvents() {
         e.preventDefault();
         keyboard.SPACE = false;
     });
+}
 
-
+/**
+ * adds touch event listeners to the left button
+ */
+function enableLeftButtonTouchControls() {
     document.getElementById('btnLeft').addEventListener('touchstart', (e) => {
         e.preventDefault();
         keyboard.LEFT = true;
@@ -96,8 +129,12 @@ function bindBtnsPressEvents() {
         e.preventDefault();
         keyboard.LEFT = false;
     });
+}
 
-
+/**
+ * adds touch event listeners to the right button
+ */
+function enableRightButtonTouchControls() {
     document.getElementById('btnRight').addEventListener('touchstart', (e) => {
         e.preventDefault();
         keyboard.RIGHT = true;
@@ -107,8 +144,12 @@ function bindBtnsPressEvents() {
         e.preventDefault();
         keyboard.RIGHT = false;
     });
+}
 
-
+/**
+ * adds touch event listeners to the throw button
+ */
+function enableThrowButtonTouchControls() {
     document.getElementById('btnThrow').addEventListener('touchstart', (e) => {
         e.preventDefault();
         keyboard.KEY_D = true;
@@ -167,7 +208,9 @@ function bindBtnsPressEventsFullscreen() {
 
 }
 
-
+/**
+ * attempts to make the canvas container element enter fullscreen mode across different browsers
+ */
 function goFullscreen() {
     let screen = document.getElementById('canvas-container');
     if (screen.requestFullscreen) {
@@ -185,6 +228,9 @@ function goFullscreen() {
     }
 }
 
+/**
+ * attempts to make the start screen element enter fullscreen mode, using the appropriate method for different browsers
+ */
 function goFullscreenStart() {
     let startScreen = document.getElementById("start-screen");
     if (startScreen.requestFullscreen) {
@@ -198,6 +244,9 @@ function goFullscreenStart() {
     }
 }
 
+/**
+ *  attempts to exit fullscreen mode using the appropriate method for different browsers
+ */
 function exitFullscreenStart() {
     if (document.exitFullscreen) {
         document.exitFullscreen();
@@ -210,7 +259,9 @@ function exitFullscreenStart() {
     }
 }
 
-
+/**
+ * exits fullscreen mode using the appropriate method for different browsers
+ */
 function exitFullscreen() {
     if (document.exitFullscreen) {
         document.exitFullscreen();
@@ -227,6 +278,9 @@ function exitFullscreen() {
     }
 }
 
+/**
+ * toggles fullscreen mode for the start screen, updating the fullscreen icon accordingly and switching the isFullscreen state
+ */
 function toggleFullscreenStart() {
     let icon = document.getElementById('fullscreen-start-img');
     let on = '../img/icons/fullscreen.svg';
@@ -242,13 +296,15 @@ function toggleFullscreenStart() {
     }
 }
 
+/**
+ * toggles fullscreen mode for the canvas, updates the fullscreen icon accordingly, and switches the isFullscreen state
+ */
 function toggleFullscreen() {
     let icon = document.getElementById('fullscreen-img');
     let on = '../img/icons/fullscreen.svg';
     let off = '../img/icons/fullscreen-exit.svg';
     if (isFullscreen) {
         goFullscreen();
-        // goFullscreenStart();
         icon.src = off;
         isFullscreen = false
     } else {
@@ -258,6 +314,9 @@ function toggleFullscreen() {
     }
 }
 
+/**
+ * toggles the sound on or off, updating the sound icon accordingly and changing the isOn state
+ */
 function toggleSound() {
     let soundIcon = document.getElementById('sound-switch');
     let on = '../img/icons/sound-on.svg';
@@ -273,6 +332,9 @@ function toggleSound() {
     }
 }
 
+/**
+ * mutes all specified sound effects in the game
+ */
 function muteAllSounds() {
     chicken_sound.muted = true;
     walking_sound.muted = true;
@@ -285,6 +347,9 @@ function muteAllSounds() {
     pop.muted = true;
 }
 
+/**
+ * unmutes all specified sound effects in the game
+ */
 function unmuteAllSounds() {
     chicken_sound.muted = false;
     walking_sound.muted = false;
@@ -297,11 +362,26 @@ function unmuteAllSounds() {
     pop.muted = false;
 }
 
+/**
+ * updates the sound icon based on the current state
+ * @returns plays or pauses the intro music depending on whether it is currently paused
+ */
 function toggleSoundStartscreen() {
     stopHintArrow();
     let soundIcon = document.getElementById('start-sound-switch');
     let on = '../img/icons/sound-on.svg';
     let off = '../img/icons/sound-off.svg';
+    checkSoundStartscreen(soundIcon, on, off);
+    return intro_music.paused ? intro_music.play() : intro_music.pause();
+}
+
+/**
+ * updates the sound icon based on the current sound state for the start screen, toggles the sound, and adjusts the isOnStart and isOn states accordingly
+ * @param {HTMLElement} soundIcon sound button to toggle sound
+ * @param {string} on image path
+ * @param {string} off image path
+ */
+function checkSoundStartscreen(soundIcon, on, off) {
     if (isOnStart) {
         soundIcon.src = off;
         isOnStart = false;  
@@ -312,10 +392,12 @@ function toggleSoundStartscreen() {
         isOnStart = true;
         isOn = false;
         toggleSound();
-    }
-    return intro_music.paused ? intro_music.play() : intro_music.pause();
+    }  
 }
 
+/**
+ * animates the hint arrow
+ */
 function moveHintArrow() {
     let arrow = document.getElementById('start-arrow');
     arrow.classList.add('move-right');
@@ -324,11 +406,17 @@ function moveHintArrow() {
     },250)
 }
 
+/**
+ * hides the hint arrow
+ */
 function stopHintArrow() {
     document.getElementById('start-arrow').classList.add('d-none');
     clearInterval(arrowHint);
 }
 
+/**
+ * adjusts the height of the canvas element based on the current screen orientation
+ */
 function checkOrientation() {
     if (window.matchMedia("(orientation: landscape)").matches) {
         if (window.innerHeight < 480) {

@@ -4,6 +4,9 @@ let isClosed = true;
 bindBtnsPressEvents();
 bindBtnsPressEventsFullscreen();
 
+/**
+ * shows or hides a legal notice popup by toggling its visibility and updating its content based on the isClosed state
+ */
 function toggleLegalNotice() {
   if(isClosed) {
       infoPopUp.classList.remove("d-none");
@@ -15,6 +18,9 @@ function toggleLegalNotice() {
   }
 }  
 
+/**
+ * displays or hides a control layout popup by toggling its visibility and updating its content based on the isClosed state
+ */
 function toggleControlLayout() {
   if(isClosed) {
       infoPopUp.classList.remove("d-none");
@@ -26,6 +32,9 @@ function toggleControlLayout() {
   }
 }  
 
+/**
+ * shows or hides a popup containing Pepe's story by toggling its visibility and updating its content based on the isClosed state
+ */
 function togglePepeStory() {
     if(isClosed) {
         infoPopUp.classList.remove("d-none");
@@ -37,6 +46,9 @@ function togglePepeStory() {
     }
 }  
 
+/**
+ * hides the popup
+ */
 function closePopUp() {
     infoPopUp.classList.add('d-none');
     isClosed = true;

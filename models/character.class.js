@@ -87,8 +87,10 @@ class Character extends MovableObjects {
         this.animateImages();
     }
 
+    /**
+     * checks for keyboard input to move character right or left, make it jump if it's on the ground, play an alert sound, and update the camera's position based on the character's x-coordinate
+     */
     animate() {
-
         setInterval(() => {
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.moveRight();
@@ -98,20 +100,23 @@ class Character extends MovableObjects {
                 this.moveLeft();
                 this.otherDirection = true;
             }
-
             if (this.world.keyboard.SPACE && !this.isAboveGround()) {
                 this.jump();
-                
             }
-
-            if (!this.audioPlayed && this.x == 2000) {
-                endboss_alert.loop = true;
-                endboss_alert.play();
-                this.audioPlayed = true;
-            }    
-
+            this.startEndbossAlertSound();
             this.world.camera_x = -this.x + 100;
         }, 1000 / 60);
+    }
+
+    /**
+     * plays an end boss alert sound when the character's x-coordinate reaches 2000 and ensures that the sound is played only once by checking the audioPlayed state
+     */
+    startEndbossAlertSound() {
+        if (!this.audioPlayed && this.x == 2000) {
+            endboss_alert.loop = true;
+            endboss_alert.play();
+            this.audioPlayed = true;
+        }    
     }
 
     animateImages() {
@@ -132,8 +137,6 @@ class Character extends MovableObjects {
                 clearTimeout(this.longIdle);
                 this.playAnimation(this.IMAGES_JUMPING);
                 this.isSleeping = true;
-
-
 
                 } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
                     clearTimeout(this.longIdle);
