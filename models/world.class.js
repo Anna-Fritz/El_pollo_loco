@@ -70,7 +70,7 @@ class World {
 
     checkHitEnemies(enemy) {
         setInterval(() => {
-            if (this.character.isCollidingJump(enemy) && this.character.isAboveGround()) {
+            if (this.character.isColliding(enemy) && this.character.isAboveGround() && this.character.speedY < 0) {
                 enemy.energy = 0;
             }; 
         }, 50);
