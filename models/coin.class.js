@@ -22,6 +22,9 @@ class Coin extends CollactableObject {
         this.animate();
     }
 
+    /**
+     * repeatedly plays the coin animation
+     */
     animate() {
         setInterval(() => {
             this.playAnimation(this.IMAGES_COIN); 

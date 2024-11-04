@@ -64,32 +64,13 @@ class Endboss extends MovableObjects {
         this.loadImages(this.IMAGES_DEAD);
         this.speed = 0.15 + Math.random() * 0.5;
         this.animate();
+        this.move();
     }
 
+    /**
+     * controls the endboss character's animation by periodically checking its state (dead, hurt, alert, or attacking) and playing the corresponding animation sequence based on its energy level and actions
+     */
     animate() {
-        let movingRight = true;
-
-        setInterval(() => {
-            if (movingRight) {
-            this.speed = Math.random() * 5;
-            this.moveRight();
-            this.otherDirection = true;
-
-                if (this.x >= 2600) {
-                movingRight = false;
-                }
-            } 
-                else {
-                    this.speed = Math.random() * 10;
-                    this.moveLeft();
-                    this.otherDirection = false;
-                    this.attack = true;
-                    if (this.x <= 2200) {
-                    movingRight = true;
-                    }
-                }
-        }, 1000 / 60);
-
         setInterval(() => {
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
@@ -116,6 +97,49 @@ class Endboss extends MovableObjects {
         }, 300);
     }
 
+    /**
+     * enables back-and-forth movement for the character by alternating between moving right and left within a defined range
+     */
+    move() {
+        let movingRight = true;
+        setInterval(() => {
+            if (movingRight) {
+                this.animateToRight();
+                if (this.x >= 2600) {
+                movingRight = false;
+                }
+            } 
+                else {
+                    this.animateToLeft();
+                    if (this.x <= 2200) {
+                    movingRight = true;
+                    }
+                }
+        }, 1000 / 60);
+    }
+
+    /**
+     * sets a random speed and moves the character to the right, updating the direction flag to indicate the character is facing right
+     */
+    animateToRight() {
+        this.speed = Math.random() * 5;
+        this.moveRight();
+        this.otherDirection = true;
+    }
+
+    /**
+     * sets a random speed, moves the character to the left, updates the direction flag to indicate the character is facing left, and activates the attack state
+     */
+    animateToLeft() {
+        this.speed = Math.random() * 10;
+        this.moveLeft();
+        this.otherDirection = false;
+        this.attack = true;
+    }
+
+    /**
+     * initiates the vertical movement of the defeated boss character, making it rise with decreasing speed while playing a death sound
+     */
     deadBossGone() {
         this.speedY = 15;
         setInterval(() => {
@@ -129,5 +153,4 @@ class Endboss extends MovableObjects {
             endboss_alert.pause();
         }
     }
-
 }

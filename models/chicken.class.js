@@ -27,22 +27,31 @@ class Chicken extends MovableObjects {
         this.speed = 0.15 + Math.random() * 0.5;
 
         this.animate();
+        this.move();
     }
 
+    /**
+     * repeatedly plays the walking animation if the chicken is not dead; otherwise, it plays the death animation
+     */
     animate() {
+        setInterval(() => {
+            if (!this.isDead()) {
+                this.playAnimation(this.IMAGES_WALKING);
+            } else {
+                this.playAnimation(this.IMAGES_DEAD);
+            }
+        }, 200);        
+    }
+
+    /**
+     * moves the chicken left if it is not dead
+     */
+    move() {
         setInterval(() => {
             if (!this.isDead()) {
                 this.moveLeft();
             }
         }, 1000 / 60);
-
-        setInterval(() => {
-            if (!this.isDead()) {
-                this.playAnimation(this.IMAGES_WALKING);
-            } else {
-                this.playAnimation(this.IMAGES_DEAD); // Setze Bilder für die Todesanimation
-            }
-        }, 200);        
     }
   
 }
