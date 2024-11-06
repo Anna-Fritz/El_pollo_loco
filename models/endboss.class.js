@@ -119,7 +119,7 @@ class Endboss extends MovableObjects {
     }
 
     /**
-     * sets a random speed and moves the character to the right, updating the direction flag to indicate the character is facing right
+     * sets a random speed and moves the endboss to the right, updating the direction flag to indicate the character is facing right
      */
     animateToRight() {
         this.speed = Math.random() * 5;
@@ -128,7 +128,7 @@ class Endboss extends MovableObjects {
     }
 
     /**
-     * sets a random speed, moves the character to the left, updates the direction flag to indicate the character is facing left, and activates the attack state
+     * sets a random speed, moves the endboss to the left, updates the direction flag to indicate the character is facing left, and activates the attack state
      */
     animateToLeft() {
         this.speed = Math.random() * 10;

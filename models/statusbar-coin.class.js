@@ -21,13 +21,20 @@ class StatusBarCoin extends DrawableObjects {
         this.collectCoins(0);
     }
 
-    // setAmount(50)
+    /**
+     * updates the player's wallet with the specified amount and sets the corresponding coin image based on the new coin count
+     * @param {*} amount 
+     */
     collectCoins(amount){
-        this.wallet = amount; // => 0...5
+        this.wallet = amount;
         let path = this.IMAGES_COIN[this.resolveImageIndex()]
         this.img = this.imageCache[path]
     }
 
+    /**
+     * determines the index of the coin image to use based on the player's current wallet amount, providing different images for varying levels of coin collection
+     * @returns the index of the coin image
+     */
     resolveImageIndex() {
         if (this.wallet >= 100) {
             return 5;
@@ -44,6 +51,9 @@ class StatusBarCoin extends DrawableObjects {
         }
     }
 
+    /**
+     * increases the player's wallet by 20, representing the collection of coins or currency
+     */
     isCollected() {
         this.wallet += 20;
     }

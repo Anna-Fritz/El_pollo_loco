@@ -24,30 +24,50 @@ class GameEnd extends MovableObjects{
         this.loadImages(this.IMAGE_GAMEOVER);
     }
 
+    /**
+     * checks the game status to play either a victory animation with a sparkle effect or a defeat animation, stopping the game accordingly
+     */
     animate() {
             if (this.won) {
                 this.sparkleWin();
-                setTimeout(() => {
-                    document.getElementById('replay-btn').classList.remove('d-none');
-                    clearAllIntervals();
-                    this.sparkleWin(); 
-                }, 2000);
+                this.stopGameAfterVictory();
                 
             } else if (this.lost) {
                 this.playAnimation(this.IMAGE_YOU_LOST)
-                setTimeout(() => {
-                    this.playAnimation(this.IMAGE_GAMEOVER);
-                    document.getElementById('replay-btn').classList.remove('d-none');
-                    clearAllIntervals(); 
-                },1500);
+                this.stopGameAfterDefeat();
                 }
             chicken_sound.pause();
             endboss_alert.pause();    
     }
 
+    /**
+     * continuously plays the winning animation to create a sparkling effect
+     */
     sparkleWin() {
         setInterval(() =>{
             this.playAnimation(this.IMAGES_WIN);
         }, 200);    
+    }
+
+    /**
+     * stops game after victory by clearing all intervals
+     */
+    stopGameAfterVictory() {
+        setTimeout(() => {
+            document.getElementById('replay-btn').classList.remove('d-none');
+            clearAllIntervals();
+            // this.sparkleWin(); 
+        }, 2000);
+    }
+
+    /**
+     * stops game after defeat by clearing all intervals
+     */
+    stopGameAfterDefeat() {
+        setTimeout(() => {
+            this.playAnimation(this.IMAGE_GAMEOVER);
+            document.getElementById('replay-btn').classList.remove('d-none');
+            clearAllIntervals(); 
+        },1500);
     }
 } 

@@ -2,32 +2,13 @@ class ThrowableObject extends MovableObjects {
     speedY = 30;
     speedX = 20;
 
-    // throw(x, y) {
-    //     this.x = x;
-    //     this.y = y;
-    //     this.speedY = 30;
-    //     this.applyGravity();
-    
-    //     let objectHasStopped = false;  // Flag-Variable
-    
-    //     setInterval(() => {
-    //         if (!objectHasStopped) {  // Solange das Objekt nicht gestoppt ist
-    //             this.x += 10;
-    //         }
-    
-    //         // Überprüfe, ob y den Wert 300 erreicht oder überschreitet
-    //         if (this.y > 270) {
-    //             this.y = 270;  // Stelle sicher, dass y nicht unter 300 geht
-    //             objectHasStopped = true;  // Setze das Flag auf true, um die Bewegung zu stoppen
-    //         }
-    //     }, 25);
-    // }    
-
+    /**
+     * initiates the throwing action by setting the object's position, and if the object's vertical position does not exceed a threshold, it continuously updates its horizontal position at regular intervals
+     * @param {number} x object's horizontal position
+     * @param {number} y object's vertical position 
+     */
     throw(x, y) {
-        this.x = x;
-        this.y = y;
-        this.speedY = 30;
-        this.applyGravity();
+        this.setThrowingAction(x, y);
 
         if (this.y >= 345) {
             this.speedY = 0;
@@ -36,19 +17,30 @@ class ThrowableObject extends MovableObjects {
                 this.x += 10;
             }, 25)    
         }
-        // setInterval(() => {
-        //     this.x += 10;
-        // }, 25)
     }
 
+    /**
+     * starts the throwing action by setting the object's position and then continuously updates its horizontal position to move left at regular intervals
+     * @param {number} x object's horizontal position
+     * @param {number} y object's vertical position 
+     */
     throwLeft(x, y) {
-        this.x = x;
-        this.y = y;
-        this.speedY = 30;
-        this.applyGravity();
+        this.setThrowingAction(x, y);
 
         setInterval(() => {
             this.x -= 10;
         }, 25)
+    }
+
+    /**
+     * initializes the object's position and vertical speed for throwing, while also applying gravity to simulate the effect of falling
+     * @param {number} x object's horizontal position
+     * @param {number} y object's vertical position 
+     */
+    setThrowingAction(x, y) {
+        this.x = x;
+        this.y = y;
+        this.speedY = 30;
+        this.applyGravity();
     }
 }

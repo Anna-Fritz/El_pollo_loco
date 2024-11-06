@@ -20,13 +20,20 @@ class StatusBarBottle extends DrawableObjects {
         this.collectBottles(0);
     }
 
-    // setAmount(50)
+    /**
+     * updates the bottleBag property with the given value and sets the object's image to a specific bottle image based on the current index
+     * @param {*} bottleBag 
+     */
     collectBottles(bottleBag){
-        this.bottleBag = bottleBag; // => 0...5
+        this.bottleBag = bottleBag;
         let path = this.IMAGES_BOTTLE[this.resolveImageIndex()]
         this.img = this.imageCache[path]
     }
 
+    /**
+     * returns an index based on the number of bottles collected, determining which bottle image to use according to specified thresholds
+     * @returns an index
+     */
     resolveImageIndex() {
         if (this.bottleBag >= 100) {
             return 5;
@@ -43,10 +50,16 @@ class StatusBarBottle extends DrawableObjects {
         }
     }
 
+    /**
+     * increases the bottleBag by 20, indicating that a bottle has been collected
+     */
     isCollected() {
         this.bottleBag += 20;
     }
 
+    /**
+     * decreases the bottleBag by 20, indicating that a bottle has been thrown away
+     */
     isThrown() {
         this.bottleBag -= 20;
     }

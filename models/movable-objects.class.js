@@ -14,6 +14,9 @@ class MovableObjects extends DrawableObjects {
         bottom: 0
     };
 
+    /**
+     * continuously updates the object's vertical position by applying gravitational acceleration while it is above ground or falling
+     */
     applyGravity() {
         setInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {
@@ -23,6 +26,10 @@ class MovableObjects extends DrawableObjects {
         }, 1000 / 25);
     }
     
+    /**
+     * checks if the object is above ground
+     * @returns returning true for throwable objects and for other objects, it checks if their vertical position is less than 155
+     */
     isAboveGround() {
         if (this instanceof ThrowableObject) { // Throwable objects should always fall
             return true;
@@ -31,6 +38,11 @@ class MovableObjects extends DrawableObjects {
         }
     }
 
+    /**
+     * determines if the current object is colliding with another object by comparing their positions and dimensions, taking into account any specified offsets
+     * @param {*} mo
+     * @returns 
+     */
     isColliding(mo) {
         return this.x + this.width - this.offset.right > mo.x + mo.offset.left &&
             this.y + this.height - this.offset.bottom > mo.y + mo.offset.top &&
@@ -38,6 +50,9 @@ class MovableObjects extends DrawableObjects {
             this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom;
     }
 
+    /**
+     * reduces the character's energy by 5, ensuring it does not fall below zero, and updates the timestamp of the last hit if the energy remains above zero
+     */
     hit() {
         this.energy -= 5;
         if (this.energy < 0) {
@@ -47,6 +62,9 @@ class MovableObjects extends DrawableObjects {
         }
     }
 
+    /**
+     * decreases the end boss's energy by 10, preventing it from going below zero, and updates the timestamp of the last hit if the energy remains above zero
+     */
     endbossHit() {
         this.energy -= 10;
         if (this.energy < 0) {
@@ -56,10 +74,18 @@ class MovableObjects extends DrawableObjects {
         }
     }
 
+    /**
+     * checks if the character's energy is zero, indicating that the character is dead
+     * @returns 
+     */
     isDead() {
         return this.energy == 0;
     }
 
+    /**
+     * determines if the character is currently hurt based on whether less than 0.8 seconds have passed since the last hit was taken
+     * @returns 
+     */
     isHurt() {
         let timepassed = new Date().getTime() - this.lastHit; // Difference in ms
         timepassed = timepassed / 1000; // Difference in s
@@ -67,6 +93,10 @@ class MovableObjects extends DrawableObjects {
         return timepassed < 0.8;
     }
 
+    /**
+     * updates the character's current image by cycling through an array of images based on the currentImage index
+     * @param {array} images array of images
+     */
     playAnimation(images) {
         let i = this.currentImage % images.length; // let i = 7 % 6; => 1, Rest 1
         let path = images[i];
@@ -74,14 +104,23 @@ class MovableObjects extends DrawableObjects {
         this.currentImage++;
     }
 
+    /**
+     * increments the object's horizontal position (x) by its speed, effectively moving it to the right on the canvas
+     */
     moveRight() {
         this.x += this.speed;
     }
 
+    /**
+     * decrements the object's horizontal position (x) by its speed, effectively moving it to the left on the canvas
+     */
     moveLeft() {
         this.x -= this.speed;
     }
 
+    /**
+     * sets the vertical speed (speedY) of the object to 25, allowing it to move upward when executed
+     */
     jump() {
         this.speedY = 25;
     }
