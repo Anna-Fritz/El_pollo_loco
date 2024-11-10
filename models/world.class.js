@@ -71,10 +71,33 @@ class World {
         setInterval(() => {
             if (this.character.isColliding(enemy) && this.character.isAboveGround() && this.character.speedY < 0) {
                 enemy.energy = 0;
-                this.character.jump();
-                this.character.y = 155;
+                this.jumpAfterColliding();
             }; 
+            this.update();
         }, 50);
+    }
+
+    /**
+     * makes the character jump once after colliding with an enemy, and ensures the jump action is only triggered once by setting the hasJumped flag
+     */
+    jumpAfterColliding() {
+        if (!this.character.hasJumped) {
+            this.character.hasJumped = true;
+            this.character.jump();
+            setTimeout(() => {
+                this.character.speedY = 0;
+                this.character.y = 155;
+            }, 850);
+        }
+    }
+
+    /**
+     * checks if the character is on the ground and resets the hasJumped flag to false, allowing the character to jump again
+     */
+    update() {
+        if (this.character.isOnGround()) {
+            this.character.hasJumped = false;
+        }
     }
 
     /**

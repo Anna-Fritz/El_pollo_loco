@@ -6,6 +6,7 @@ class MovableObjects extends DrawableObjects {
     energy = 100;
     is_dead = false;
     lastHit = 0;
+    hasJumped = false;
 
     offset = {
         top: 0,
@@ -28,7 +29,7 @@ class MovableObjects extends DrawableObjects {
     
     /**
      * checks if the object is above ground
-     * @returns returning true for throwable objects and for other objects, it checks if their vertical position is less than 155
+     * @returns true for throwable objects and for other objects, it checks if their vertical position is less than 155
      */
     isAboveGround() {
         if (this instanceof ThrowableObject) { // Throwable objects should always fall
@@ -36,6 +37,14 @@ class MovableObjects extends DrawableObjects {
         } else {
             return this.y < 155;
         }
+    }
+
+    /**
+     * checks if the character's vertical position (y) is at or below the ground level (155), indicating that the character is on the ground
+     * @returns checks if vertical position is greater than or equal to 155
+     */
+    isOnGround() {
+        return this.y >= 155;
     }
 
     /**
