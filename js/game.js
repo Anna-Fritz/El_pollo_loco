@@ -26,7 +26,14 @@ function startGame() {
     intro_music.pause();
     chicken_sound.loop = true;
     chicken_sound.volume = 0.5;
-    chicken_sound.play();
+    if (localStorage.getItem('isMuted') === 'true') {
+        chicken_sound.play();
+        chicken_sound.muted = true;
+        toggleSound();
+        toggleSound();
+    } else {
+        chicken_sound.play();
+    }
 }
 
 /**
