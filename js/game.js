@@ -426,11 +426,14 @@ function checkSoundStartscreen(soundIcon, on, off) {
  * animates the hint arrow
  */
 function moveHintArrow() {
-    let arrow = document.getElementById('start-arrow');
-    arrow.classList.add('move-right');
-    setTimeout(() =>{
-        arrow.classList.remove('move-right');
-    },250)
+    if (sessionStorage.getItem('hintArrow') === null) {
+        let arrow = document.getElementById('start-arrow');
+        arrow.classList.remove('d-none');
+        arrow.classList.add('move-right');
+        setTimeout(() =>{
+            arrow.classList.remove('move-right');
+        },250)
+    }
 }
 
 /**
@@ -439,6 +442,7 @@ function moveHintArrow() {
 function stopHintArrow() {
     document.getElementById('start-arrow').classList.add('d-none');
     clearInterval(arrowHint);
+    sessionStorage.setItem('hintArrow', 'false');
 }
 
 /**
