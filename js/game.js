@@ -9,10 +9,11 @@ let arrowHint = setInterval(moveHintArrow, 700);
 /**
  * sets the intro music to loop continuously and pauses it initially
  */
-function startIntroMusic() {
+function presetMusic() {
     intro_music.loop = true;
     intro_music.volume = 0.1;
-    intro_music.pause(); 
+    intro_music.pause();
+    localStorage.setItem('isMuted', 'true');
 }
 
 /**
@@ -334,20 +335,20 @@ function toggleFullscreen() {
 }
 
 /**
- * toggles the sound on or off, updating the sound icon accordingly and changing the isOn state
+ * toggles the sound on or off, updating the sound icon accordingly and changing the isMuted state at localStorage
  */
 function toggleSound() {
     let soundIcon = document.getElementById('sound-switch');
     let on = '../img/icons/sound-on.svg';
     let off = '../img/icons/sound-off.svg';
-    if (isOn) {
+    if (localStorage.getItem('isMuted') === 'false') {
         muteAllSounds();
         soundIcon.src = off;
-        isOn = false;       
+        localStorage.setItem('isMuted', 'true');       
     } else {
         unmuteAllSounds();
         soundIcon.src = on;
-        isOn = true;
+        localStorage.setItem('isMuted', 'false');       
     }
 }
 
@@ -395,21 +396,17 @@ function toggleSoundStartscreen() {
 }
 
 /**
- * updates the sound icon based on the current sound state for the start screen, toggles the sound, and adjusts the isOnStart and isOn states accordingly
+ * updates the sound icon based on the current sound state for the start screen, toggles the sound
  * @param {HTMLElement} soundIcon sound button to toggle sound
  * @param {string} on image path
  * @param {string} off image path
  */
 function checkSoundStartscreen(soundIcon, on, off) {
-    if (isOnStart) {
+    if (localStorage.getItem('isMuted') === 'false') {
         soundIcon.src = off;
-        isOnStart = false;  
-        isOn = true;
         toggleSound();
     } else {
         soundIcon.src = on;
-        isOnStart = true;
-        isOn = false;
         toggleSound();
     }  
 }
