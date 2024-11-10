@@ -163,8 +163,9 @@ class Character extends MovableObjects {
             } else if (this.idleCondition()) {
                 this.setAnimation("animateIdle");
                 this.startNewNap();
-            } 
-            this.sleepingAnimation();
+            } else {
+                this.sleepingAnimation();
+            }
             if (this.currentAnimation) {    // update the frame for current animation, when the time has come
                 this.updateAnimationFrame();
             }        
@@ -179,6 +180,7 @@ class Character extends MovableObjects {
             this.longIdle = setTimeout(() => {
                 this.isSleeping = true;
                 this.longIdle = null;  // reset timer
+                this.idle = false;
             }, 4000);
         }
     }
@@ -189,7 +191,7 @@ class Character extends MovableObjects {
     sleepingAnimation() {
         if (this.isSleeping) {
             this.setAnimation("animateLongIdle");
-            this.idle = false;
+            // this.idle = false;
         }
     }
 
@@ -206,12 +208,8 @@ class Character extends MovableObjects {
      * clears the longIdle timeout, resets the longIdle variable to null, sets isSleeping to false, and ensures the character is in an idle state
      */
     resetLongIdle() {
-        if (this.longIdle) {
-            clearTimeout(this.longIdle);
-            this.longIdle = null;
-            this.isSleeping = false;
-            this.idle = true;
-        }
+        this.isSleeping = false;
+        this.idle = true;
     }
     
     /**

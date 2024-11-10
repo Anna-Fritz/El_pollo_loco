@@ -46,6 +46,10 @@ function checkGameRestart() {
     }    
 }
 
+function showHomeScreen() {
+    window.location.reload();
+}
+
 /**
  * reloads the current page to reset and restart the game.
  */

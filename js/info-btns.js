@@ -1,5 +1,7 @@
 let infoPopUp = document.getElementById("info-popup");
-let isClosed = true;
+let legalIsClosed = true;
+let pepeIsClosed = true;
+let controlLayoutIsClosed = true;
 
 bindBtnsPressEvents();
 bindBtnsPressEventsFullscreen();
@@ -8,13 +10,17 @@ bindBtnsPressEventsFullscreen();
  * shows or hides a legal notice popup by toggling its visibility and updating its content based on the isClosed state
  */
 function toggleLegalNotice() {
-  if(isClosed) {
+  if(legalIsClosed) {
       infoPopUp.classList.remove("d-none");
       infoPopUp.innerHTML = generateLegalNoticeHTML();
-      isClosed = false;
+      legalIsClosed = false;
+      pepeIsClosed = true;
+      controlLayoutIsClosed = true;
+  } else if (!pepeIsClosed || !controlLayoutIsClosed) {
+      infoPopUp.innerHTML = generateLegalNoticeHTML();
   } else {
       infoPopUp.classList.add('d-none');
-      isClosed = true;
+      legalIsClosed = true;
   }
 }  
 
@@ -22,27 +28,35 @@ function toggleLegalNotice() {
  * displays or hides a control layout popup by toggling its visibility and updating its content based on the isClosed state
  */
 function toggleControlLayout() {
-  if(isClosed) {
-      infoPopUp.classList.remove("d-none");
-      infoPopUp.innerHTML = generateControlLayoutHTML();
-      isClosed = false;
-  } else {
-      infoPopUp.classList.add('d-none');
-      isClosed = true;
-  }
+    if(controlLayoutIsClosed) {
+        infoPopUp.classList.remove("d-none");
+        infoPopUp.innerHTML = generateControlLayoutHTML();
+        controlLayoutIsClosed = false;
+        pepeIsClosed = true;
+        legalIsClosed = true;
+      } else if (!pepeIsClosed || !legalIsClosed) {
+        infoPopUp.innerHTML = generateControlLayoutHTML();
+      } else {
+        infoPopUp.classList.add('d-none');
+        controlLayoutIsClosed = true;
+    }
 }  
 
 /**
  * shows or hides a popup containing Pepe's story by toggling its visibility and updating its content based on the isClosed state
  */
 function togglePepeStory() {
-    if(isClosed) {
+    if(pepeIsClosed) {
         infoPopUp.classList.remove("d-none");
         infoPopUp.innerHTML = generatePepeStoryHTML();
-        isClosed = false;
+        pepeIsClosed = false;
+        controlLayoutIsClosed = true;
+        legalIsClosed = true;
+    } else if (!legalIsClosed || !controlLayoutIsClosed) {
+        infoPopUp.innerHTML = generatePepeStoryHTML();  
     } else {
         infoPopUp.classList.add('d-none');
-        isClosed = true;
+        pepeIsClosed = true;
     }
 }  
 

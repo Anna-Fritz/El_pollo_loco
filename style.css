@@ -211,10 +211,20 @@ body {
     align-items: center;
 }
 
-.home-icon {
+.home-replay-icons {
     position: absolute;
     left: 3.5%;
     bottom: 2%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10%;
+}
+
+.home-icon {
+    /* position: absolute;
+    left: 3.5%;
+    bottom: 2%; */
     height: 32px;
     width: 32px;
     padding: 10px;
