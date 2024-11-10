@@ -10,18 +10,22 @@
     canvas {
         height: 100vh;
     }
+
     .content h1 {
         display: none;
     }
+
     .info-popup {
         height: 100vh;
         width: 100%;
         box-sizing: border-box;
         border-radius: 0;
     }
+
     .turn-device-overlay {
         display: none;
     }
+
     .control-layout-keyboard {
         display: none;
     }
@@ -31,6 +35,7 @@
     .control-panel-right {
         display: flex;
     }
+
     .control-panel-left {
         display: flex;
     }
@@ -55,57 +60,71 @@
             border-width: 13px 0px 13px 20px;
         }
     }
+
     .btn-replay {
         width: 60px;
         height: 60px;
         border: 4px solid white;
     }
+
     .btn-replay img {
         height: 44px;
     }
+
     .sound-fullscreen-cont {
         gap: 8px;
         bottom: 2.5%;
         right: 2.5%;    
     }
+
     .red-btn-cont {
         height: 24px;
         width: 24px;
     }
+
     .panel {
         width: 170px;
         bottom: 2.5%;
     }
+
     .home-icon {
         height: 24px;
         width: 24px;
     }
+
     .start-arrow {
         bottom: 3.5%;
         right: 23%;
         height: 36px;
         width: 36px;  
     }
+
     .move-right {
         right: 17%;
     } 
+
     .control-btns {
         height: 48px;
         width: 48px;
     }
+
     .fullscreen-control-btns {
         height: 48px;
         width: 48px;
     }
+
     .control-panel-right {
         padding: 35px 5px;
     }
+
     .control-panel-left {
         padding: 35px 5px;
     }
+
     .fullscreen-panel-right {
         padding: 35px 0;
     }
+
     .fullscreen-panel-left {
         padding: 35px 0;
     }
@@ -125,13 +144,16 @@
         height: 24px;
         width: 24px;
     }
+
     .fullscreen-icon {
         height: 24px;
         width: 24px;
     }
+
     .start-arrow {
         bottom: 3.5%;
     }
+
     .control-layout-keyboard {
         display: none;
     }
@@ -147,27 +169,34 @@
     .replay-btn-container {
         top: 62%;
     }
+
     .start-arrow {
         right: 25%;
     }
+
     .move-right {
         right: 19%;
     }
+
     .control-btns {
         height: 30px;
         width: 30px;
     }
+
     .control-icons {
         height: 40px;
         width: 40px;
     }
+
     .fullscreen-control-btns {
         height: 40px;
         width: 40px;
     }
+
     .control-panel-right {
         padding: 35px 3px;
     }
+
     .control-panel-left {
         padding: 35px 3px;
     }
@@ -177,34 +206,42 @@
     .sound-fullscreen-cont {
         gap: 5px;
     }
+
     .icons {
         height: 24px;
         width: 24px;
     }
+
     .fullscreen-icon {
         height: 24px;
         width: 24px;
     }
+
     .start-arrow {
         bottom: 4%;
         height: 32px;
         width: 32px;
     }
+
     .panel {
         width: 140px;
     }
+
     .red-btn-cont {
         height: 18px;
         width: 18px;
     }
+
     .home-icon {
         height: 18px;
         width: 18px;
     }
+
     .control-btns {
         height: 32px;
         width: 32px;
     }
+
     .fullscreen-control-btns {
         height: 32px;
         width: 32px;
@@ -216,17 +253,21 @@
     .start-arrow {
         right: 25%;
     }
+
     .move-right {
         right: 19%;
     }
+
     .control-btns {
         height: 24px;
         width: 24px;
     }
+
     .fullscreen-control-btns {
         height: 24px;
         width: 24px;
     }
+
     .control-icons {
         height: 32px;
         width: 32px;
@@ -237,22 +278,25 @@
     .start-arrow {
         right: 28%;
     }
+
     .move-right {
         right: 22%;
     } 
+
     .turn-device {
         font-size: 12px;
         padding: 20px 30px;
     }
+
     .control-btns {
         height: 20px;
         width: 20px;
     }
+
     .fullscreen-control-btns {
         height: 20px;
         width: 20px;
     }
-
 }
 
 @media(max-width: 444px) {
@@ -261,27 +305,34 @@
         height: 40px;
         border: 4px solid white;
     }
+
     .btn-replay img {
         height: 32px;
     }
+
     .sound-fullscreen-cont {
         gap: 5px;
     }
+
     .start-arrow {
         bottom: 5.5%;
         right: 30%;
         height: 28px;
         width: 28px;
     }
+
     .move-right {
         right: 25%;
     } 
+
     .panel {
         width: 120px;
     }
+
     .control-panel-right {
         padding: 20px 0;
     }
+
     .control-panel-left {
         padding: 20px 0;
     }
@@ -291,17 +342,21 @@
     .start-arrow {
         right: 30%;
     }
+
     .move-right {
         right: 25%;
     }
+
     .red-btn-cont {
         height: 14px;
         width: 14px;
     } 
+
     .home-icon {
         height: 14px;
         width: 14px; 
     }
+
     .btn-play {
         width: 48px;
         height: 48px;
@@ -313,18 +368,23 @@
             border-width: 13px 0px 13px 20px;
         }
     }
+
     .start-arrow {
         right: 35%;
     }
+
     .move-right {
         right: 29%;
     } 
+
     .turn-device {
        text-align: center;
     }
+
     .control-panel-right {
         padding: 15px 0;
     }
+    
     .control-panel-left {
         padding: 15px 0;
     }
