@@ -253,10 +253,8 @@ function goFullscreen() {
     } else if (screen.msRequestFullscreen) { // IE/Edge
         screen.msRequestFullscreen();
     }
-    if (window.matchMedia('(hover: none)')) {
-        document.getElementById('fullscreen-panel-left').classList.add('d-none');
-        document.getElementById('fullscreen-panel-right').classList.add('d-none');    
-    }
+    document.getElementById('fullscreen-panel-left').classList.remove('d-none');
+    document.getElementById('fullscreen-panel-right').classList.remove('d-none');    
 }
 
 /**
@@ -303,10 +301,8 @@ function exitFullscreen() {
     } else if (document.msExitFullscreen) { // IE/Edge
         document.msExitFullscreen();
     }
-    if (!window.matchMedia('(hover: none)')) {
-        document.getElementById('fullscreen-panel-left').classList.remove('d-none');
-        document.getElementById('fullscreen-panel-right').classList.remove('d-none');    
-    }
+    document.getElementById('fullscreen-panel-left').classList.add('d-none');
+    document.getElementById('fullscreen-panel-right').classList.add('d-none');    
 }
 
 /**

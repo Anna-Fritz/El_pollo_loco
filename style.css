@@ -530,7 +530,7 @@ canvas {
 }
 
 .d-none {
-    display: none;
+    display: none !important;
 }
 
 .legal-notice-content {
@@ -630,7 +630,6 @@ h3 {
     left: 1%;
     top: 18%;
     z-index: 99;
-    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -645,7 +644,6 @@ h3 {
     right: 1%;
     top: 18%;
     z-index: 99;
-    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
