@@ -160,8 +160,8 @@ body {
 
 .info-popup {
     position: absolute;
-    height: 45%;
-    width: 50%;
+    height: 70%;
+    width: 35%;
     /* margin-bottom: 5%; */
     background-color: #A0220A;
     z-index: 10;
@@ -198,7 +198,10 @@ body {
     display: flex;
     /* flex-direction: column; */
     justify-content: space-between;
-    padding: 50px 30px 30px 30px;
+    gap: 12px;
+    padding: 50px 0;
+
+    /* padding: 50px 30px 30px 30px; */
     height: auto;
 }
 .key-d {
