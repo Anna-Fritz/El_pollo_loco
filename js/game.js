@@ -12,7 +12,7 @@ let arrowHint = setInterval(moveHintArrow, 700);
 function startIntroMusic() {
     intro_music.loop = true;
     intro_music.volume = 0.1;
-    intro_music.pause();
+    intro_music.pause(); 
 }
 
 /**
@@ -29,10 +29,29 @@ function startGame() {
 }
 
 /**
+ * checks if the game restart was requested by retrieving a value from localStorage, and if so, it removes the restart flag and calls reloadGame to reset the game
+ */
+function checkGameRestart() {
+    if (localStorage.getItem('restartGame') === 'true') {
+        localStorage.removeItem('restartGame');
+        reloadGame();
+    }    
+}
+
+/**
  * reloads the current page to reset and restart the game.
  */
 function replayGame() {
+    localStorage.setItem('restartGame', 'true');  // Flag setzen
     window.location.reload();
+}
+
+/**
+ *  simulates a click on the "play-special-btn" button element to initiate a game restart.
+ */
+function reloadGame() {
+    let start = document.getElementById('play-btn');
+    start.click();
 }
 
 /**
