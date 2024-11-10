@@ -105,6 +105,14 @@ class MovableObjects extends DrawableObjects {
     }
 
     /**
+     * updates the character's image by setting it to the specified image from the image cache
+     * @param {string} image path of current image
+     */
+    playCharacterAnimation(image) {
+        this.img = this.imageCache[image];
+    }
+
+    /**
      * increments the object's horizontal position (x) by its speed, effectively moving it to the right on the canvas
      */
     moveRight() {

@@ -11,86 +11,110 @@ class Character extends MovableObjects {
         bottom: 15
     };
 
-    IMAGES_WALKING = [
-        '../img/2_character_pepe/2_walk/W-21.png',
-        '../img/2_character_pepe/2_walk/W-22.png',
-        '../img/2_character_pepe/2_walk/W-23.png',
-        '../img/2_character_pepe/2_walk/W-24.png',
-        '../img/2_character_pepe/2_walk/W-25.png',
-        '../img/2_character_pepe/2_walk/W-26.png',
-    ];
-    IMAGES_JUMPING = [
-        '../img/2_character_pepe/3_jump/J-31.png',
-        '../img/2_character_pepe/3_jump/J-32.png',
-        '../img/2_character_pepe/3_jump/J-33.png',
-        '../img/2_character_pepe/3_jump/J-34.png',
-        '../img/2_character_pepe/3_jump/J-35.png',
-        '../img/2_character_pepe/3_jump/J-36.png',
-        '../img/2_character_pepe/3_jump/J-37.png',
-        '../img/2_character_pepe/3_jump/J-38.png',
-        '../img/2_character_pepe/3_jump/J-39.png',
-    ];
-    IMAGES_HURT = [
-        '../img/2_character_pepe/4_hurt/H-41.png',
-        '../img/2_character_pepe/4_hurt/H-42.png',
-        '../img/2_character_pepe/4_hurt/H-43.png'
-    ];
-    IMAGES_DEAD = [
-        '../img/2_character_pepe/5_dead/D-51.png',
-        '../img/2_character_pepe/5_dead/D-52.png',
-        '../img/2_character_pepe/5_dead/D-53.png',
-        '../img/2_character_pepe/5_dead/D-54.png',
-        '../img/2_character_pepe/5_dead/D-55.png',
-        '../img/2_character_pepe/5_dead/D-56.png',
-        '../img/2_character_pepe/5_dead/D-57.png',
-    ];
-    IMAGES_IDLE = [
-        '../img/2_character_pepe/1_idle/idle/I-1.png',
-        '../img/2_character_pepe/1_idle/idle/I-2.png',
-        '../img/2_character_pepe/1_idle/idle/I-3.png',
-        '../img/2_character_pepe/1_idle/idle/I-4.png',
-        '../img/2_character_pepe/1_idle/idle/I-5.png',
-        '../img/2_character_pepe/1_idle/idle/I-6.png',
-        '../img/2_character_pepe/1_idle/idle/I-7.png',
-        '../img/2_character_pepe/1_idle/idle/I-8.png',
-        '../img/2_character_pepe/1_idle/idle/I-9.png',
-        '../img/2_character_pepe/1_idle/idle/I-10.png',
-    ];
-    IMAGES_LONG_IDLE = [
-        '../img/2_character_pepe/1_idle/long_idle/I-11.png',
-        '../img/2_character_pepe/1_idle/long_idle/I-12.png',
-        '../img/2_character_pepe/1_idle/long_idle/I-13.png',
-        '../img/2_character_pepe/1_idle/long_idle/I-14.png',
-        '../img/2_character_pepe/1_idle/long_idle/I-15.png',
-        '../img/2_character_pepe/1_idle/long_idle/I-16.png',
-        '../img/2_character_pepe/1_idle/long_idle/I-17.png',
-        '../img/2_character_pepe/1_idle/long_idle/I-18.png',
-        '../img/2_character_pepe/1_idle/long_idle/I-19.png',
-        '../img/2_character_pepe/1_idle/long_idle/I-20.png',
-    ];
     world;
     audioPlayed = false;
-    isSleeping = true;
-    longIdle;
-
+    isSleeping = false;
+    idle = true;
+    longIdle = null;
+    currentAnimation = null;
+    frameIndex = 0;
+    animationTimers = { animateDeath: 0, animateHurt: 0 , animateJump: 0, animateWalk: 0, animateIdle: 0, animateLongIdle: 0};
+    
+    animations = {
+        animateDeath: { 
+            frames: [
+                '../img/2_character_pepe/5_dead/D-51.png',
+                '../img/2_character_pepe/5_dead/D-52.png',
+                '../img/2_character_pepe/5_dead/D-53.png',
+                '../img/2_character_pepe/5_dead/D-54.png',
+                '../img/2_character_pepe/5_dead/D-55.png',
+                '../img/2_character_pepe/5_dead/D-56.png',
+                '../img/2_character_pepe/5_dead/D-57.png',
+            ], 
+            speed: 150 
+        },
+        animateHurt: { 
+            frames: [
+                '../img/2_character_pepe/4_hurt/H-41.png',
+                '../img/2_character_pepe/4_hurt/H-42.png',
+                '../img/2_character_pepe/4_hurt/H-43.png'
+            ], 
+            speed: 100 
+        },
+        animateJump: { 
+            frames: [
+                '../img/2_character_pepe/3_jump/J-31.png',
+                '../img/2_character_pepe/3_jump/J-32.png',
+                '../img/2_character_pepe/3_jump/J-33.png',
+                '../img/2_character_pepe/3_jump/J-34.png',
+                '../img/2_character_pepe/3_jump/J-35.png',
+                '../img/2_character_pepe/3_jump/J-36.png',
+                '../img/2_character_pepe/3_jump/J-37.png',
+                '../img/2_character_pepe/3_jump/J-38.png',
+                '../img/2_character_pepe/3_jump/J-39.png',
+            ], 
+            speed: 125 
+        },
+        animateWalk: { 
+            frames: [
+                '../img/2_character_pepe/2_walk/W-21.png',
+                '../img/2_character_pepe/2_walk/W-22.png',
+                '../img/2_character_pepe/2_walk/W-23.png',
+                '../img/2_character_pepe/2_walk/W-24.png',
+                '../img/2_character_pepe/2_walk/W-25.png',
+                '../img/2_character_pepe/2_walk/W-26.png',
+            ], 
+            speed: 150 
+        },
+        animateIdle: { 
+            frames: [
+                '../img/2_character_pepe/1_idle/idle/I-1.png',
+                '../img/2_character_pepe/1_idle/idle/I-2.png',
+                '../img/2_character_pepe/1_idle/idle/I-3.png',
+                '../img/2_character_pepe/1_idle/idle/I-4.png',
+                '../img/2_character_pepe/1_idle/idle/I-5.png',
+                '../img/2_character_pepe/1_idle/idle/I-6.png',
+                '../img/2_character_pepe/1_idle/idle/I-7.png',
+                '../img/2_character_pepe/1_idle/idle/I-8.png',
+                '../img/2_character_pepe/1_idle/idle/I-9.png',
+                '../img/2_character_pepe/1_idle/idle/I-10.png',
+            ], 
+            speed: 200 
+        },
+        animateLongIdle: { 
+            frames: [
+                '../img/2_character_pepe/1_idle/long_idle/I-11.png',
+                '../img/2_character_pepe/1_idle/long_idle/I-12.png',
+                '../img/2_character_pepe/1_idle/long_idle/I-13.png',
+                '../img/2_character_pepe/1_idle/long_idle/I-14.png',
+                '../img/2_character_pepe/1_idle/long_idle/I-15.png',
+                '../img/2_character_pepe/1_idle/long_idle/I-16.png',
+                '../img/2_character_pepe/1_idle/long_idle/I-17.png',
+                '../img/2_character_pepe/1_idle/long_idle/I-18.png',
+                '../img/2_character_pepe/1_idle/long_idle/I-19.png',
+                '../img/2_character_pepe/1_idle/long_idle/I-20.png',
+            ], 
+            speed: 200 
+        },
+    };
 
     constructor(){
         super().loadImage('../img/2_character_pepe/2_walk/W-21.png');
-        this.loadImages(this.IMAGES_WALKING);
-        this.loadImages(this.IMAGES_JUMPING);
-        this.loadImages(this.IMAGES_HURT);
-        this.loadImages(this.IMAGES_DEAD);
-        this.loadImages(this.IMAGES_IDLE);
-        this.loadImages(this.IMAGES_LONG_IDLE);
+        this.loadImages(this.animations.animateWalk.frames);
+        this.loadImages(this.animations.animateJump.frames);
+        this.loadImages(this.animations.animateHurt.frames);
+        this.loadImages(this.animations.animateDeath.frames);
+        this.loadImages(this.animations.animateIdle.frames);
+        this.loadImages(this.animations.animateLongIdle.frames);
         this.applyGravity();
+        this.move();
         this.animate();
-        this.animateImages();
     }
 
     /**
-     * checks for keyboard input to move character right or left, make it jump if it's on the ground, play an alert sound, and update the camera's position based on the character's x-coordinate
+     * checks for keyboard input to move character right or left, make it jump if it's on the ground, and update the camera's position based on the character's x-coordinate
      */
-    animate() {
+    move() {
         setInterval(() => {
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.moveRight();
@@ -119,45 +143,100 @@ class Character extends MovableObjects {
         }    
     }
 
-    animateImages() {
+    /**
+     * manages character animations by checking various conditions, setting the appropriate animation state, and updating the animation frame when needed
+     */
+    animate() {
         setInterval(() => {
-            if(this.isDead()) {
-                clearTimeout(this.longIdle);
-                this.playAnimation(this.IMAGES_DEAD);
-                return;
-
+            if (this.isDead()) {
+                this.resetLongIdle();
+                this.setAnimation("animateDeath");
             } else if (this.isHurt()) {
-                clearTimeout(this.longIdle);
-                this.playAnimation(this.IMAGES_HURT);
-                hurt_sound.play();
+                this.resetLongIdle();
+                this.setAnimation("animateHurt");
+            } else if (this.isAboveGround()) {
+                this.resetLongIdle();
+                this.setAnimation("animateJump");
+            } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+                this.resetLongIdle();
+                this.setAnimation("animateWalk");
+            } else if (this.idleCondition()) {
+                this.setAnimation("animateIdle");
+                this.startNewNap();
+            } 
+            this.sleepingAnimation();
+            if (this.currentAnimation) {    // update the frame for current animation, when the time has come
+                this.updateAnimationFrame();
+            }        
+        }, 50);
+    }
+
+    /**
+     * starts a new 4-second timer for entering a "sleeping" state if no other "longIdle" timer is currently active
+     */
+    startNewNap() {
+        if (this.longIdle == null) {  
+            this.longIdle = setTimeout(() => {
                 this.isSleeping = true;
+                this.longIdle = null;  // reset timer
+            }, 4000);
+        }
+    }
 
-                
-              } else if (this.isAboveGround()) {
-                clearTimeout(this.longIdle);
-                this.playAnimation(this.IMAGES_JUMPING);
-                this.isSleeping = true;
+    /**
+     * triggers the "animateLongIdle" animation and sets the character's idle state to false when the character is in a sleeping state
+     */
+    sleepingAnimation() {
+        if (this.isSleeping) {
+            this.setAnimation("animateLongIdle");
+            this.idle = false;
+        }
+    }
 
-                } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-                    clearTimeout(this.longIdle);
-                    this.playAnimation(this.IMAGES_WALKING);
-                    walking_sound.play();
-                    this.isSleeping = true;
+    /**
+     * checks if the character is not dead, not hurt, not in the air, not moving left or right, and is idle, returning true if all conditions are met
+     * @returns an if statement condition
+     */
+    idleCondition() {
+        return !this.isDead() && !this.isHurt() && !this.isAboveGround() && 
+               !this.world.keyboard.RIGHT && !this.world.keyboard.LEFT && this.idle;
+    }
 
-                    } 
-                        else {
-                            clearTimeout(this.longIdle);
-                            this.playAnimation(this.IMAGES_IDLE);
-                            walking_sound.pause();
+    /**
+     * clears the longIdle timeout, resets the longIdle variable to null, sets isSleeping to false, and ensures the character is in an idle state
+     */
+    resetLongIdle() {
+        if (this.longIdle) {
+            clearTimeout(this.longIdle);
+            this.longIdle = null;
+            this.isSleeping = false;
+            this.idle = true;
+        }
+    }
+    
+    /**
+     * sets the current animation to the specified animationName, resets the frameIndex to 0, and initializes the timer for the new animation
+     * @param {string} animationName name of current animation
+     */
+    setAnimation(animationName) {
+        if (this.currentAnimation !== animationName) {
+            this.currentAnimation = animationName;
+            this.frameIndex = 0;
+            this.animationTimers[animationName] = 0; // reset timer
+        }
+    }
 
-                            if (this.isSleeping) {
-                                let longIdle = setTimeout(() => {
-                                    this.playAnimation(this.IMAGES_LONG_IDLE)
-                                }, 1000)
-                                this.longIdle = longIdle;
-                                this.isSleeping = false;
-                            }
-                        }         
-        }, 150);
-    } 
+    /**
+     * updates the animation frame based on the elapsed time, plays the current frame of the animation, and loops through the frames at the specified speed
+     */
+    updateAnimationFrame() {
+        const { frames, speed } = this.animations[this.currentAnimation];
+        this.animationTimers[this.currentAnimation] += 50; // 50ms
+    
+        if (this.animationTimers[this.currentAnimation] >= speed) {
+            this.playCharacterAnimation(frames[this.frameIndex]);
+            this.frameIndex = (this.frameIndex + 1) % frames.length;
+            this.animationTimers[this.currentAnimation] = 0;
+        }
+    }
 }
