@@ -149,6 +149,9 @@ class Endboss extends MovableObjects {
 
         if (!this.audioPlayed) {
             endboss_dies.play();
+            setTimeout(() => {
+                winning.play();
+            },1300)
             this.audioPlayed = true;
             endboss_alert.pause();
         }

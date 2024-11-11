@@ -9,6 +9,10 @@ let cashing = new Audio('../audio/coin-received.mp3');
 let pop = new Audio('../audio/bottle-pop.mp3');
 let salsa_splat = new Audio('../audio/salsa-splat.mp3');
 let endboss_ishurt = new Audio('../audio/endboss-hurt.mp3');
+let death_chick = new Audio('../audio/death_chick.mp3');
+let death_chicken = new Audio('../audio/death_chicken.mp3');
+let winning = new Audio('../audio/winning.mp3');
+let loosing = new Audio('../audio/loosing.mp3');
 
 
 
@@ -77,6 +81,8 @@ let endboss_ishurt = new Audio('../audio/endboss-hurt.mp3');
         new Coin(),
     ],
     [
+        new BottleOnGround('../img/6_salsa_bottle/1_salsa_bottle_on_ground.png'),
+        new BottleOnGround('../img/6_salsa_bottle/2_salsa_bottle_on_ground.png'),
         new BottleOnGround('../img/6_salsa_bottle/1_salsa_bottle_on_ground.png'),
         new BottleOnGround('../img/6_salsa_bottle/2_salsa_bottle_on_ground.png'),
         new BottleOnGround('../img/6_salsa_bottle/1_salsa_bottle_on_ground.png'),

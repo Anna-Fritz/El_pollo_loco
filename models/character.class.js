@@ -137,7 +137,6 @@ class Character extends MovableObjects {
      */
     startEndbossAlertSound() {
         if (!this.audioPlayed && this.x == 2000) {
-            endboss_alert.loop = true;
             endboss_alert.play();
             this.audioPlayed = true;
         }    

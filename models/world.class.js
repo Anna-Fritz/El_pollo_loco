@@ -108,7 +108,6 @@ class World {
         setInterval(() => {
             if (this.character.isColliding(enemy) && enemy.energy > 0 || this.character.isColliding(this.endboss)) {
                 this.character.hit();
-                hurt_sound.volume = 0.3;
                 hurt_sound.play();
                 this.statusBarHealth.setPercentage(this.character.energy)
             };
@@ -141,7 +140,6 @@ class World {
             bottle.speedY = 0;
             bottle.acceleration = 0;
             clearInterval(bottle.movementInterval);
-            salsa_splat.volume = 0.3;
             salsa_splat.play();    
         }
     }
@@ -170,7 +168,6 @@ class World {
     checkCollectionCoins() {
         this.level.coins.forEach((coin, index) => {
             if (this.character.isColliding(coin)) {
-                cashing.volume = 0.2;
                 cashing.play();
                 this.statusBarCoin.isCollected();
                 this.statusBarCoin.collectCoins(this.statusBarCoin.wallet); 
@@ -185,7 +182,6 @@ class World {
     checkCollectionBottles() {
         this.level.bottles.forEach((bottle, index) => {
             if (this.character.isColliding(bottle)) {
-                pop.volume = 0.5;
                 pop.play();
                 this.statusBarBottle.isCollected();
                 this.statusBarBottle.collectBottles(this.statusBarBottle.bottleBag);
@@ -210,6 +206,7 @@ class World {
             gameLost.lost = true;
             this.gameEndImages.push(gameLost);
             gameLost.animate();
+            loosing.play();
             this.gameRunning = false;
         } 
     }

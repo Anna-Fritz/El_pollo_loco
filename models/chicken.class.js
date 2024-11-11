@@ -3,6 +3,7 @@ class Chicken extends MovableObjects {
     height = 80;
     width = 80;
     y = 340;
+    playOnce = true;
     
     offset = {
         top: 10,
@@ -38,6 +39,10 @@ class Chicken extends MovableObjects {
             if (!this.isDead()) {
                 this.playAnimation(this.IMAGES_WALKING);
             } else {
+                if (this.playOnce) {
+                    death_chicken.play();   
+                    this.playOnce = false; 
+                }
                 this.playAnimation(this.IMAGES_DEAD);
             }
         }, 200);        

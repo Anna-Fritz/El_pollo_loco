@@ -11,6 +11,8 @@ class Chick extends MovableObjects {
         bottom: 5
     };
 
+    playOnce = true;
+
     IMAGES_WALKING = [
         '../img/3_enemies_chicken/chicken_small/1_walk/1_w.png',
         '../img/3_enemies_chicken/chicken_small/1_walk/2_w.png',
@@ -39,6 +41,10 @@ class Chick extends MovableObjects {
             if (!this.isDead()) {
                 this.playAnimation(this.IMAGES_WALKING);
             } else {
+                if (this.playOnce) {
+                    death_chick.play();
+                    this.playOnce = false;
+                }
                 this.playAnimation(this.IMAGES_DEAD);
             }
         }, 200);        

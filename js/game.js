@@ -18,6 +18,23 @@ function presetMusic() {
     }
 }
 
+function presetVolume() {
+    chicken_sound.loop = true;
+    chicken_sound.volume = 0.3;
+    hurt_sound.volume = 0.3;
+    endboss_dies.volume = 0.2;
+    endboss_alert.loop = true;
+    endboss_alert.volume = 0.4;
+    salsa_splat.volume = 0.3;
+    endboss_ishurt.volume = 0.4;
+    cashing.volume = 0.1;
+    pop.volume = 0.3;
+    death_chick.volume = 0.3;
+    death_chicken.volume = 0.3;
+    winning.volume = 0.3;
+    loosing.volume = 0.1;
+}
+
 /**
  *  initializes the game, hides the start screen overlay, pauses the intro music, and starts playing a looping chicken sound
  */
@@ -26,8 +43,6 @@ function startGame() {
     world = new World(canvas, keyboard);
     document.getElementById('start-screen-overlay').classList.add('d-none');
     intro_music.pause();
-    chicken_sound.loop = true;
-    chicken_sound.volume = 0.5;
     // if (localStorage.getItem('isMuted') === null) {
     //     localStorage.setItem('isMuted', 'true')
     // }
@@ -217,6 +232,10 @@ function muteAllSounds() {
     endboss_ishurt.muted = true;
     cashing.muted = true;
     pop.muted = true;
+    death_chick.muted = true;
+    death_chicken.muted = true;
+    winning.muted = true;
+    loosing.muted = true;
 }
 
 /**
@@ -232,6 +251,10 @@ function unmuteAllSounds() {
     endboss_ishurt.muted = false;
     cashing.muted = false;
     pop.muted = false;
+    death_chick.muted = false;
+    death_chicken.muted = false;
+    winning.muted = false;
+    loosing.muted = false;
 }
 
 /**
