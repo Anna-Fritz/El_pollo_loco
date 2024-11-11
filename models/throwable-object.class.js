@@ -1,6 +1,7 @@
 class ThrowableObject extends MovableObjects {
     speedY = 30;
     speedX = 20;
+    movementInterval;
 
     /**
      * initiates the throwing action by setting the object's position, and if the object's vertical position does not exceed a threshold, it continuously updates its horizontal position at regular intervals
@@ -10,13 +11,13 @@ class ThrowableObject extends MovableObjects {
     throw(x, y) {
         this.setThrowingAction(x, y);
 
-        if (this.y >= 345) {
-            this.speedY = 0;
-        } else {
-            setInterval(() => {
-                this.x += 10;
-            }, 25)    
-        }
+            if (this.y >= 345) {
+                this.speedY = 0;
+            } else {
+                this.movementInterval = setInterval(() => {
+                    this.x += 10;
+                }, 25)    
+            }    
     }
 
     /**
@@ -26,10 +27,10 @@ class ThrowableObject extends MovableObjects {
      */
     throwLeft(x, y) {
         this.setThrowingAction(x, y);
-
-        setInterval(() => {
-            this.x -= 10;
-        }, 25)
+        
+            setInterval(() => {
+                this.x -= 10;
+            }, 25)
     }
 
     /**

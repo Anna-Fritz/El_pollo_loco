@@ -74,7 +74,7 @@ class World {
                 this.jumpAfterColliding();
             }; 
             this.update();
-        }, 50);
+        }, 25);
     }
 
     /**
@@ -108,6 +108,8 @@ class World {
         setInterval(() => {
             if (this.character.isColliding(enemy) && enemy.energy > 0 || this.character.isColliding(this.endboss)) {
                 this.character.hit();
+                hurt_sound.volume = 0.3;
+                hurt_sound.play();
                 this.statusBarHealth.setPercentage(this.character.energy)
             };
         },150);
@@ -121,13 +123,27 @@ class World {
             this.level.enemies.forEach((enemy) => {
                 if (enemy.isColliding(bottle)) {
                     enemy.energy = 0;
-                    salsa_splat.volume = 0.3;
-                    salsa_splat.play();
+                    this.stopBottleAtCollisionPoint(bottle);
                     bottle.animateSplash();
-                    return setTimeout(() => {this.throwableObjects.splice(index,1)}, 25)    
+                    return setTimeout(() => {this.throwableObjects.splice(index,1)}, 300)    
                 }
             })
         })
+    }
+
+    /**
+     * stops the bottle's movement at the collision point and plays a sound effect
+     * @param {*} bottle 
+     */
+    stopBottleAtCollisionPoint(bottle) {
+        if(bottle.y = 320) {
+            bottle.speedX = 0;
+            bottle.speedY = 0;
+            bottle.acceleration = 0;
+            clearInterval(bottle.movementInterval);
+            salsa_splat.volume = 0.3;
+            salsa_splat.play();    
+        }
     }
 
     /**
@@ -265,11 +281,11 @@ class World {
     checkBottleHitsGround() {
         this.throwableObjects.forEach((bottle, index) => {
             this.level.enemies.forEach((enemy) => {
-                if (bottle.y > 310 && !enemy.isColliding(bottle) && !this.endboss.isColliding(bottle)) {
+                if (bottle.y > 320 && !enemy.isColliding(bottle) && !this.endboss.isColliding(bottle)) {
                     this.landBottleOnGround(bottle, index);
                 } 
             });
-            if (bottle.y > 310 && !this.endboss.isColliding(bottle) && this.level.enemies.length == 0) {
+            if (bottle.y > 320 && !this.endboss.isColliding(bottle) && this.level.enemies.length == 0) {
                 this.landBottleOnGround(bottle, index);
             }       
         });  

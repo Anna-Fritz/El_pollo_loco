@@ -37,7 +37,7 @@ class Bottle extends ThrowableObject {
      * continuously plays the bottle rotation animation
      */
     animate() {           
-        setInterval(() => {
+        this.rotationInterval = setInterval(() => {
             this.playAnimation(this.IMAGES_BOTTLE_ROTATION);
         }, 100)
     }
@@ -46,8 +46,9 @@ class Bottle extends ThrowableObject {
      * continuously plays the bottle splash animation
      */
     animateSplash() {
+        clearInterval(this.rotationInterval);
         setInterval(() => {
             this.playAnimation(this.IMAGES_BOTTLE_SPLASH)
-        }, 50)
+        }, 75)
     }
 }
