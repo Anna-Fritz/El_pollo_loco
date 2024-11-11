@@ -56,7 +56,7 @@
                 </div>
             </div>
             <div class="sound-fullscreen-cont">
-                <div onclick="toggleSoundStartscreen()" class="red-btn-cont">
+                <div id="toggle-sound-startscreen" onclick="toggleSoundStartscreen()" class="red-btn-cont">
                     <img src="./img/icons/sound-off.svg" class="icons" alt="sound" id="start-sound-switch">
                 </div>
                 <div id="fullscreen-start" onclick="toggleFullscreenStart()" class="red-btn-cont">
@@ -120,7 +120,7 @@
                         <img onclick="showHomeScreen()" src="./img/icons/mexican-hat.svg" class="icons" alt="home">
                     </div>
                     <div class="home-icon">
-                        <img onclick="replayGame()" src="./img/icons/replay-icon.svg" class="icons" alt="replay game">
+                        <img onclick="replayGame()" src="./img/icons/replay-icon.svg" class="icons home-replay" alt="replay game">
                     </div>    
                 </div>
                 <div onclick="replayGame()" id="replay-btn" class="replay-btn-container d-none">

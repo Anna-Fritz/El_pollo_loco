@@ -252,6 +252,14 @@ body {
     align-items: center;
 }
 
+.home-replay {
+    transition: 1s ease;
+}
+
+.home-replay:hover {
+    transform: rotate(180deg);
+}
+
 .sound-fullscreen-cont {
     position: absolute;
     bottom: 2%;

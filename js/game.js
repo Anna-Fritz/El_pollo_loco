@@ -13,7 +13,9 @@ function presetMusic() {
     intro_music.loop = true;
     intro_music.volume = 0.1;
     intro_music.pause();
-    localStorage.setItem('isMuted', 'true');
+    if (localStorage.getItem('isMuted') === 'false') {
+        intro_music.play();
+    }
 }
 
 /**
@@ -26,6 +28,9 @@ function startGame() {
     intro_music.pause();
     chicken_sound.loop = true;
     chicken_sound.volume = 0.5;
+    // if (localStorage.getItem('isMuted') === null) {
+    //     localStorage.setItem('isMuted', 'true')
+    // }
     if (localStorage.getItem('isMuted') === 'true') {
         chicken_sound.play();
         chicken_sound.muted = true;
@@ -43,10 +48,16 @@ function checkGameRestart() {
     if (localStorage.getItem('restartGame') === 'true') {
         localStorage.removeItem('restartGame');
         reloadGame();
+    }
+    if (localStorage.getItem('backToHome') === 'true' && localStorage.getItem('isMuted') === 'false') {
+        let start = document.getElementById('toggle-sound-startscreen');
+        start.click();
+        start.click();
     }    
 }
 
 function showHomeScreen() {
+    localStorage.setItem('backToHome', 'true');
     window.location.reload();
 }
 
@@ -243,6 +254,9 @@ function toggleSoundStartscreen() {
  * @param {string} off image path
  */
 function checkSoundStartscreen(soundIcon, on, off) {
+    if (localStorage.getItem('isMuted') === null) {
+        localStorage.setItem('isMuted', 'false')
+    }
     if (localStorage.getItem('isMuted') === 'false') {
         soundIcon.src = off;
         toggleSound();

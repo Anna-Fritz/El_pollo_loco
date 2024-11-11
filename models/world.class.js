@@ -235,13 +235,13 @@ class World {
      * checks for keyboard input to throw a bottle in either direction based on the character's facing direction, ensuring that the character has bottles available in their bottle bag
      */
     checkThrowObjects() {
-        if(this.keyboard.KEY_D && !this.statusBarBottle.bottleBag == 0 && this.character.otherDirection) {
+        if(this.keyboard.KEY_D && !this.statusBarBottle.bottleBag == 0 && this.character.otherDirection && !this.character.isSleeping) {
             let newBottle = new Bottle(this.character.x + 50, this.character.y + 100);
             newBottle.animate();
             newBottle.throwLeft(this.character.x + 50, this.character.y + 100);
             this.updateBottleStatus(newBottle);
 
-        } else if(this.keyboard.KEY_D && !this.statusBarBottle.bottleBag == 0) {
+        } else if(this.keyboard.KEY_D && !this.statusBarBottle.bottleBag == 0 && !this.character.isSleeping) {
             let newBottle = new Bottle(this.character.x + 50, this.character.y + 100);
             newBottle.animate();
             newBottle.throw(this.character.x + 50, this.character.y + 100);
@@ -277,8 +277,8 @@ class World {
 
     /**
      * removes a thrown bottle from the throwable objects array and creates a new bottle object on the ground at the bottle's current position, adding it to the level's bottles array
-     * @param {*} bottle 
-     * @param {*} index 
+     * @param {object} bottle 
+     * @param {number} index 
      */
     landBottleOnGround(bottle, index) {
         this.throwableObjects.splice(index,1);
