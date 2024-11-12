@@ -19,6 +19,10 @@ class Character extends MovableObjects {
     currentAnimation = null;
     frameIndex = 0;
     animationTimers = { animateDeath: 0, animateHurt: 0 , animateJump: 0, animateWalk: 0, animateIdle: 0, animateLongIdle: 0};
+    startTimer;
+    startIdle;
+    startNap;
+    idleTime;
     
     animations = {
         animateDeath: { 
@@ -140,6 +144,7 @@ class Character extends MovableObjects {
             final_alert.play();
             setTimeout(() => {
                 endboss_alert.play();
+                finalsound.play();
             },1000);
             this.audioPlayed = true;
         }    
@@ -163,7 +168,6 @@ class Character extends MovableObjects {
                 this.resetLongIdle();
                 this.setAnimation("animateWalk");
             } else if (this.idleCondition()) {
-                this.resetLongIdle;
                 this.setAnimation("animateIdle");
                 this.startNewNap();
             } else {
@@ -176,16 +180,19 @@ class Character extends MovableObjects {
     }
 
     /**
-     * starts a new 5-second timer for entering a "sleeping" state if no other "longIdle" timer is currently active
+     * starts a new 4-second timer for entering a "sleeping" state
      */
     startNewNap() {
-        if (this.longIdle == null) {  
-            this.longIdle = setTimeout(() => {
-                snoring.play();
-                this.isSleeping = true;
-                this.longIdle = null;  // reset timer
-                this.idle = false;
-            }, 5000);
+        if (this.startTimer) {
+            this.startIdle = new Date().getTime();
+            this.startTimer = false;
+        }
+        this.startNap = new Date().getTime();
+        this.idleTime = this.startNap - this.startIdle;
+        if (this.idleTime >= 4000) {  
+            snoring.play();
+            this.isSleeping = true;
+            this.idle = false;
         } 
     }
 
@@ -211,9 +218,10 @@ class Character extends MovableObjects {
      * clears the longIdle timeout, resets the longIdle variable to null, sets isSleeping to false, and ensures the character is in an idle state
      */
     resetLongIdle() {
-        clearTimeout(this.longIdle);
+        this.longIdle = null;
         this.isSleeping = false;
         this.idle = true;
+        this.startTimer = true;
         snoring.pause();
     }
     

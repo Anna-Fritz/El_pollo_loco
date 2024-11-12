@@ -15,6 +15,7 @@ let winning = new Audio('../audio/winning.mp3');
 let loosing = new Audio('../audio/loosing.mp3');
 let snoring = new Audio('../audio/snoring.mp3');
 let final_alert = new Audio('../audio/final_alert.mp3');
+let finalsound = new Audio('../audio/finalsound.mp3');
 
 // function initLevel() {
     level1 = new Level(

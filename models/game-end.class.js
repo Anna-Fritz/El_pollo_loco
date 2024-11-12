@@ -39,6 +39,7 @@ class GameEnd extends MovableObjects{
             chicken_sound.pause();
             endboss_alert.pause(); 
             snoring.pause();   
+            finalsound.pause();
     }
 
     /**
@@ -57,7 +58,6 @@ class GameEnd extends MovableObjects{
         setTimeout(() => {
             document.getElementById('replay-btn').classList.remove('d-none');
             clearAllIntervals();
-            // this.sparkleWin(); 
         }, 2000);
     }
 

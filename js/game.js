@@ -43,6 +43,8 @@ function presetVolume() {
     snoring.loop = true;
     snoring.volume = 0.5;
     final_alert.volume = 0.3;
+    finalsound.loop = true;
+    finalsound.volume = 0.4;
 }
 
 /**
@@ -53,13 +55,15 @@ function startGame() {
     world = new World(canvas, keyboard);
     document.getElementById('start-screen-overlay').classList.add('d-none');
     intro_music.pause();
+    chicken_sound.pause();
     if (localStorage.getItem('isMuted') === 'true') {
         chicken_sound.pause();
-        chicken_sound.muted = true;
+        // chicken_sound.muted = true;
         toggleSound();
         toggleSound();
-    } else {
+    } else if (localStorage.getItem('isMuted') === 'false') {
         chicken_sound.play();
+
     }
 }
 
@@ -230,7 +234,7 @@ function toggleSound() {
  * mutes all specified sound effects in the game
  */
 function muteAllSounds() {
-    chicken_sound.muted = true;
+    chicken_sound.pause();
     walking_sound.muted = true;
     hurt_sound.muted = true;
     endboss_dies.muted = true;
@@ -245,13 +249,14 @@ function muteAllSounds() {
     loosing.muted = true;
     snoring.muted = true;
     final_alert.muted = true;
+    finalsound.muted = true;
 }
 
 /**
  * unmutes all specified sound effects in the game
  */
 function unmuteAllSounds() {
-    chicken_sound.muted = false;
+    chicken_sound.play();
     walking_sound.muted = false;
     hurt_sound.muted = false;
     endboss_dies.muted = false;
@@ -266,6 +271,7 @@ function unmuteAllSounds() {
     loosing.muted = false;
     snoring.muted = false;
     final_alert.muted = false;
+    finalsound.muted = false;
 }
 
 /**
