@@ -12,9 +12,13 @@ let arrowHint = setInterval(moveHintArrow, 700);
 function presetMusic() {
     intro_music.loop = true;
     intro_music.volume = 0.1;
-    intro_music.pause();
-    if (localStorage.getItem('isMuted') === 'false') {
+    if (localStorage.getItem('isMuted') == null) {
+        localStorage.setItem('isMuted', 'true');
+        intro_music.pause();
+    } else if (localStorage.getItem('isMuted') === 'false') {
         intro_music.play();
+    } else if (localStorage.getItem('isMuted') === 'true') {
+        intro_music.pause();
     }
 }
 
@@ -49,11 +53,8 @@ function startGame() {
     world = new World(canvas, keyboard);
     document.getElementById('start-screen-overlay').classList.add('d-none');
     intro_music.pause();
-    // if (localStorage.getItem('isMuted') === null) {
-    //     localStorage.setItem('isMuted', 'true')
-    // }
     if (localStorage.getItem('isMuted') === 'true') {
-        chicken_sound.play();
+        chicken_sound.pause();
         chicken_sound.muted = true;
         toggleSound();
         toggleSound();
@@ -287,9 +288,6 @@ function toggleSoundStartscreen() {
  * @param {string} off image path
  */
 function checkSoundStartscreen(soundIcon, on, off) {
-    if (localStorage.getItem('isMuted') === null) {
-        localStorage.setItem('isMuted', 'false')
-    }
     if (localStorage.getItem('isMuted') === 'false') {
         soundIcon.src = off;
         toggleSound();

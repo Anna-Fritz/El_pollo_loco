@@ -176,7 +176,7 @@ class Character extends MovableObjects {
     }
 
     /**
-     * starts a new 4-second timer for entering a "sleeping" state if no other "longIdle" timer is currently active
+     * starts a new 5-second timer for entering a "sleeping" state if no other "longIdle" timer is currently active
      */
     startNewNap() {
         if (this.longIdle == null) {  
