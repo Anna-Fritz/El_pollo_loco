@@ -18,6 +18,9 @@ function presetMusic() {
     }
 }
 
+/**
+ * presets sound volume
+ */
 function presetVolume() {
     chicken_sound.loop = true;
     chicken_sound.volume = 0.3;
@@ -33,6 +36,9 @@ function presetVolume() {
     death_chicken.volume = 0.3;
     winning.volume = 0.3;
     loosing.volume = 0.1;
+    snoring.loop = true;
+    snoring.volume = 0.5;
+    final_alert.volume = 0.3;
 }
 
 /**
@@ -236,6 +242,8 @@ function muteAllSounds() {
     death_chicken.muted = true;
     winning.muted = true;
     loosing.muted = true;
+    snoring.muted = true;
+    final_alert.muted = true;
 }
 
 /**
@@ -255,6 +263,8 @@ function unmuteAllSounds() {
     death_chicken.muted = false;
     winning.muted = false;
     loosing.muted = false;
+    snoring.muted = false;
+    final_alert.muted = false;
 }
 
 /**

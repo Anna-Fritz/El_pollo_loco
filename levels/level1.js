@@ -13,29 +13,23 @@ let death_chick = new Audio('../audio/death_chick.mp3');
 let death_chicken = new Audio('../audio/death_chicken.mp3');
 let winning = new Audio('../audio/winning.mp3');
 let loosing = new Audio('../audio/loosing.mp3');
-
-
-
-
-
+let snoring = new Audio('../audio/snoring.mp3');
+let final_alert = new Audio('../audio/final_alert.mp3');
 
 // function initLevel() {
     level1 = new Level(
     [
         new Chicken(),
-        // new Chicken(),
-        // new Chicken(),
-        // new Chicken(),
-        // new Chicken(),
-        // new Chicken(),
-        // new Chicken(),
-        // new Chicken(),
-        // new Chicken(),
+        new Chicken(),
+        new Chicken(),
+        new Chicken(),
+        new Chicken(),
+        new Chicken(),
         new Chick(),
         new Chick(),
         new Chick(),
-
-        // new Endboss()
+        new Chick(),
+        new Chick(),
     ],
     [
         new Cloud('../img/5_background/layers/4_clouds/1.png', 0),
@@ -70,6 +64,9 @@ let loosing = new Audio('../audio/loosing.mp3');
         new BackgroundObject('../img/5_background/layers/1_first_layer/2.png', 719*3)
     ],
     [
+        new Coin(),
+        new Coin(),
+        new Coin(),
         new Coin(),
         new Coin(),
         new Coin(),

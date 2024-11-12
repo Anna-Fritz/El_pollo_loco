@@ -37,7 +37,8 @@ class GameEnd extends MovableObjects{
                 this.stopGameAfterDefeat();
                 }
             chicken_sound.pause();
-            endboss_alert.pause();    
+            endboss_alert.pause(); 
+            snoring.pause();   
     }
 
     /**

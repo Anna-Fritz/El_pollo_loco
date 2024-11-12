@@ -74,7 +74,7 @@ class World {
                 this.jumpAfterColliding();
             }; 
             this.update();
-        }, 25);
+        }, 1000 / 60);
     }
 
     /**
@@ -241,7 +241,10 @@ class World {
                    this.level.enemies.splice(index, 1);
                 }
             }   
-        })
+        });
+        if(this.level.enemies.length == 0) {
+            chicken_sound.pause();
+        }
     }
 
     /**

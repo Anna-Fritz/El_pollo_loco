@@ -64,7 +64,7 @@ class Character extends MovableObjects {
                 '../img/2_character_pepe/2_walk/W-25.png',
                 '../img/2_character_pepe/2_walk/W-26.png',
             ], 
-            speed: 150 
+            speed: 110 
         },
         animateIdle: { 
             frames: [
@@ -137,7 +137,10 @@ class Character extends MovableObjects {
      */
     startEndbossAlertSound() {
         if (!this.audioPlayed && this.x == 2000) {
-            endboss_alert.play();
+            final_alert.play();
+            setTimeout(() => {
+                endboss_alert.play();
+            },1000);
             this.audioPlayed = true;
         }    
     }
@@ -160,6 +163,7 @@ class Character extends MovableObjects {
                 this.resetLongIdle();
                 this.setAnimation("animateWalk");
             } else if (this.idleCondition()) {
+                this.resetLongIdle;
                 this.setAnimation("animateIdle");
                 this.startNewNap();
             } else {
@@ -177,11 +181,12 @@ class Character extends MovableObjects {
     startNewNap() {
         if (this.longIdle == null) {  
             this.longIdle = setTimeout(() => {
+                snoring.play();
                 this.isSleeping = true;
                 this.longIdle = null;  // reset timer
                 this.idle = false;
-            }, 4000);
-        }
+            }, 5000);
+        } 
     }
 
     /**
@@ -190,7 +195,6 @@ class Character extends MovableObjects {
     sleepingAnimation() {
         if (this.isSleeping) {
             this.setAnimation("animateLongIdle");
-            // this.idle = false;
         }
     }
 
@@ -207,8 +211,10 @@ class Character extends MovableObjects {
      * clears the longIdle timeout, resets the longIdle variable to null, sets isSleeping to false, and ensures the character is in an idle state
      */
     resetLongIdle() {
+        clearTimeout(this.longIdle);
         this.isSleeping = false;
         this.idle = true;
+        snoring.pause();
     }
     
     /**

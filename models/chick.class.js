@@ -5,10 +5,10 @@ class Chick extends MovableObjects {
     y = 365;
 
     offset = {
-        top: 10,
-        left: 5,
-        right: 5,
-        bottom: 5
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0
     };
 
     playOnce = true;
