@@ -48,19 +48,19 @@ function generateControlLayoutHTML() {
           <div class="layout-btns">
               <div class="btn-cont">
                   <div class="panel-icon-cont">
-                      <img class="panel-icon" src="../img/icons/arrow-left.svg" alt="arrow left">
+                      <img class="panel-icon" src="img/icons/arrow-left.svg" alt="arrow left">
                   </div>
                   <h4>walk left</h4>
               </div>
               <div class="btn-cont">
                   <div class="panel-icon-cont">
-                      <img class="panel-icon" src="../img/icons/arrow-right.svg" alt="arrow left">
+                      <img class="panel-icon" src="img/icons/arrow-right.svg" alt="arrow left">
                   </div>
                   <h4>walk right</h4>
               </div>
               <div class="btn-cont">
                   <div class="panel-icon-cont">
-                      <img class="panel-icon" src="../img/icons/space-key.svg" alt="arrow left">
+                      <img class="panel-icon" src="img/icons/space-key.svg" alt="arrow left">
                   </div>
                   <h4>jump</h4>
               </div>
@@ -77,61 +77,31 @@ function generateControlLayoutHTML() {
           <div class="layout-btns">
               <div class="btn-cont">
                   <div class="panel-icon-cont">
-                      <img class="panel-icon" src="../img/icons/arrow-left.svg" alt="arrow left">
+                      <img class="panel-icon" src="img/icons/arrow-left.svg" alt="arrow left">
                   </div>
                   <h4>walk left</h4>
               </div>
               <div class="btn-cont">
                   <div class="panel-icon-cont">
-                      <img class="panel-icon" src="../img/icons/arrow-right.svg" alt="arrow left">
+                      <img class="panel-icon" src="img/icons/arrow-right.svg" alt="arrow left">
                   </div>
                   <h4>walk right</h4>
               </div>
               <div class="btn-cont">
                   <div class="panel-icon-cont">
-                      <img class="panel-icon" src="../img/icons/arrow-up.svg" alt="arrow left">
+                      <img class="panel-icon" src="img/icons/arrow-up.svg" alt="arrow left">
                   </div>
                   <h4>jump</h4>
               </div>
               <div class="btn-cont">
                   <div class="panel-icon-cont">
-                      <img class="panel-icon" src="../img/icons/bottle.svg" alt="arrow left">
+                      <img class="panel-icon" src="img/icons/bottle.svg" alt="arrow left">
                   </div>
                   <h4>throw bottle</h4>
               </div>
           </div>
           </div>
       </div> 
-      <!-- <div class="control-layout-cont">
-          <h2>Mobile</h2>
-          <div class="layout-btns">
-              <div class="btn-cont">
-                  <div class="panel-icon-cont">
-                      <img class="panel-icon" src="../img/icons/arrow-left.svg" alt="arrow left">
-                  </div>
-                  <h4>walk left</h4>
-              </div>
-              <div class="btn-cont">
-                  <div class="panel-icon-cont">
-                      <img class="panel-icon" src="../img/icons/arrow-right.svg" alt="arrow left">
-                  </div>
-                  <h4>walk right</h4>
-              </div>
-              <div class="btn-cont">
-                  <div class="panel-icon-cont">
-                      <img class="panel-icon" src="../img/icons/arrow-up.svg" alt="arrow left">
-                  </div>
-                  <h4>jump</h4>
-              </div>
-              <div class="btn-cont">
-                  <div class="panel-icon-cont">
-                      <img class="panel-icon" src="../img/icons/bottle.svg" alt="arrow left">
-                  </div>
-                  <h4>throw bottle</h4>
-              </div>
-          </div>
-      </div>  
-    -->
       `;
 }
   

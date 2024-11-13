@@ -252,7 +252,6 @@ function muteAllSounds() {
  */
 function unmuteAllSounds() {   
     if (isStarted) {
-        console.log("mit if");
         chicken_sound.play();
     }
     walking_sound.muted = false;

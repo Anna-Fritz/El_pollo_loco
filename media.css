@@ -41,6 +41,15 @@
     }
 }
 
+@media (hover: hover) and (pointer: fine) {
+    .fullscreen-panel-left {
+        display: none;
+    }
+    .fullscreen-panel-right {
+        display: none;
+    }
+}
+
 @media(max-width: 1100px) {
     .control-btns {
         height: 64px;
