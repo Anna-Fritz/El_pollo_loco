@@ -5,6 +5,7 @@ let isOn = true;
 let isOnStart = false;
 let isFullscreen = true;
 let arrowHint = setInterval(moveHintArrow, 700);
+let isStarted = false;
 
 /**
  * sets the intro music to loop continuously and pauses it initially
@@ -14,10 +15,6 @@ function presetMusic() {
     intro_music.volume = 0.1;
     if (localStorage.getItem('isMuted') == null) {
         localStorage.setItem('isMuted', 'true');
-        intro_music.pause();
-    } else if (localStorage.getItem('isMuted') === 'false') {
-        intro_music.play();
-    } else if (localStorage.getItem('isMuted') === 'true') {
         intro_music.pause();
     }
 }
@@ -55,15 +52,12 @@ function startGame() {
     world = new World(canvas, keyboard);
     document.getElementById('start-screen-overlay').classList.add('d-none');
     intro_music.pause();
-    chicken_sound.pause();
+    isStarted = true;
     if (localStorage.getItem('isMuted') === 'true') {
-        chicken_sound.pause();
-        // chicken_sound.muted = true;
         toggleSound();
         toggleSound();
     } else if (localStorage.getItem('isMuted') === 'false') {
         chicken_sound.play();
-
     }
 }
 
@@ -79,6 +73,7 @@ function checkGameRestart() {
         let start = document.getElementById('toggle-sound-startscreen');
         start.click();
         start.click();
+        intro_music.play();
     }    
 }
 
@@ -181,8 +176,8 @@ function exitFullscreen() {
  */
 function toggleFullscreenStart() {
     let icon = document.getElementById('fullscreen-start-img');
-    let on = '../img/icons/fullscreen.svg';
-    let off = '../img/icons/fullscreen-exit.svg';
+    let on = 'img/icons/fullscreen.svg';
+    let off = 'img/icons/fullscreen-exit.svg';
     if (isFullscreen) {
         goFullscreenStart();
         icon.src = off;
@@ -199,8 +194,8 @@ function toggleFullscreenStart() {
  */
 function toggleFullscreen() {
     let icon = document.getElementById('fullscreen-img');
-    let on = '../img/icons/fullscreen.svg';
-    let off = '../img/icons/fullscreen-exit.svg';
+    let on = 'img/icons/fullscreen.svg';
+    let off = 'img/icons/fullscreen-exit.svg';
     if (isFullscreen) {
         goFullscreen();
         icon.src = off;
@@ -217,8 +212,8 @@ function toggleFullscreen() {
  */
 function toggleSound() {
     let soundIcon = document.getElementById('sound-switch');
-    let on = '../img/icons/sound-on.svg';
-    let off = '../img/icons/sound-off.svg';
+    let on = 'img/icons/sound-on.svg';
+    let off = 'img/icons/sound-off.svg';
     if (localStorage.getItem('isMuted') === 'false') {
         muteAllSounds();
         soundIcon.src = off;
@@ -255,8 +250,11 @@ function muteAllSounds() {
 /**
  * unmutes all specified sound effects in the game
  */
-function unmuteAllSounds() {
-    chicken_sound.play();
+function unmuteAllSounds() {   
+    if (isStarted) {
+        console.log("mit if");
+        chicken_sound.play();
+    }
     walking_sound.muted = false;
     hurt_sound.muted = false;
     endboss_dies.muted = false;
@@ -281,8 +279,8 @@ function unmuteAllSounds() {
 function toggleSoundStartscreen() {
     stopHintArrow();
     let soundIcon = document.getElementById('start-sound-switch');
-    let on = '../img/icons/sound-on.svg';
-    let off = '../img/icons/sound-off.svg';
+    let on = 'img/icons/sound-on.svg';
+    let off = 'img/icons/sound-off.svg';
     checkSoundStartscreen(soundIcon, on, off);
     return intro_music.paused ? intro_music.play() : intro_music.pause();
 }

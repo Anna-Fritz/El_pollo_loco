@@ -195,14 +195,14 @@ class World {
      */
     checkGameEnd() {
         if (this.endboss.energy == 0) {
-            let gameWin = new GameEnd(150, 0, 466, 480, '../img/9_intro_outro_screens/win/win_2.png');
+            let gameWin = new GameEnd(150, 0, 466, 480, 'img/9_intro_outro_screens/win/win_2.png');
             gameWin.won = true;
             this.gameEndImages.push(gameWin);
             gameWin.animate();
             this.gameRunning = false;
 
         } else if (this.character.energy == 0) {
-            let gameLost = new GameEnd(0, 0, 720, 480,'../img/9_intro_outro_screens/game_over/game_over.png');
+            let gameLost = new GameEnd(0, 0, 720, 480,'img/9_intro_outro_screens/game_over/game_over.png');
             gameLost.lost = true;
             this.gameEndImages.push(gameLost);
             gameLost.animate();
@@ -299,7 +299,7 @@ class World {
     landBottleOnGround(bottle, index) {
         this.throwableObjects.splice(index,1);
         pop.play();
-        let newBottle = new BottleOnGround('../img/6_salsa_bottle/1_salsa_bottle_on_ground.png');
+        let newBottle = new BottleOnGround('img/6_salsa_bottle/1_salsa_bottle_on_ground.png');
         newBottle.x = bottle.x;
         newBottle.y = bottle.y + Math.random() * 10;
         this.level.bottles.push(newBottle);

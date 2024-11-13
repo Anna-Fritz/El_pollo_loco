@@ -1,13 +1,13 @@
 class GameEnd extends MovableObjects{
     IMAGES_WIN = [
-        '../img/9_intro_outro_screens/win/win3.png',
-        '../img/9_intro_outro_screens/win/win_2.png'
+        'img/9_intro_outro_screens/win/win3.png',
+        'img/9_intro_outro_screens/win/win_2.png'
     ];
     IMAGE_YOU_LOST = [
-        '../img/9_intro_outro_screens/game_over/oh_no_you_lost.png',
+        'img/9_intro_outro_screens/game_over/oh_no_you_lost.png',
     ];
     IMAGE_GAMEOVER = [
-        '../img/9_intro_outro_screens/game_over/game_over.png'
+        'img/9_intro_outro_screens/game_over/game_over.png'
     ];
 
     won = false;
