@@ -38,10 +38,13 @@
     </div>
 
     <div id="start-screen-overlay" class="start-screen-overlay">
+        <img class="start-screen-background" src="img/background-canvas/desert7.png" alt="background">
         <div id="info-popup" class="info-popup d-none"></div>
         <div id="start-screen" class="img-cont">
+            <span id="loading-text" class="loading-text d-none">Loading . . .</span>
             <img class="start-screen-img" src="./img/9_intro_outro_screens/start/startscreen_1.png" alt="start screen el pollo loco">
             <div class="play-btn-container">
+                <img class="salsa-bottle d-none" id="loading-bottle" src="img/6_salsa_bottle/salsa_bottle.png" alt="salsa bottle">
                 <div id="play-btn" onclick="startGame()" class="btn-play"></div>
             </div>
             <div class="panel">
@@ -85,7 +88,7 @@
     </div>        
 
 
-    <div id="content" class="content">
+    <div id="content" class="content d-none">
         <h1 id="headline">El Pollo Loco</h1>
             <div id="canvas-container" class="canvas-container">
 

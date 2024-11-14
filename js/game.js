@@ -17,6 +17,9 @@ function presetMusic() {
         localStorage.setItem('isMuted', 'true');
         intro_music.pause();
     }
+    if (localStorage.getItem('isLoading') == null) {
+        localStorage.setItem('isLoading', 'true');
+    }
 }
 
 /**
@@ -45,20 +48,71 @@ function presetVolume() {
 }
 
 /**
- *  initializes the game, hides the start screen overlay, pauses the intro music, and starts playing a looping chicken sound
+ * Initializes the game by either displaying a loading animation or starting the canvas, 
+ * controls background music and sound effects based on user settings, and hides the start screen overlay.
  */
 function startGame() {
+    if (localStorage.getItem('isLoading') === 'true') {
+        loadAnimation();
+        localStorage.setItem('isLoading', 'false');
+    } else {
+        startCanvas();
+        intro_music.pause();
+        isStarted = true;
+        if (localStorage.getItem('isMuted') === 'true') {
+            toggleSound();
+            toggleSound();
+        } else if (localStorage.getItem('isMuted') === 'false') {
+            chicken_sound.play();
+        }        
+        document.getElementById('start-screen-overlay').classList.add('d-none');
+        document.getElementById('content').classList.remove('d-none');
+    }
+}
+
+/**
+ * initializes the game world by retrieving the canvas element and creating a new World instance with it and the keyboard controls.
+ */
+function startCanvas() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
-    document.getElementById('start-screen-overlay').classList.add('d-none');
-    intro_music.pause();
-    isStarted = true;
-    if (localStorage.getItem('isMuted') === 'true') {
-        toggleSound();
-        toggleSound();
-    } else if (localStorage.getItem('isMuted') === 'false') {
-        chicken_sound.play();
-    }
+}
+
+/**
+ * displays the loading animation by adjusting the visibility and styles of elements, initializes the canvas, mutes all sounds, and hides the start screen elements.
+ */
+function loadAnimation() {
+    let bottle = document.getElementById('loading-bottle');
+    let text = document.getElementById('loading-text');
+    let playBtn = document.getElementById('play-btn')
+    bottle.classList.remove('d-none');
+    text.classList.remove('d-none');
+    playBtn.classList.add('d-none');
+    bottle.classList.add('rotating-bottle');
+
+    startCanvas(); 
+    muteAllSounds();  
+    hideStartScreen(bottle, text, playBtn);
+}
+
+/**
+ * Hides the start screen by triggering a delayed sequence that replays the game, hides the overlay, and resets the loading elements after a set timeout.
+ * 
+ * @param {HTMLElement} bottle - The loading bottle element to be hidden.
+ * @param {HTMLElement} text - The loading text element to be hidden.
+ * @param {HTMLElement} playBtn - The play button element to be shown.
+ */
+function hideStartScreen(bottle, text, playBtn) {
+    hideStartScreen = setTimeout(() => {
+        replayGame(); 
+        setTimeout(() => {
+            document.getElementById('start-screen-overlay').classList.add('d-none');
+        },1000) 
+        bottle.classList.add('d-none');
+        text.classList.add('d-none');
+        playBtn.classList.remove('d-none');
+        clearTimeout(hideStartScreen);  
+    }, 6000);
 }
 
 /**
@@ -74,9 +128,13 @@ function checkGameRestart() {
         start.click();
         start.click();
         intro_music.play();
+        document.getElementById('content').classList.add('d-none');
     }    
 }
 
+/**
+ * Sets a flag in local storage to indicate returning to the home screen, then reloads the page to apply the change.
+ */
 function showHomeScreen() {
     localStorage.setItem('backToHome', 'true');
     window.location.reload();
@@ -85,7 +143,7 @@ function showHomeScreen() {
 /**
  * reloads the current page to reset and restart the game.
  */
-function replayGame() {
+async function replayGame() {
     localStorage.setItem('restartGame', 'true');  // Flag setzen
     window.location.reload();
 }

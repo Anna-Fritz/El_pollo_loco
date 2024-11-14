@@ -31,6 +31,20 @@
     }
 }
 
+@supports (hanging-punctuation: first) and (font: -apple-system-body) and (-webkit-appearance: none) and (hover:none) {
+    canvas {
+        height: 100vh;
+        width: auto;
+        overflow: hidden;
+    }
+
+    .start-screen-overlay {
+        height: 100vh;
+        width: auto;
+        overflow: hidden;
+    }
+}
+
 @media (hover: none) {
     .control-panel-right {
         display: flex;
@@ -137,6 +151,18 @@
     .fullscreen-panel-left {
         padding: 35px 0;
     }
+
+    .loading-text {
+        font-size: 20px;
+        top: 30px;
+        padding-left: 40%;
+    }
+
+    .salsa-bottle {
+        height: 150px;
+        width: 150px;
+    }
+    
 }
 
 @media(max-width: 950px) {

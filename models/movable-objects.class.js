@@ -6,7 +6,6 @@ class MovableObjects extends DrawableObjects {
     energy = 100;
     is_dead = false;
     lastHit = 0;
-    hasJumped = false;
 
     offset = {
         top: 0,

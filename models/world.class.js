@@ -70,33 +70,28 @@ class World {
     checkHitEnemies(enemy) {
         setInterval(() => {
             if (this.character.isColliding(enemy) && this.character.isAboveGround() && this.character.speedY < 0) {
-                enemy.energy = 0;
-                this.jumpAfterColliding();
+                this.jumpAfterColliding(enemy);
             }; 
             this.update();
         }, 1000 / 60);
     }
 
     /**
-     * makes the character jump once after colliding with an enemy, and ensures the jump action is only triggered once by setting the hasJumped flag
+     * makes the character jump if enemy's energy is 0
      */
-    jumpAfterColliding() {
-        if (!this.character.hasJumped) {
-            this.character.hasJumped = true;
+    jumpAfterColliding(enemy) {
+        if (enemy.energy !== 0) {
             this.character.jump();
-            setTimeout(() => {
-                this.character.speedY = 0;
-                this.character.y = 155;
-            }, 850);
+            enemy.energy = 0;
         }
     }
 
     /**
-     * checks if the character is on the ground and resets the hasJumped flag to false, allowing the character to jump again
+     * checks if the character is on the ground and resets ground level to 155
      */
     update() {
         if (this.character.isOnGround()) {
-            this.character.hasJumped = false;
+            this.character.y = 155;
         }
     }
 
@@ -111,7 +106,7 @@ class World {
                 hurt_sound.play();
                 this.statusBarHealth.setPercentage(this.character.energy)
             };
-        },150);
+        }, 150);
     }
 
     /**
