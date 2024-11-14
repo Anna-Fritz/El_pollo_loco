@@ -89,9 +89,9 @@ function loadAnimation() {
     text.classList.remove('d-none');
     playBtn.classList.add('d-none');
     bottle.classList.add('rotating-bottle');
+    muteAllSounds();  
 
     startCanvas(); 
-    muteAllSounds();  
     hideStartScreen(bottle, text, playBtn);
 }
 
@@ -177,8 +177,17 @@ function goFullscreen() {
     } else if (screen.msRequestFullscreen) { // IE/Edge
         screen.msRequestFullscreen();
     }
+    setPanelsToFullscreen();
+}
+
+/**
+ * sets the display to fullscreen mode by showing fullscreen panels and hiding control panels on the left and right sides of the screen
+ */
+function setPanelsToFullscreen() {
     document.getElementById('fullscreen-panel-left').classList.remove('d-none');
-    document.getElementById('fullscreen-panel-right').classList.remove('d-none');    
+    document.getElementById('fullscreen-panel-right').classList.remove('d-none');
+    document.getElementById('control-panel-left').classList.add('d-none');
+    document.getElementById('control-panel-right').classList.add('d-none');    
 }
 
 /**
@@ -225,8 +234,17 @@ function exitFullscreen() {
     } else if (document.msExitFullscreen) { // IE/Edge
         document.msExitFullscreen();
     }
+    resetPanels();
+}
+
+/**
+ * resets the display by hiding fullscreen panels and showing control panels on the left and right sides of the screen
+ */
+function resetPanels() {
     document.getElementById('fullscreen-panel-left').classList.add('d-none');
     document.getElementById('fullscreen-panel-right').classList.add('d-none');    
+    document.getElementById('control-panel-left').classList.remove('d-none');
+    document.getElementById('control-panel-right').classList.remove('d-none');    
 }
 
 /**

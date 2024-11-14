@@ -28,7 +28,6 @@ body {
 
 .turn-device-overlay {
     position: absolute;
-    /* inset: 0; */
     top: 0;
     left: 0;
     right: 0;
@@ -55,6 +54,7 @@ body {
 .control-panel-left {
     position: absolute;
     left: 1%;
+    top: 38%;
     z-index: 99;
     display: none;
     flex-direction: column;
@@ -70,6 +70,7 @@ body {
 .control-panel-right {
     position: absolute;
     right: 1%;
+    top: 38%;
     z-index: 99;
     display: none;
     flex-direction: column;
@@ -110,19 +111,14 @@ body {
 
 .start-screen-overlay {
     position: absolute;
-    /* inset: 0; */
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    /* background-image: url('./img/background-canvas/desert7.png'); */
-    /* background-position: center; */
-    /* background-repeat: no-repeat; */
     z-index: 100;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* flex-direction: column; */
 }
 
 .start-screen-background {
@@ -662,7 +658,7 @@ h3 {
 .fullscreen-panel-left {
     position: absolute;
     left: 1%;
-    top: 18%;
+    bottom: 16%;
     z-index: 99;
     flex-direction: column;
     justify-content: center;
@@ -677,7 +673,7 @@ h3 {
 .fullscreen-panel-right {
     position: absolute;
     right: 1%;
-    top: 18%;
+    bottom: 16%;
     z-index: 99;
     flex-direction: column;
     justify-content: center;
@@ -685,7 +681,7 @@ h3 {
     gap: 30px;
     padding: 45px 10px;
     background-color: #FDCF5D;
-    border-radius: 40px 20px 40px 20px;
+    border-radius: 20px 40px 20px 40px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
 
