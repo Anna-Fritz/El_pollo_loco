@@ -46,7 +46,7 @@ class World {
         setInterval(() => {this.checkBossHit()}, 400);
         setInterval(() => {this.checkThrowObjects()}, 300);
         setInterval(() => {
-            this.removeEnemy();
+            this.level.removeEnemy();
             if (this.gameRunning) {
                 this.checkGameEnd();
             }
@@ -166,7 +166,7 @@ class World {
                 cashing.play();
                 this.statusBarCoin.isCollected();
                 this.statusBarCoin.collectCoins(this.statusBarCoin.wallet); 
-                this.removeCoins(index);
+                this.level.removeCoins(index);
             };
         });
     }
@@ -176,11 +176,11 @@ class World {
      */
     checkCollectionBottles() {
         this.level.bottles.forEach((bottle, index) => {
-            if (this.character.isColliding(bottle)) {
+            if (this.character.isColliding(bottle) && this.statusBarBottle.bottleBag < 100) {
                 pop.play();
                 this.statusBarBottle.isCollected();
                 this.statusBarBottle.collectBottles(this.statusBarBottle.bottleBag);
-                this.removeBottles(index); 
+                this.level.removeBottles(index); 
             };
         });
     }
@@ -205,42 +205,6 @@ class World {
         }; 
     }
     
-    /**
-     * removes a coin from the level's coin array
-     * @param {*} index 
-     */
-    removeCoins(index) {
-        if (index > -1) {
-            this.level.coins.splice(index, 1);
-        };
-    }
-
-    /**
-     * removes a bottle from the level's bottle array
-     * @param {*} index 
-     */
-    removeBottles(index) {
-        if (index > -1) {
-            this.level.bottles.splice(index, 1);
-        };
-    }
-
-    /**
-     * iterates through the list of enemies and removes any enemy that has zero energy from the level.
-     */
-    removeEnemy() {
-        this.level.enemies.forEach((enemy, index) => {
-            if (enemy.energy == 0) {
-                if (index > -1) {
-                   this.level.enemies.splice(index, 1);
-                };
-            };   
-        });
-        if (this.level.enemies.length == 0) {
-            chicken_sound.pause();
-        };
-    }
-
     /**
      * checks for keyboard input to throw a bottle in either direction based on the character's facing direction, ensuring that the character has bottles available in their bottle bag
      */
@@ -280,7 +244,7 @@ class World {
             });
             if (bottle.y > 320 && !this.endboss.isColliding(bottle) && this.level.enemies.length == 0) {
                 this.landBottleOnGround(bottle, index);
-            };      
+            };   
         });  
     }
 
@@ -323,10 +287,33 @@ class World {
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.level.coins);
-        this.addObjectsToMap(this.level.bottles);
+        this.drawBottlesBehindCharacter();
         this.addToMap(this.character);
+        this.drawBottlesInFrontOfCharacter();
         this.addToMap(this.endboss);
         this.addObjectsToMap(this.throwableObjects);
+    }
+
+    /**
+     * Draws all bottles positioned above the ground level (y < 335) on the map behind the character
+     */
+    drawBottlesBehindCharacter() {
+        this.level.bottles.forEach((bottle) => {
+            if (bottle.y < 335) {
+                this.addToMap(bottle);
+            }
+        });
+    }
+
+    /**
+     * Draws all bottles positioned at or below ground level (y >= 335) on the map in front of the character.
+     */
+    drawBottlesInFrontOfCharacter() {
+        this.level.bottles.forEach((bottle) => {
+            if (bottle.y >= 335) {
+                this.addToMap(bottle);
+            }
+        });
     }
 
     /**
