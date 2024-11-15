@@ -10,14 +10,13 @@ class ThrowableObject extends MovableObjects {
      */
     throw(x, y) {
         this.setThrowingAction(x, y);
-
-            if (this.y >= 345) {
-                this.speedY = 0;
-            } else {
-                this.movementInterval = setInterval(() => {
-                    this.x += 10;
-                }, 25)    
-            }    
+        if (this.y >= 345) {
+            this.speedY = 0;
+        } else {
+            this.movementInterval = setInterval(() => {
+                this.x += 10;
+            }, 25)    
+        }    
     }
 
     /**
@@ -27,10 +26,9 @@ class ThrowableObject extends MovableObjects {
      */
     throwLeft(x, y) {
         this.setThrowingAction(x, y);
-        
-            setInterval(() => {
-                this.x -= 10;
-            }, 25)
+        setInterval(() => {
+            this.x -= 10;
+        }, 25)
     }
 
     /**

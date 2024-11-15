@@ -90,7 +90,6 @@ function loadAnimation() {
     playBtn.classList.add('d-none');
     bottle.classList.add('rotating-bottle');
     muteAllSounds();  
-
     startCanvas(); 
     hideStartScreen(bottle, text, playBtn);
 }

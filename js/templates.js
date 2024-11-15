@@ -3,7 +3,6 @@ function generateLegalNoticeHTML() {
       <div class="close-icon-cont">
           <div onclick="closePopUp()" class="close-icon">X</div>
       </div>
-  
       <div class="legal-notice-content">
       <h2>Legal Notice</h2>
       <div class='legal-notice-text'>
@@ -43,7 +42,7 @@ function generateControlLayoutHTML() {
           <div onclick="closePopUp()" class="close-icon">X</div>
       </div>
       <div class="control-layout-cont">
-          <div class="control-layout-keyboard">
+        <div class="control-layout-keyboard">
           <h2>Control Layout</h2>
           <div class="layout-btns">
               <div class="btn-cont">
@@ -71,8 +70,8 @@ function generateControlLayoutHTML() {
                   <h4>throw bottle</h4>
               </div>
           </div>
-          </div>
-          <div>
+        </div>
+        <div>
           <h2>Mobile</h2>
           <div class="layout-btns">
               <div class="btn-cont">
@@ -100,7 +99,7 @@ function generateControlLayoutHTML() {
                   <h4>throw bottle</h4>
               </div>
           </div>
-          </div>
+        </div>
       </div> 
       `;
 }
@@ -110,19 +109,18 @@ function generatePepeStoryHTML() {
         <div class="close-icon-cont">
             <div onclick="closePopUp()" class="close-icon">X</div>
         </div>
-
-          <div class="pepe-story">
-              <h2>Pepe Peligroso</h2>
-              <span>&</span>
-              <h3>the Invasion of <br>El pollo loco</h3>
-              <div class=''>
-              <p>High up in the sun-scorched heights of the Sierra Madre lies a small, almost forgotten village called Real de Catorce. Once a magnificent silver mining town, its people toiled deep beneath the earth in search of fortune. But as silver prices plummeted and the mines dried up, the town’s glory faded away. Today, it’s a ghost town, surrounded by the unforgiving desert of San Luis Potosí, with only a handful of inhabitants left, living in quiet harmony with the past – until that fateful day when everything changed.<br><br>
+        <div class="pepe-story">
+            <h2>Pepe Peligroso</h2>
+            <span>&</span>
+            <h3>the Invasion of <br>El pollo loco</h3>
+            <div class=''>
+            <p>High up in the sun-scorched heights of the Sierra Madre lies a small, almost forgotten village called Real de Catorce. Once a magnificent silver mining town, its people toiled deep beneath the earth in search of fortune. But as silver prices plummeted and the mines dried up, the town’s glory faded away. Today, it’s a ghost town, surrounded by the unforgiving desert of San Luis Potosí, with only a handful of inhabitants left, living in quiet harmony with the past – until that fateful day when everything changed.<br><br>
                 One morning, an ominous clucking echoed through the dusty streets. The villagers awoke in fear as hundreds of chickens descended upon the town. But these were no ordinary chickens. They were faster, more aggressive, and deadlier than anything anyone had ever seen. Leading them was the legendary <strong>El Pollo Loco</strong> – a colossal, monstrous creature that seemed to spawn an endless wave of new chickens, as if sent by the depths of hell itself.<br><br>
                 No one dared to face the crazed chicken army. The villagers fled, barricading themselves in their homes or hiding in the abandoned mines. But one man stayed behind – the brave Pepe Peligroso, an unassuming yet fiery-hearted soul with the courage of a hero. Pepe was the owner of the town’s last remaining factory, where he had once produced spicy salsa bottles to sell to the few tourists who wandered into the ghost town.<br><br>
                 Pepe knew he had no choice. These chickens weren’t just a nuisance – they were a threat to the entire village. While the others cowered in fear, Pepe resolved to take matters into his own hands. Luckily, he had an unusual weapon: his salsa factory. He realized that the fiery salsa he produced in vast quantities could be the perfect ammunition against the chicken invasion. With the power of chili heat, he could drive the crazed chickens away – or at least slow them down long enough to save the village.<br><br>
                 The chickens, however, underestimated Pepe Peligroso. Armed with salsa sauce-bottles and secret fiery recipes known only to him, Pepe took on the rampaging chicken army. Every salsa shot he fired sizzled through the air, and the chickens recoiled as though whipped by flames. But Pepe knew that stopping the smaller chickens wasn’t enough – he had to defeat <strong>El Pollo Loco</strong>, the source of this strange invasion.<br><br>
                 Join Pepe Peligroso on his wild mission to save the village and defeat <strong>El Pollo Loco</strong>. Use spicy salsa weapons, build new gadgets, and discover the chicken army’s weaknesses. It’s a race against time – and against a clucking horde. But with courage, humor, and plenty of salsa, Pepe will triumph.<br><br>
                 Because one thing is certain: in Real de Catorce, things are about to get very, very hot.</p>
-          </div>
+        </div>
      `;
 }

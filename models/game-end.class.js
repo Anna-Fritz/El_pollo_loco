@@ -31,7 +31,6 @@ class GameEnd extends MovableObjects{
             if (this.won) {
                 this.sparkleWin();
                 this.stopGameAfterVictory();
-                
             } else if (this.lost) {
                 this.playAnimation(this.IMAGE_YOU_LOST)
                 this.stopGameAfterDefeat();

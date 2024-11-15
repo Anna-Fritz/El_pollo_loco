@@ -2,7 +2,6 @@
 * listens for specific keydown events and updates the keyboard object to mark the right, left, up, down, space, and "D" keys as pressed
 */
 window.addEventListener("keydown", (e) => {
-    
     if (e.keyCode == 39) {
         keyboard.RIGHT = true;
     };
@@ -65,7 +64,6 @@ function enableJumpButtonTouchControls() {
         e.preventDefault();
         keyboard.SPACE = true;
     });
-
     document.getElementById('btnJump').addEventListener('touchend', (e) => {
         e.preventDefault();
         keyboard.SPACE = false;
@@ -80,7 +78,6 @@ function enableLeftButtonTouchControls() {
         e.preventDefault();
         keyboard.LEFT = true;
     });
-
     document.getElementById('btnLeft').addEventListener('touchend', (e) => {
         e.preventDefault();
         keyboard.LEFT = false;
@@ -95,7 +92,6 @@ function enableRightButtonTouchControls() {
         e.preventDefault();
         keyboard.RIGHT = true;
     });
-
     document.getElementById('btnRight').addEventListener('touchend', (e) => {
         e.preventDefault();
         keyboard.RIGHT = false;
@@ -110,7 +106,6 @@ function enableThrowButtonTouchControls() {
         e.preventDefault();
         keyboard.KEY_D = true;
     });
-
     document.getElementById('btnThrow').addEventListener('touchend', (e) => {
         e.preventDefault();
         keyboard.KEY_D = false;
@@ -136,7 +131,6 @@ function enableJumpButtonTouchControlsFullscreen() {
         e.preventDefault();
         keyboard.SPACE = true;
     });
-
     document.getElementById('btnJumpFullscreen').addEventListener('touchend', (e) => {
         e.preventDefault();
         keyboard.SPACE = false;
@@ -151,7 +145,6 @@ function enableLeftButtonTouchControlsFullscreen() {
         e.preventDefault();
         keyboard.LEFT = true;
     });
-
     document.getElementById('btnLeftFullscreen').addEventListener('touchend', (e) => {
         e.preventDefault();
         keyboard.LEFT = false;
@@ -166,7 +159,6 @@ function enableRightButtonTouchControlsFullscreen() {
         e.preventDefault();
         keyboard.RIGHT = true;
     });
-
     document.getElementById('btnRightFullscreen').addEventListener('touchend', (e) => {
         e.preventDefault();
         keyboard.RIGHT = false;
@@ -181,10 +173,8 @@ function enableThrowButtonTouchControlsFullscreen() {
         e.preventDefault();
         keyboard.KEY_D = true;
     });
-
     document.getElementById('btnThrowFullscreen').addEventListener('touchend', (e) => {
         e.preventDefault();
         keyboard.KEY_D = false;
     });
-
 }

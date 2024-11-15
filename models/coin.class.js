@@ -30,5 +30,4 @@ class Coin extends CollactableObject {
             this.playAnimation(this.IMAGES_COIN); 
         }, 200);        
     }
-
 }

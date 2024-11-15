@@ -243,7 +243,6 @@ class Character extends MovableObjects {
     updateAnimationFrame() {
         const { frames, speed } = this.animations[this.currentAnimation];
         this.animationTimers[this.currentAnimation] += 50; // 50ms
-    
         if (this.animationTimers[this.currentAnimation] >= speed) {
             this.playCharacterAnimation(frames[this.frameIndex]);
             this.frameIndex = (this.frameIndex + 1) % frames.length;

@@ -17,5 +17,4 @@ class Cloud extends MovableObjects {
             this.moveLeft();
         }, 1000 / 60);
     }
-
 }

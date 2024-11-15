@@ -75,25 +75,19 @@ class Endboss extends MovableObjects {
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
                 setTimeout (this.deadBossGone(),2000);
-
-                } else if (this.isHurt()) {
-                    this.playAnimation(this.IMAGES_HURT);
-                
-                    } else if (this.energy < 100 || this.attack) {
-                        this.playAnimation(this.IMAGES_ATTACK);
-                        
-                        } else if (this.energy < 80) {
-                            this.playAnimation(this.IMAGES_ALERT);
-
-                            } else if (this.energy < 60) {
-                                this.playAnimation(this.IMAGES_ALERT);
-
-                                } else if (this.energy < 40 && this.energy > 0 || this.attack) {
-                                    this.playAnimation(this.IMAGES_ATTACK);
-
-                                    } else  {
-                                        this.playAnimation(this.IMAGES_ALERT);
-                                    }   
+            } else if (this.isHurt()) {
+                this.playAnimation(this.IMAGES_HURT);
+            } else if (this.energy < 100 || this.attack) {
+                this.playAnimation(this.IMAGES_ATTACK);
+            } else if (this.energy < 80) {
+                this.playAnimation(this.IMAGES_ALERT);
+            } else if (this.energy < 60) {
+                this.playAnimation(this.IMAGES_ALERT);
+            } else if (this.energy < 40 && this.energy > 0 || this.attack) {
+                this.playAnimation(this.IMAGES_ATTACK);
+            } else  {
+                this.playAnimation(this.IMAGES_ALERT);
+            }   
         }, 300);
     }
 
@@ -106,15 +100,14 @@ class Endboss extends MovableObjects {
             if (movingRight) {
                 this.animateToRight();
                 if (this.x >= 2600) {
-                movingRight = false;
+                    movingRight = false;
                 }
-            } 
-                else {
-                    this.animateToLeft();
-                    if (this.x <= 2200) {
+            } else {
+                this.animateToLeft();
+                if (this.x <= 2200) {
                     movingRight = true;
-                    }
                 }
+            }
         }, 1000 / 60);
     }
 
@@ -146,7 +139,6 @@ class Endboss extends MovableObjects {
             this.y -= this.speedY;
             this.speedY -= this.acceleration; 
         }, 1000 / 25);
-
         if (!this.audioPlayed) {
             endboss_dies.play();
             setTimeout(() => {
