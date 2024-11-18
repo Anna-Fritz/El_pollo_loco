@@ -5,7 +5,7 @@ let isOn = true;
 let isOnStart = false;
 let isFullscreen = true;
 let arrowHint = setInterval(moveHintArrow, 700);
-let isStarted = false;
+let stopArrow = true;
 
 /**
  * sets the intro music to loop continuously and pauses it initially
@@ -16,6 +16,8 @@ function presetMusic() {
     if (localStorage.getItem('isMuted') == null) {
         localStorage.setItem('isMuted', 'true');
         intro_music.pause();
+    } else {
+        checkSoundStartscreen();
     }
     if (localStorage.getItem('isLoading') == null) {
         localStorage.setItem('isLoading', 'true');
@@ -49,7 +51,7 @@ function presetVolume() {
 
 /**
  * Initializes the game by either displaying a loading animation or starting the canvas, 
- * controls background music and sound effects based on user settings, and hides the start screen overlay.
+ * checks background music and sound effects based on user settings, and hides the start screen overlay.
  */
 function startGame() {
     if (localStorage.getItem('isLoading') === 'true') {
@@ -58,13 +60,7 @@ function startGame() {
     } else {
         startCanvas();
         intro_music.pause();
-        isStarted = true;
-        if (localStorage.getItem('isMuted') === 'true') {
-            toggleSound();
-            toggleSound();
-        } else if (localStorage.getItem('isMuted') === 'false') {
-            chicken_sound.play();
-        }        
+        checkSound();
         document.getElementById('start-screen-overlay').classList.add('d-none');
         document.getElementById('content').classList.remove('d-none');
     }
@@ -104,13 +100,12 @@ function loadAnimation() {
 function hideStartScreen(bottle, text, playBtn) {
     hideStartScreen = setTimeout(() => {
         replayGame(); 
-        setTimeout(() => {
-            document.getElementById('start-screen-overlay').classList.add('d-none');
-        },1000) 
         bottle.classList.add('d-none');
         text.classList.add('d-none');
         playBtn.classList.remove('d-none');
         clearTimeout(hideStartScreen);  
+        document.getElementById('start-screen-overlay').classList.add('d-none');
+        checkSound();
     }, 6000);
 }
 
@@ -120,15 +115,11 @@ function hideStartScreen(bottle, text, playBtn) {
 function checkGameRestart() {
     if (localStorage.getItem('restartGame') === 'true') {
         localStorage.removeItem('restartGame');
-        reloadGame();
-    }
-    if (localStorage.getItem('backToHome') === 'true' && localStorage.getItem('isMuted') === 'false') {
-        let start = document.getElementById('toggle-sound-startscreen');
-        start.click();
-        start.click();
-        intro_music.play();
-        document.getElementById('content').classList.add('d-none');
-    }    
+        startGame();
+    };
+    if (localStorage.getItem('backToHome') === 'true') {
+        window.location.reload;
+    };  
 }
 
 /**
@@ -145,14 +136,6 @@ function showHomeScreen() {
 async function replayGame() {
     localStorage.setItem('restartGame', 'true');  // Flag setzen
     window.location.reload();
-}
-
-/**
- *  simulates a click on the "play-special-btn" button element to initiate a game restart.
- */
-function reloadGame() {
-    let start = document.getElementById('play-btn');
-    start.click();
 }
 
 /**
@@ -301,6 +284,22 @@ function toggleSound() {
 }
 
 /**
+ * checks the sound setting, mute or unmute the sound, updating the sound icon accordingly
+ */
+function checkSound() {
+    let soundIcon = document.getElementById('sound-switch');
+    let on = 'img/icons/sound-on.svg';
+    let off = 'img/icons/sound-off.svg';
+    if (localStorage.getItem('isMuted') === 'false') {
+        unmuteAllSounds();
+        soundIcon.src = on;
+    } else {
+        muteAllSounds();
+        soundIcon.src = off;
+    } 
+}
+
+/**
  * mutes all specified sound effects in the game
  */
 function muteAllSounds() {
@@ -326,9 +325,7 @@ function muteAllSounds() {
  * unmutes all specified sound effects in the game
  */
 function unmuteAllSounds() {   
-    if (isStarted) {
-        chicken_sound.play();
-    }
+    chicken_sound.play();
     walking_sound.muted = false;
     hurt_sound.muted = false;
     endboss_dies.muted = false;
@@ -351,12 +348,34 @@ function unmuteAllSounds() {
  * @returns plays or pauses the intro music depending on whether it is currently paused
  */
 function toggleSoundStartscreen() {
-    stopHintArrow();
     let soundIcon = document.getElementById('start-sound-switch');
     let on = 'img/icons/sound-on.svg';
     let off = 'img/icons/sound-off.svg';
-    checkSoundStartscreen(soundIcon, on, off);
-    return intro_music.paused ? intro_music.play() : intro_music.pause();
+    if (stopArrow) {
+        stopArrow = false;
+        stopHintArrow();
+        intro_music.play();
+        localStorage.setItem('isMuted', 'false');
+        soundIcon.src = on;
+    } else {
+        setSoundStartscreen(soundIcon, on, off);
+    }
+}
+
+/**
+ * checks the sound setting for startscreen music, mute or unmute the sound, updating the sound icon accordingly
+ */
+function checkSoundStartscreen() {
+    let soundIcon = document.getElementById('start-sound-switch');
+    let on = 'img/icons/sound-on.svg';
+    let off = 'img/icons/sound-off.svg';
+    if (localStorage.getItem('isMuted') === 'false') {
+        soundIcon.src = on;
+        intro_music.play()
+    } else {
+        soundIcon.src = off;
+        intro_music.pause();
+   }  
 }
 
 /**
@@ -365,13 +384,15 @@ function toggleSoundStartscreen() {
  * @param {string} on image path
  * @param {string} off image path
  */
-function checkSoundStartscreen(soundIcon, on, off) {
+function setSoundStartscreen(soundIcon, on, off) {
     if (localStorage.getItem('isMuted') === 'false') {
         soundIcon.src = off;
-        toggleSound();
+        intro_music.pause();
+        localStorage.setItem('isMuted', 'true');
     } else {
         soundIcon.src = on;
-        toggleSound();
+        intro_music.play()
+        localStorage.setItem('isMuted', 'false');
     }  
 }
 
@@ -385,7 +406,7 @@ function moveHintArrow() {
         arrow.classList.add('move-right');
         setTimeout(() =>{
             arrow.classList.remove('move-right');
-        },250)
+        },250);
     }
 }
 
