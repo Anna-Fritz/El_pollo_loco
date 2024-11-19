@@ -75,8 +75,6 @@ let finalsound = new Audio('audio/finalsound.mp3');
         new Coin(),
         new Coin(),
         new Coin(),
-        new Coin(),
-        new Coin(),
     ],
     [
         new BottleOnGround('img/6_salsa_bottle/1_salsa_bottle_on_ground.png'),

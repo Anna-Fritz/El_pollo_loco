@@ -55,7 +55,7 @@ class StatusBarCoin extends DrawableObjects {
      * increases the player's wallet by 20, representing the collection of coins or currency
      */
     isCollected() {
-        this.wallet += 20;
+        this.wallet += 10;
     }
 
 }

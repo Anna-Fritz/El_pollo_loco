@@ -15,6 +15,7 @@ class World {
     throwableObjects = [];
     gameEndImages = [];
     gameRunning = true;
+    showNewBottle = true;
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -44,7 +45,7 @@ class World {
             this.checkBottleHitsGround();
         }, 100);
         setInterval(() => {this.checkBossHit()}, 400);
-        setInterval(() => {this.checkThrowObjects()}, 300);
+        setInterval(() => {this.checkThrowObjects()}, 275);
         setInterval(() => {
             this.level.removeEnemy();
             if (this.gameRunning) {
@@ -209,17 +210,18 @@ class World {
      * checks for keyboard input to throw a bottle in either direction based on the character's facing direction, ensuring that the character has bottles available in their bottle bag
      */
     checkThrowObjects() {
-        if (this.keyboard.KEY_D && !this.statusBarBottle.bottleBag == 0 && this.character.otherDirection && !this.character.isSleeping) {
-            let newBottle = new Bottle(this.character.x + 50, this.character.y + 100);
-            newBottle.animate();
-            newBottle.throwLeft(this.character.x + 50, this.character.y + 100);
-            this.updateBottleStatus(newBottle);
-        } else if (this.keyboard.KEY_D && !this.statusBarBottle.bottleBag == 0 && !this.character.isSleeping) {
-            let newBottle = new Bottle(this.character.x + 50, this.character.y + 100);
-            newBottle.animate();
-            newBottle.throw(this.character.x + 50, this.character.y + 100);
-            this.updateBottleStatus(newBottle);
-        };
+            if (this.keyboard.KEY_D && !this.statusBarBottle.bottleBag == 0 && this.character.otherDirection && this.character.idle && !this.character.isSleeping) {
+                let newBottle = new Bottle(this.character.x + 50, this.character.y + 100);
+                newBottle.animate();
+                newBottle.throwLeft(this.character.x + 50, this.character.y + 100);
+                this.updateBottleStatus(newBottle);
+            } else if (this.keyboard.KEY_D && !this.statusBarBottle.bottleBag == 0 && !this.character.isSleeping) {
+                let newBottle = new Bottle(this.character.x + 50, this.character.y + 100);
+                newBottle.animate();
+                newBottle.throw(this.character.x + 50, this.character.y + 100);
+                this.updateBottleStatus(newBottle);
+            };
+            this.showNewBottle = true;
     }
 
     /**
@@ -256,10 +258,13 @@ class World {
     landBottleOnGround(bottle, index) {
         this.throwableObjects.splice(index,1);
         pop.play();
-        let newBottle = new BottleOnGround('img/6_salsa_bottle/1_salsa_bottle_on_ground.png');
-        newBottle.x = bottle.x;
-        newBottle.y = bottle.y + Math.random() * 10;
-        this.level.bottles.push(newBottle);
+        if (this.showNewBottle) {
+            let newBottle = new BottleOnGround('img/6_salsa_bottle/1_salsa_bottle_on_ground.png');
+            newBottle.x = bottle.x;
+            newBottle.y = bottle.y + Math.random() * 10;    
+            this.level.bottles.push(newBottle);
+            this.showNewBottle = false;
+        }
     }
 
     /**

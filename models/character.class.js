@@ -211,7 +211,7 @@ class Character extends MovableObjects {
      */
     idleCondition() {
         return !this.isDead() && !this.isHurt() && !this.isAboveGround() && 
-               !this.world.keyboard.RIGHT && !this.world.keyboard.LEFT && this.idle;
+               !this.world.keyboard.RIGHT && !this.world.keyboard.LEFT && !this.world.keyboard.KEY_D && this.idle;
     }
 
     /**
