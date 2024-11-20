@@ -16,6 +16,7 @@ class World {
     gameEndImages = [];
     gameRunning = true;
     showNewBottle = true;
+    throwNewBottle = true;
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -45,7 +46,7 @@ class World {
             this.checkBottleHitsGround();
         }, 100);
         setInterval(() => {this.checkBossHit()}, 400);
-        setInterval(() => {this.checkThrowObjects()}, 275);
+        setInterval(() => {this.checkThrowObjects()}, 50);
         setInterval(() => {
             this.level.removeEnemy();
             if (this.gameRunning) {
@@ -120,10 +121,21 @@ class World {
                     enemy.energy = 0;
                     this.stopBottleAtCollisionPoint(bottle);
                     bottle.animateSplash();
+                    this.allowNextThrow();
                     return setTimeout(() => {this.throwableObjects.splice(index,1)}, 300);    
                 };
             });
         });
+    }
+
+    /**
+     * enables the next bottle throw after a delay of 500 milliseconds
+     */
+    allowNextThrow() {
+        let allowNextThrow = setTimeout(() => {
+            this.throwNewBottle = true;
+            clearTimeout(allowNextThrow);
+        }, 800);
     }
 
     /**
@@ -146,6 +158,7 @@ class World {
     checkBossHit() {
         this.throwableObjects.forEach((bottle, index) => {
             if (this.endboss.isColliding(bottle) && this.endboss.energy > 0) {
+                this.throwNewBottle = true;
                 this.endboss.endbossHit();
                 this.statusBarEndboss.setPercentage(this.endboss.energy);
                 endboss_ishurt.play();
@@ -179,6 +192,7 @@ class World {
         this.level.bottles.forEach((bottle, index) => {
             if (this.character.isColliding(bottle) && this.statusBarBottle.bottleBag < 100) {
                 pop.play();
+                this.throwNewBottle = true;
                 this.statusBarBottle.isCollected();
                 this.statusBarBottle.collectBottles(this.statusBarBottle.bottleBag);
                 this.level.removeBottles(index); 
@@ -210,18 +224,17 @@ class World {
      * checks for keyboard input to throw a bottle in either direction based on the character's facing direction, ensuring that the character has bottles available in their bottle bag
      */
     checkThrowObjects() {
-            if (this.keyboard.KEY_D && !this.statusBarBottle.bottleBag == 0 && this.character.otherDirection && this.character.idle && !this.character.isSleeping) {
-                let newBottle = new Bottle(this.character.x + 50, this.character.y + 100);
-                newBottle.animate();
-                newBottle.throwLeft(this.character.x + 50, this.character.y + 100);
-                this.updateBottleStatus(newBottle);
-            } else if (this.keyboard.KEY_D && !this.statusBarBottle.bottleBag == 0 && !this.character.isSleeping) {
-                let newBottle = new Bottle(this.character.x + 50, this.character.y + 100);
-                newBottle.animate();
-                newBottle.throw(this.character.x + 50, this.character.y + 100);
-                this.updateBottleStatus(newBottle);
-            };
-            this.showNewBottle = true;
+        if (this.throwNewBottle && this.keyboard.KEY_D && !this.statusBarBottle.bottleBag == 0 && this.character.otherDirection && this.character.idle && !this.character.isSleeping) {
+            let newBottle = new Bottle(this.character.x + 50, this.character.y + 100);
+            newBottle.animate();
+            newBottle.throwLeft(this.character.x + 50, this.character.y + 100);
+            this.updateBottleStatus(newBottle);
+        } else if (this.throwNewBottle && this.keyboard.KEY_D && !this.statusBarBottle.bottleBag == 0 && !this.character.isSleeping) {
+            let newBottle = new Bottle(this.character.x + 50, this.character.y + 100);
+            newBottle.animate();
+            newBottle.throw(this.character.x + 50, this.character.y + 100);
+            this.updateBottleStatus(newBottle);
+        };            
     }
 
     /**
@@ -232,6 +245,8 @@ class World {
         this.throwableObjects.push(newBottle);
         this.statusBarBottle.isThrown();
         this.statusBarBottle.collectBottles(this.statusBarBottle.bottleBag);
+        this.showNewBottle = true;
+        this.throwNewBottle = false;
     }
 
     /**
@@ -264,6 +279,7 @@ class World {
             newBottle.y = bottle.y + Math.random() * 10;    
             this.level.bottles.push(newBottle);
             this.showNewBottle = false;
+            this.throwNewBottle = true;
         }
     }
 
@@ -290,9 +306,9 @@ class World {
     drawObjects() {
         this.addObjectsToMap(this.level.backgroundObjects);
         this.addObjectsToMap(this.level.clouds);
-        this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.level.coins);
         this.drawBottlesBehindCharacter();
+        this.addObjectsToMap(this.level.enemies);
         this.addToMap(this.character);
         this.drawBottlesInFrontOfCharacter();
         this.addToMap(this.endboss);
